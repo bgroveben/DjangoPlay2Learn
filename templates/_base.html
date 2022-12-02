@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{% endblock %} | Games</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'games:homepage' %}">Home</a> |
+      <a href="{% url 'games:math-facts' %}">Math Facts</a> |
+      <a href="{% url 'games:anagram-hunt' %}">Anagram Hunt</a> |
+    </nav>
+  </header>
+  {% block main %}{% endblock %}
+</body>
+</html>

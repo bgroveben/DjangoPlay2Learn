@@ -1,6 +1,9 @@
 # DjangoPlay2Learn
 ## Adding the Backend
 
+https://www.sitepoint.com/web-app-prototype-django-vue/
+Vue.js components
+
 In this project, you will be creating the backend for the Play2Learn website.
 The website should allow users to log in to the site, play games, track their progress, see leaderboards, manage their account, and leave reviews.
 Administrators will be able to run reports and manage users.
