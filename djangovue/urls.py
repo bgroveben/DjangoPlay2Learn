@@ -14,8 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
+    # Games
+    # path('games/', include('games.urls')),
+    # User Management
+    # path('account/', include('users.urls')),
+    # path('account/', include('allauth.urls')),
+    # Pages
+    path('', include('pages.urls')),
+    # Private Media?
 ]
+
+"""
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+"""

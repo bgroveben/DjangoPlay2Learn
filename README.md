@@ -8,6 +8,10 @@ Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
+
+Run Vue app on home page with links to both games using Vue routes and components. Pass scores and any other data to Django.
+
+
 Configure Vue to not interfere with the Django template syntax (both use {{}} as delimiters). Try [[]] instead.
 Configue Django urls to find Vue Components.
 When should I import the Vue app?
