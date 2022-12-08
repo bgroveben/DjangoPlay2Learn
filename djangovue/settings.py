@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local apps
-    'games.apps.GamesConfig',
     'pages.apps.PagesConfig',
 ]
 
