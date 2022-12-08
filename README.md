@@ -7,3 +7,24 @@ Administrators will be able to run reports and manage users.
 Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
+
+Configure Vue to not interfere with the Django template syntax (both use {{}} as delimiters). Try [[]] instead.
+Configue Django urls to find Vue Components.
+When should I import the Vue app?
+Create pages app for home, about-us, maybe the contact page? Or use the ones in the Vue app?
+Static files for favicon, logo, and css stylesheet?
+Email confirmation of registration?
+
+Use Postgres database on the assignment page to set your models.
+
+Graded:
+    Integrate Vue games -- Lessons 3, 6
+    Login and Registration -- Lessons 10, 11
+    Game Tracking and Leaderboards -- Lesson 9
+    Reviews -- Lesson 13.JokeVote Model
+    Contact Us Page -- Lesson 8
+    Admin Site -- Lessons 5,17
+
+
+https://www.webucator.com/article/connecting-django-and-vue/
+https://codewithstein.com/combining-django-and-vuejs-everything-you-need-to-know/
