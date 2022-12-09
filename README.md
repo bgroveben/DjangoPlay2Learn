@@ -9,6 +9,13 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
+vue.config.js isn't in version control
+`module.exports ={
+  publicPath: 'http://localhost:8080', // base URL
+  outputDir: '../static/dist', // where files will be output
+  indexPath: '../../templates/_base_vue.html', // path for the index file
+}`
+
 Run Vue app on home page with links to both games using Vue routes and components. Pass scores and any other data to Django.
 
 
