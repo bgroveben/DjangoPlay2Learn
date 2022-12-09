@@ -31,4 +31,5 @@ Graded:
 
 
 https://www.webucator.com/article/connecting-django-and-vue/
+-- Ajax and Vue
 https://codewithstein.com/combining-django-and-vuejs-everything-you-need-to-know/
