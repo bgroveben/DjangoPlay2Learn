@@ -14,8 +14,7 @@ Run Vue app on home page with links to both games using Vue routes and component
 
 Configure Vue to not interfere with the Django template syntax (both use {{}} as delimiters). Try [[]] instead.
 Configue Django urls to find Vue Components.
-When should I import the Vue app?
-Create pages app for home, about-us, maybe the contact page? Or use the ones in the Vue app?
+Use current homepage and url for games page, make a different Home page.
 Static files for favicon, logo, and css stylesheet?
 Email confirmation of registration?
 
@@ -25,7 +24,7 @@ Graded:
     Integrate Vue games -- Lessons 3, 6
     Login and Registration -- Lessons 10, 11
     Game Tracking and Leaderboards -- Lesson 9
-    Reviews -- Lesson 13.JokeVote Model
+    Reviews -- Lesson 9.5 JokeForm(ModelForm) Lesson 13.JokeVote Model
     Contact Us Page -- Lesson 8
     Admin Site -- Lessons 5,17
 

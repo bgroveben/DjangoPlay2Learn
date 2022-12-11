@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'games.apps.GamesConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,10 +78,23 @@ WSGI_APPLICATION = 'djangovue_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'play2learn',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -102,6 +116,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# AUTHENTICATION SETTINGS
+# The AUTH_USER_MODEL setting sets the model used to represent a User in the
+# project. It defaults to 'auth.User'. This code overrides that default to
+# set it to the CustomUser class.
+AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Internationalization
