@@ -2,6 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
+/*
+Vue 3:
+const app = Vue.createApp(...)
+app.use(VueAxios, axios)
+*/
+/*
+https://stackoverflow.com/questions/48650107/use-axios-globally-in-all-my-components-vue
+import Axios from 'axios'
+Vue.prototype.$http = Axios;
+*/
 Vue.use(VueRouter)
 import About from './components/About.vue'
 import Login from './components/Login.vue'
@@ -26,4 +39,3 @@ new Vue({
   render: h => h(App),
   router
 }).$mount('#app')
-

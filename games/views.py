@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from .models import GameScore
 
 def record_score(request):
     data = json.loads(request.body)

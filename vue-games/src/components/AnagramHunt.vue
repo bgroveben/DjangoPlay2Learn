@@ -72,7 +72,7 @@
   import anagrams from "../../src/helpers/anagrams.js";
   import {randInt} from '../helpers/gameplay.js';
   export default {
-    name: 'Main',
+    name: 'AnagramHunt',
     components: {
       SelectInput,
       PlayButton,
@@ -116,7 +116,7 @@
         this.answer = '';
         this.$nextTick(() => this.$refs.answer.focus());
         // remove sub-array from outer array
-        this.outerArray.splice(this.outerArray.indexOf(this.randomOuter), 1); 
+        this.outerArray.splice(this.outerArray.indexOf(this.randomOuter), 1);
         this.anagramsGuessed = [];
          // remove displayed anagram from array
         this.randomOuter.splice(this.randomOuter.indexOf(this.anagram), 1);
@@ -130,8 +130,8 @@
         this.answer = this.answer.toLowerCase();
         if (this.randomOuter.includes(this.answer)) {
           this.anagramsGuessed.push(this.answer);
-          // remove chosen answer from array 
-          this.randomOuter.splice(this.randomOuter.indexOf(this.answer), 1); 
+          // remove chosen answer from array
+          this.randomOuter.splice(this.randomOuter.indexOf(this.answer), 1);
           this.score++;
           this.answer = '';
           this.$nextTick(() => this.$refs.answer.focus());
@@ -187,7 +187,7 @@
       clear() {
         this.input = '';
       },
- 
+
       startTimer() {
         window.addEventListener('keyup', this.handleKeyUp);
         this.timeLeft = this.gameLength;

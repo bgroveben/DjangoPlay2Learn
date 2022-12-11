@@ -70,7 +70,7 @@
   import Equation from './Equation';
   import {randInt} from '../helpers/helpers';
   export default {
-    name: 'Main',
+    name: 'MathFacts',
     components: {
       SelectInput,
       PlayButton,
@@ -226,4 +226,3 @@
     }
   }
 </script>
-
