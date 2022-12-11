@@ -1,10 +1,9 @@
 <template>
     <main class="bg-secondary bg-gradient bg-opacity-10">
-        <div class="col-md border border-success rounded-3 bg-info bg-opacity-10 bg-gradient m-3 p-3">
+        <div class="m-3 p-3">
+          <!--
             <h3 id="quotestitle">Observations, Advice, and Other Quotes:</h3>
-            <!--
-            <section id="quotes"></section>
-            -->
+
             <div id="quotes-carousel" class="carousel slide carousel-fade mt-4" data-bs-ride="carousel" data-bs-pause="hover" data-bs-interval="6000">
             <div class="carousel-inner">
                 <div class="carousel-item active bg-success bg-opacity-10 bg-gradient">
@@ -33,6 +32,7 @@
                 </div>
             </div>
             </div>
+        -->
         </div>
 
         <section class="row pb-4" id=gamessection>
@@ -55,6 +55,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
   export default {
-    name: 'Home',   
+    name: 'Home',
   }
 </script>
