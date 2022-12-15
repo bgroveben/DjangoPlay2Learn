@@ -24,7 +24,7 @@
               <input name="username" id="username" v-model="username" />
             </div>
             <div>
-              <label for="scor">Score</label>
+              <label for="score">Score</label>
               <input name="score" id="score" v-model="score" />
             </div>
             <div>

@@ -19,6 +19,19 @@
             <strong class="h3">You Answered</strong>
             <div class="display-2">{{score}}</div>
             <strong class="h3">Questions Correctly</strong>
+
+            <div>
+              <label for="username">Username</label>
+              <input name="username" id="username" v-model="username" />
+            </div>
+            <div>
+              <label for="score">Score</label>
+              <input name="score" id="score" v-model="score" />
+            </div>
+            <div>
+            <button @click="recordScore">Record Score</button>
+            </div>
+
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
               v-on:click="restart()">
                 Play Again
@@ -97,12 +110,24 @@
         anagramsLeft: [],
         anagramsGuessed: [],
         answered: false,
+        username: '',
         score: 0,
         gameLength: 60,
         timeLeft: 0
       }
     },
     methods: {
+
+      async recordScore() {
+        const data = {
+          "username": this.username,
+          "score": this.score,
+          "game": "ANAGRAM"
+        };
+        const response = (await this.axios.post("/record-score/", data)).data;
+        console.log(response);
+      },
+
       chooseAnagram() {
         if (this.outerArray.length === 0 && this.randomOuter.length === 0) {
           // this.self.patOnBack();

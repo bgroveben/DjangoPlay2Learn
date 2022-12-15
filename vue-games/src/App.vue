@@ -1,5 +1,5 @@
 <template>
-  <div id="app">{{ message }}
+  <div id="app">
     <router-view/>
   </div>
 </template>
@@ -39,13 +39,14 @@ export default {
     HelloWorld,
     Header,
     Footer
-  }
-  */
+  },
+
   data(){
     return {
       message: 'Welcome to Play2Learn4Django! vue-games/src/App.vue'
     }
   }
+  */
 }
 </script>
 
