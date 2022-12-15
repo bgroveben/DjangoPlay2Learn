@@ -11,7 +11,7 @@ class GameScore(models.Model):
     (ANAGRAM, "Anagram Game")
     ]
 
-    user_name = models.TextField()
+    username = models.TextField()
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)

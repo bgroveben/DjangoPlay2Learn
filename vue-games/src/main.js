@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+//import { createApp } from  'vue';
+import addrouter from './addrouter'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 Vue.use(VueAxios, axios)
 /*
 Vue 3:
@@ -32,7 +36,8 @@ const routes = [
   { path: '/games/anagram-hunt', component: AnagramHunt },
 ]
 const router = new VueRouter({
-  routes
+  routes,
+  addrouter
 })
 Vue.config.productionTip = false
 new Vue({
