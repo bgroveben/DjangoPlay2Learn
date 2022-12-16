@@ -28,7 +28,9 @@
               <input name="score" id="score" v-model="score" />
             </div>
             <div>
-            <button @click="recordScore">Record Score</button>
+            <!--<button @click="recordScore">Record Score</button>-->
+            <button v-on:click="recordScore()">Record Score</button>
+            <!--<button>Record Score</button>-->
             </div>
 
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
@@ -113,17 +115,18 @@
       }
     },
     methods: {
-
+      // passes data to Django via games/views.py
       async recordScore() {
         const data = {
           "username": this.username,
           "score": this.score,
           "game": "MATH"
         };
-        const response = (await this.axios.post("/record-score/", data)).data;
+        const response = (await this.axios.post("/record-score/", data)).data;  // why not "/game-score/" ?
         console.log(response);
+        console.log(data);
+        console.log(data.username)
       },
-
       config() {
         this.screen = "config";
       },

@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class GameScore(models.Model):
+class GameScores(models.Model):
 
     MATH = "MATH"
     ANAGRAM = "ANAGRAM"
