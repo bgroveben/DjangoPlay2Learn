@@ -121,8 +121,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # The AUTH_USER_MODEL setting sets the model used to represent a User in the
 # project. It defaults to 'auth.User'. This code overrides that default to
 # set it to the CustomUser class.
-# AUTH_USER_MODEL = 'users.CustomUser'
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'users.CustomUser'
+# => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
+#AUTH_USER_MODEL = 'auth.User'
 # AUTH_USER_MODEL = 'users.UsersCustomuser'
 
 

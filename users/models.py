@@ -100,7 +100,10 @@ class GamesGamescores(models.Model):
 
 #class UsersCustomuser(models.Model):
 class CustomUser(models.Model):
+    # https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/creating-a-custom-user-model-from-django-admin-and
+    # => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
 
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
     #REQUIRED_FIELDS = ('user',)
     #user = models.OneToOneField(User, related_name='user', unique=True)
@@ -110,6 +113,8 @@ class CustomUser(models.Model):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     is_superuser = models.BooleanField()
+    is_anonymous = models.BooleanField()
+    is_authenticated = models.BooleanField()
     username = models.CharField(unique=True, max_length=150)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
