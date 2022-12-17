@@ -10,7 +10,7 @@ You can use the JavaScript games you've created in previous projects.
 
 
 NEXT -- SET UP ADMIN
-
+-- Get models from database. Create users app and use inspectdb to create the models.py file.
 
 Use Postgres database on the assignment page to set your models.
 

@@ -15,3 +15,4 @@ class GameScores(models.Model):
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
+    # https://stackoverflow.com/users/saves/4806473
