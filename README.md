@@ -9,8 +9,9 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT -- SET UP ADMIN
--- Get models from database. Create users app and use inspectdb to create the models.py file.
+NEXT -- Registering the Custom User
+https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/getting-started-with-django-admin-from-django-admi
+-- Make sure you don't confuse existing models
 
 Use Postgres database on the assignment page to set your models.
 

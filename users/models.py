@@ -115,15 +115,15 @@ class CustomUser(AbstractUser):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     is_superuser = models.BooleanField()
-    is_anonymous = models.BooleanField()
-    is_authenticated = models.BooleanField()
+    #is_anonymous = models.BooleanField()
+    #is_authenticated = models.BooleanField()
     username = models.CharField(unique=True, max_length=150)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=254)
     is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
+    is_active = models.BooleanField(null=True)
+    date_joined = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         #managed = False
