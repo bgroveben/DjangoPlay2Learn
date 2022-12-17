@@ -6,6 +6,7 @@
 #   * Remove `#managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 class AuthGroup(models.Model):
@@ -99,7 +100,8 @@ class GamesGamescores(models.Model):
         db_table = 'games_gamescores'
 
 #class UsersCustomuser(models.Model):
-class CustomUser(models.Model):
+#class CustomUser(models.Model):
+class CustomUser(AbstractUser):
     # https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/creating-a-custom-user-model-from-django-admin-and
     # => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
 
@@ -128,7 +130,7 @@ class CustomUser(models.Model):
         db_table = 'users_customuser'
 
 
-class UsersCustomuserGroups(models.Model):
+class CustomUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)
     #customuser = models.ForeignKey(UsersCustomuser, models.DO_NOTHING)
     customuser = models.ForeignKey(CustomUser, models.DO_NOTHING)
@@ -136,11 +138,11 @@ class UsersCustomuserGroups(models.Model):
 
     class Meta:
         #managed = False
-        db_table = 'users_customuser_groups'
+        #db_table = 'users_customuser_groups'
         unique_together = (('customuser', 'group'),)
 
 
-class UsersCustomuserUserPermissions(models.Model):
+class CustomUserUserPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
     #customuser = models.ForeignKey(UsersCustomuser, models.DO_NOTHING)
     customuser = models.ForeignKey(CustomUser, models.DO_NOTHING)
@@ -148,5 +150,5 @@ class UsersCustomuserUserPermissions(models.Model):
 
     class Meta:
         #managed = False
-        db_table = 'users_customuser_user_permissions'
+        #db_table = 'users_customuser_user_permissions'
         unique_together = (('customuser', 'permission'),)
