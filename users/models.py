@@ -142,7 +142,7 @@ class CustomUserGroups(models.Model):
         unique_together = (('customuser', 'group'),)
 
 
-class CustomUserUserPermissions(models.Model):
+class CustomUserPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
     #customuser = models.ForeignKey(UsersCustomuser, models.DO_NOTHING)
     customuser = models.ForeignKey(CustomUser, models.DO_NOTHING)
