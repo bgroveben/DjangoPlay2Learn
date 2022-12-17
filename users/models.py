@@ -122,7 +122,7 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=254)
     is_staff = models.BooleanField()
-    is_active = models.BooleanField(null=True)
+    is_active = models.BooleanField()
     date_joined = models.DateTimeField(blank=True, null=True)
 
     class Meta:

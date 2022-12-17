@@ -123,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # set it to the CustomUser class.
 AUTH_USER_MODEL = 'users.CustomUser'
 # => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
-#AUTH_USER_MODEL = 'auth.User'
+# AUTH_USER_MODEL = 'auth.User'
 # AUTH_USER_MODEL = 'users.UsersCustomuser'
 
 
@@ -151,3 +151,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.AllowAllUsersModelBackend', )

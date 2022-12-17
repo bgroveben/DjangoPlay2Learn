@@ -22,7 +22,7 @@ Graded:
     Reviews -- Lesson 9.5 JokeForm(ModelForm), Lesson 13.JokeVote Model
     Contact Us Page -- Lesson 8
     Admin Site -- Lessons 5,17
-
+    -- django admin username:superuser  password:password
 Reviews and comments
 -- https://www.django-rest-framework.org/api-guide/serializers/
 -- https://www.ericsdevblog.com/posts/create-a-modern-application-with-django-and-vue-3/
