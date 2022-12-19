@@ -9,9 +9,11 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT -- Registering the Custom User
-https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/getting-started-with-django-admin-from-django-admi
--- Make sure you don't confuse existing models
+FIRST -- Install django-admin docs generator
+https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/installing-the-django-admin-documentation-generato
+THEN -- Lesson 10 User Registration
+
+
 
 Use Postgres database on the assignment page to set your models.
 
@@ -22,7 +24,7 @@ Graded:
     Reviews -- Lesson 9.5 JokeForm(ModelForm), Lesson 13.JokeVote Model
     Contact Us Page -- Lesson 8
     Admin Site -- Lessons 5,17
-    -- django admin username:superuser  password:password
+    -- django admin ->  username:superuser  password:password
 Reviews and comments
 -- https://www.django-rest-framework.org/api-guide/serializers/
 -- https://www.ericsdevblog.com/posts/create-a-modern-application-with-django-and-vue-3/
