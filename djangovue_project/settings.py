@@ -156,8 +156,10 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'users.CustomUser'
 # AUTH_USER_MODEL = 'auth.User'
 LOGIN_URL = 'account_login'
+# LOGIN_REDIRECT_URL = '/'
 # LOGIN_REDIRECT_URL = 'pages:homepage'
 LOGIN_REDIRECT_URL = 'games:homepage'
+# LOGIN_REDIRECT_URL = 'account_login'
 # LOGIN_REDIRECT_URL = 'account_login'
 # --> 127.0.0.1 redirected you too many times.
 

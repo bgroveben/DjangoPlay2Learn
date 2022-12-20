@@ -11,7 +11,10 @@ You can use the JavaScript games you've created in previous projects.
 
 FIRST -- Lesson 10 User Registration
 NEXT -- crispy forms
+Why won't login, signup, and register not display form fields?
 
+Game tracking and Leaderboards--
+--common/utils/queries.py -> sql queries to display top scores?
 
 Graded:
     * Integrate Vue games -- Lessons 3, 6
@@ -22,7 +25,7 @@ Graded:
     * Admin Site -- Lessons 5,17
 
     -- django admin ->  username:superuser  password:password
-    
+
 Reviews and comments
 -- https://www.django-rest-framework.org/api-guide/serializers/
 -- https://www.ericsdevblog.com/posts/create-a-modern-application-with-django-and-vue-3/

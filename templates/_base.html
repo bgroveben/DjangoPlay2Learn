@@ -49,10 +49,14 @@
               Me
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Account</a>
+              <a class="dropdown-item" href="{% url 'my_account' %}">My Account</a>
               <a class="dropdown-item" href="#">My DjangoPlay2Learn</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Log out</a>
+              <!--<a class="dropdown-item" href="#">Log out</a>-->
+              <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button class="btn dropdown-item">Log out</button>
+              </form>
             </div>
           </li>
         </ul>
@@ -69,6 +73,7 @@
           <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
           </ul>
         </nav>
       </div>

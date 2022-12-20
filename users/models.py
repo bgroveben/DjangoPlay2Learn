@@ -6,6 +6,7 @@
 #   * Remove `#managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 
@@ -124,6 +125,12 @@ class CustomUser(AbstractUser):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField(blank=True, null=True)
+
+    def get_absolute_url(self):
+        return reverse('my_account')
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} ({self.username})'
 
     class Meta:
         #managed = False
