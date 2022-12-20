@@ -9,22 +9,20 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-FIRST -- Install django-admin docs generator
-https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/installing-the-django-admin-documentation-generato
-THEN -- Lesson 10 User Registration
+FIRST -- Lesson 10 User Registration
+NEXT -- crispy forms
 
-
-
-Use Postgres database on the assignment page to set your models.
 
 Graded:
-    Integrate Vue games -- Lessons 3, 6
+    * Integrate Vue games -- Lessons 3, 6
     Login and Registration -- Lessons 10, 11
-    Game Tracking and Leaderboards -- Lesson 2.17 ListView, Lesson 9
+    * Game Tracking and Leaderboards -- Lesson 2.17 ListView, Lesson 9
     Reviews -- Lesson 9.5 JokeForm(ModelForm), Lesson 13.JokeVote Model
     Contact Us Page -- Lesson 8
-    Admin Site -- Lessons 5,17
+    * Admin Site -- Lessons 5,17
+
     -- django admin ->  username:superuser  password:password
+    
 Reviews and comments
 -- https://www.django-rest-framework.org/api-guide/serializers/
 -- https://www.ericsdevblog.com/posts/create-a-modern-application-with-django-and-vue-3/

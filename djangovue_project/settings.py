@@ -38,12 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # https://github.com/pennersr/django-allauth/issues/57
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+
+    # Third party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     # Local Apps
     'games.apps.GamesConfig',
     'users.apps.UsersConfig',
 ]
+
+SITE_ID = 1 # django-allauth
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,8 +94,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
 """
+
 # also in local_settings.py
 DATABASES = {
     'default': {
@@ -99,6 +108,23 @@ DATABASES = {
     }
 }
 
+
+# EMAIL
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+DEFAULT_FROM_EMAIL = 'bgroveben@gmail.com.com'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, even w/o `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth`-specific auth methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -117,16 +143,27 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+#############################################################################
 # AUTHENTICATION SETTINGS
 # The AUTH_USER_MODEL setting sets the model used to represent a User in the
 # project. It defaults to 'auth.User'. This code overrides that default to
 # set it to the CustomUser class.
 AUTH_USER_MODEL = 'users.CustomUser'
-# => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
 # AUTH_USER_MODEL = 'auth.User'
-# AUTH_USER_MODEL = 'users.UsersCustomuser'
+LOGIN_URL = 'account_login'
+# LOGIN_REDIRECT_URL = 'pages:homepage'
+LOGIN_REDIRECT_URL = 'games:homepage'
 
+# django-allauth settings
+ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Default: 3
+ACCOUNT_EMAIL_REQUIRED = True # Default: False
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Default: 'optional'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
+ACCOUNT_USERNAME_REQUIRED = False # Default: True
+#############################################################################
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
