@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
 
-    # Third party
+    # Third-party apps
+    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'debug_toolbar',
 
     # Local Apps
     'games.apps.GamesConfig',
@@ -54,7 +56,10 @@ INSTALLED_APPS = [
 
 SITE_ID = 1 # django-allauth
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # django-crispy-forms
+
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -153,6 +158,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = 'account_login'
 # LOGIN_REDIRECT_URL = 'pages:homepage'
 LOGIN_REDIRECT_URL = 'games:homepage'
+# LOGIN_REDIRECT_URL = 'account_login'
+# --> 127.0.0.1 redirected you too many times.
 
 # django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
