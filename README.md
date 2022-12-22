@@ -9,9 +9,21 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-FIRST -- Lesson 10 User Registration
-NEXT -- crispy forms
-Why won't login, signup, and register not display form fields?
+User cannot log in or register from site, only admin works for login
+Logged in users can update their account information
+SuccessMessageMixin works in admin but not on site
+https://django-allauth.readthedocs.io/en/latest/views.html
+-- Login, Signup, and Logout views
+
+
+Fix your routes and urls so that you redirect users to the correct view after they make a POST request like a login or password change
+http://127.0.0.1:8000/account/password/change/
+Reverse for 'my-account' not found. 'my-account' is not a valid view function or pattern name.
+
+http://127.0.0.1:8000/account/login/
+AttributeError at /account/login/
+'NoneType' object has no attribute 'method'
+
 
 Game tracking and Leaderboards--
 --common/utils/queries.py -> sql queries to display top scores?

@@ -6,14 +6,14 @@ from django.utils.safestring import mark_safe
 
 from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 
-from common.admin import DjangoJokesAdmin
+from common.admin import DjangoPlay2LearnAdmin
 from common.utils.admin import append_fields, move_fields, remove_fields
 
 
 CustomUser = get_user_model()
 
 @admin.register(CustomUser)
-class CustomUserAdmin(DjangoJokesAdmin, UserAdmin):
+class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
     model = CustomUser
 
     # List Attributes

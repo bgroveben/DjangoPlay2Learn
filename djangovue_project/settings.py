@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1 # django-allauth
+# SITE_ID = 2 https://www.youtube.com/watch?v=56w8p0goIfs  ~11:00
+
+#ACCOUNT_EMAIL_REQUIRED = True  See AUTHENTICATION SETTINGS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # django-crispy-forms
 
@@ -75,6 +78,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
+        #'DIRS': [os.path.join(BASE_DIR, "templates")],  Windows os?
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +86,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -121,12 +127,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-DEFAULT_FROM_EMAIL = 'bgroveben@gmail.com.com'
+DEFAULT_FROM_EMAIL = 'bgroveben@gmail.com'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, even w/o `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth`-specific auth methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
@@ -172,6 +177,22 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
 ACCOUNT_USERNAME_REQUIRED = False # Default: True
+#ACCOUNT_SIGNUP_FORM_CLASS = 'allauth.account.forms.SignupForm' # ??
+#ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
+
+## allauth.account.forms
+ACCOUNT_FORMS = {
+    'login': 'allauth.account.forms.LoginForm',
+    #'signup': 'allauth.account.forms.SignupForm',
+    'signup': 'allauth.account.forms.CustomSignupForm',
+    'add_email': 'allauth.account.forms.AddEmailForm',
+    'change_password': 'allauth.account.forms.ChangePasswordForm',
+    'set_password': 'allauth.account.forms.SetPasswordForm',
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',
+    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+}
 #############################################################################
 
 # Internationalization
