@@ -7,10 +7,12 @@ from .views import MyAccountPageView
 # https://www.youtube.com/watch?v=5guJFS0dsHY   2:24
 
 from allauth.account.views import LoginView, LogoutView, SignupView, ConfirmEmailView, PasswordChangeView
+#?? Does ConfirmEmailView even work ??
 # from allauth.account.views import LoginView, ConfirmEmailView
 
 urlpatterns = [
-    path('email/verify', ConfirmEmailView.as_view(), name='account_confirm_email'),
+    path('email/verify/', ConfirmEmailView.as_view(), name='account_confirm_email'),
+    #path('accounts/email/', ConfirmEmailView.as_view(), name='account_confirm_email'),
     path(
         "accounts/password/change/", PasswordChangeView.as_view(),
         name="account_change_password"

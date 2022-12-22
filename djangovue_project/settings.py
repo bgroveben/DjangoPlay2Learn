@@ -178,9 +178,11 @@ LOGIN_REDIRECT_URL = 'games:homepage'
 
 # django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Default: 3
 ACCOUNT_EMAIL_REQUIRED = True # Default: False
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Default: 'optional'
+ACCOUNT_EMAIL_VERIFICATION = 'optional' # non-Default: 'mandatory'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
@@ -189,7 +191,7 @@ ACCOUNT_LOGIN_REDIRECT_URL = reverse_lazy('games:homepage')
 ACCOUNT_USERNAME_REQUIRED = True # Default: True
 
 
-#ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
 
 
 ## allauth.account.forms

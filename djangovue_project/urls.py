@@ -19,6 +19,8 @@ from allauth.account import urls
 #from django.urls import path
 #from django.conf.urls import url, include
 
+from users.views import MyAccountPageView
+
 urlpatterns = [
     # Admin
     path('admin/doc/', include('django.contrib.admindocs.urls')),
@@ -28,6 +30,7 @@ urlpatterns = [
     # path('accounts/', include('users.urls')),
     # Don't have 2 'accounts/' urls. Fix it!
     path('accounts/', include('allauth.account.urls')),
+    path('my-account/', MyAccountPageView.as_view(), name='my_account'),
     #path('accounts/', include('allauth.urls')),
     # urlpatterns = [path("", include("allauth.account.urls"))]
     #url(r'^accounts/', include('allauth.urls')),
