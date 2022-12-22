@@ -27,7 +27,7 @@ class CustomSignupForm(SignupForm):
         user.password = self.cleaned_data['password']
         #user.repeat_password = self.cleaned_data['password']
         user.save()
-"""
+
 
 class CustomSignupForm(SignupForm):
     # https://gavinwiener.medium.com/modifying-django-allauth-forms-6eb19e77ef56
@@ -43,7 +43,7 @@ class CustomSignupForm(SignupForm):
         #user.username = self.cleaned_data['username']
         user.save()
 
-"""
+
 class CustomLoginForm(LoginForm):
     def __init__(self, *args, **kwargs):
         super(CustomLoginForm, self).__init__(*args, **kwargs)
@@ -62,6 +62,7 @@ class CustomLoginForm(LoginForm):
 
 """
 class CustomUserChangeForm(UserChangeForm):
+    # Do I need this just to add 'dob' and 'avatar'?
     password = None
 
     class Meta:
@@ -69,9 +70,6 @@ class CustomUserChangeForm(UserChangeForm):
         fields = (
             'email', 'username', 'first_name', 'last_name', 'dob', 'avatar'
         )
-        # fields = ['username', 'email', 'password', etc]
-        #fields = ('email', 'username', 'first_name', 'last_name')
-
         widgets = {
             'dob': forms.SelectDateWidget( # Do I need dob?
                 attrs={

@@ -28,7 +28,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['localhost:8000']
 # Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
-ALLOWED_HOSTS = ['localhost'] # still doesn't work 
+ALLOWED_HOSTS = ['localhost'] # still doesn't work
 
 # Application definition
 
@@ -187,9 +187,9 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
 #LOGOUT_REDIRECT_URL = reverse_lazy('account:logout')
 ACCOUNT_LOGIN_REDIRECT_URL = reverse_lazy('games:homepage')
 ACCOUNT_USERNAME_REQUIRED = True # Default: True
-#ACCOUNT_USERNAME_REQUIRED = False # Default: True
-#ACCOUNT_SIGNUP_FORM_CLASS = 'allauth.account.forms.SignupForm' # ??
-#ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
+
+#ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 
 ## allauth.account.forms
