@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-admin.site.index_title = 'Home'
+admin.site.index_title = 'Admin Home'
 admin.site.site_title = 'Django Play2Learn Admin'
 admin.site.site_header = 'Django Play2Learn Admin'
 

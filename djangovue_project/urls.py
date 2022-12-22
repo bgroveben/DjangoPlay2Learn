@@ -15,14 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#from django.urls import path
+#from django.conf.urls import url, include
 
 urlpatterns = [
     # Admin
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     # User Management
-    path('accounts/', include('users.urls')),
+    path('accounts/', include('users.urls')), 
+    # Don't have 2 'accounts/' urls. Fix it!
     path('accounts/', include('allauth.urls')),
+    #url(r'^accounts/', include('allauth.urls')),
     # Local Apps
-    path('', include("games.urls"))
+    path('', include("games.urls")),
+    #path('', include("users.urls"))
 ]
+"""
+urlpatterns = [
+    path('', include('main.urls')),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+]
+"""

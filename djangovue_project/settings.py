@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,9 @@ SECRET_KEY = 'django-insecure-vtp&i1q!0^3tiq#b4nfhfb)rb1alfr4kdi@s(0w)!$==ju*-*g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['localhost:8000']
+# Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+ALLOWED_HOSTS = ['localhost'] # still doesn't work 
 
 # Application definition
 
@@ -160,13 +162,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # set it to the CustomUser class.
 AUTH_USER_MODEL = 'users.CustomUser'
 # AUTH_USER_MODEL = 'auth.User'
-LOGIN_URL = 'account_login'
+#LOGIN_URL = 'account_login'
+LOGIN_URL = reverse_lazy('account:login')
 # LOGIN_REDIRECT_URL = '/'
 # LOGIN_REDIRECT_URL = 'pages:homepage'
 LOGIN_REDIRECT_URL = 'games:homepage'
+
+#LOGOUT_REDIRECT_URL = reverse_lazy('account:logout')
+# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
 # LOGIN_REDIRECT_URL = 'account_login'
 # LOGIN_REDIRECT_URL = 'account_login'
 # --> 127.0.0.1 redirected you too many times.
+
+# https://stackoverflow.com/a/49656032/4806473
 
 # django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
@@ -176,22 +184,26 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Default: 'optional'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
-ACCOUNT_USERNAME_REQUIRED = False # Default: True
+#LOGOUT_REDIRECT_URL = reverse_lazy('account:logout')
+ACCOUNT_LOGIN_REDIRECT_URL = reverse_lazy('games:homepage')
+ACCOUNT_USERNAME_REQUIRED = True # Default: True
+#ACCOUNT_USERNAME_REQUIRED = False # Default: True
 #ACCOUNT_SIGNUP_FORM_CLASS = 'allauth.account.forms.SignupForm' # ??
 #ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 
 
 ## allauth.account.forms
 ACCOUNT_FORMS = {
+    # Used to override forms, for example: {'login': 'myapp.forms.LoginForm'}
     'login': 'allauth.account.forms.LoginForm',
-    #'signup': 'allauth.account.forms.SignupForm',
-    'signup': 'allauth.account.forms.CustomSignupForm',
+    'signup': 'allauth.account.forms.SignupForm',
+    #'signup': 'allauth.account.forms.CustomSignupForm',
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
     'set_password': 'allauth.account.forms.SetPasswordForm',
     'reset_password': 'allauth.account.forms.ResetPasswordForm',
     'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    #'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 }
 #############################################################################
 

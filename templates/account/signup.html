@@ -10,6 +10,7 @@
     <form method="post" class="m-auto mb-2" novalidate>
       {% csrf_token %}
       {{ form|crispy }}
+      <!--{{ register_form|crispy }}-->
       <button class="form-control btn btn-primary">REGISTER</button>
     </form>
   </div>

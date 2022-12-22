@@ -13,7 +13,15 @@ User cannot log in or register from site, only admin works for login
 Logged in users can update their account information
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
+
 -- Login, Signup, and Logout views
+
+-- https://ordinarycoders.com/blog/article/django-user-register-login-logout
+    -- add register path to app URLs so we can refer to it in views, ex
+        -- path("register", views.register_request, name="register")
+    -- create register_request(request) function to register user
+
+-- https://learndjango.com/tutorials/django-signup-tutorial
 
 
 Fix your routes and urls so that you redirect users to the correct view after they make a POST request like a login or password change
@@ -23,6 +31,10 @@ Reverse for 'my-account' not found. 'my-account' is not a valid view function or
 http://127.0.0.1:8000/account/login/
 AttributeError at /account/login/
 'NoneType' object has no attribute 'method'
+
+http://127.0.0.1:8000/accounts/my-account/
+'account' is not a registered namespace
+-- only throws error when user isn't logged in
 
 
 Game tracking and Leaderboards--
