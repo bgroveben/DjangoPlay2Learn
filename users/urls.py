@@ -1,23 +1,25 @@
 from django.urls import path
-# from . import views
+from . import views
 
-from .views import CustomPasswordChangeView, MyAccountPageView, LoginPageView, SignupPageView
+#from .views import CustomPasswordChangeView, MyAccountPageView, LoginPageView, SignupPageView
+from .views import MyAccountPageView
 
 # https://www.youtube.com/watch?v=5guJFS0dsHY   2:24
 
-# from . import views
+from allauth.account.views import LoginView, SignupView, ConfirmEmailView, PasswordChangeView
 # from allauth.account.views import LoginView, ConfirmEmailView
 
 urlpatterns = [
     #path('email/verify', ConfirmEmailView.as_view(), name='account_confirm_email'),
     path(
-        "password/change/", CustomPasswordChangeView.as_view(),
+        "accounts/password/change/", PasswordChangeView.as_view(),
         name="account_change_password"
     ),
     path('my-account/', MyAccountPageView.as_view(), name='my_account'),
-    path('login/', LoginPageView.as_view(), name='login'),
+    path('login/', LoginView.as_view(), name='account_login'),
+    #path('login/', LoginPageView.as_view(), name='login'),
     #path('login/', views.LoginView.as_view(template_name='my_custom_template.html'), name='login')
-    path('signup/', SignupPageView.as_view(), name='signup')
+    path('signup/', SignupView.as_view(), name='account_signup')
 ]
 
 

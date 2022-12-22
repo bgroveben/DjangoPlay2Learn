@@ -23,9 +23,12 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     # User Management
-    path('accounts/', include('users.urls')), 
+    path('users/', include('users.urls')),
+    # path('accounts/', include('users.urls')),
     # Don't have 2 'accounts/' urls. Fix it!
-    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.account.urls')),
+    #path('accounts/', include('allauth.urls')),
+    # urlpatterns = [path("", include("allauth.account.urls"))]
     #url(r'^accounts/', include('allauth.urls')),
     # Local Apps
     path('', include("games.urls")),

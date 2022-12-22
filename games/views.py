@@ -24,11 +24,11 @@ class HomeView(TemplateView):
 
 
 class GamesView(TemplateView):
-    template_name = "games.html"
+    template_name = "games/games.html"
 
 
 class GameScoresView(TemplateView):
-    template_name = "game-scores.html"
+    template_name = "games/game-scores.html"
 
     def get_context_data(self, **kwargs):
         context = super(GameScoresView, self).get_context_data(**kwargs)
