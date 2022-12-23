@@ -15,22 +15,13 @@ SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
 
 -- Login, Signup, and Logout views
+    -- non-authenticated users see errors when they try to view the my accounts page.
+    Make sure that they can't get to /accounts/my-account/
+    Redirect urls?
 
--- https://ordinarycoders.com/blog/article/django-user-register-login-logout
-    -- add register path to app URLs so we can refer to it in views, ex
-        -- path("register", views.register_request, name="register")
-    -- create register_request(request) function to register user
-
--- https://learndjango.com/tutorials/django-signup-tutorial
-
-
-Fix your routes and urls so that you redirect users to the correct view after they make a POST request like a login or password change
-http://127.0.0.1:8000/account/password/change/
-Reverse for 'my-account' not found. 'my-account' is not a valid view function or pattern name.
-
-http://127.0.0.1:8000/account/login/
-AttributeError at /account/login/
-'NoneType' object has no attribute 'method'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+http://127.0.0.1:8000/users/my_account/ works
+http://127.0.0.1:8000/users/my-account/ doesn't
 
 http://127.0.0.1:8000/accounts/my-account/
 'account' is not a registered namespace
@@ -39,6 +30,10 @@ http://127.0.0.1:8000/accounts/my-account/
 http://127.0.0.1:8000/accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA0le7YhAfNXALv-gljc/
 NoReverseMatch at /accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA0le7YhAfNXALv-gljc/
 'account' is not a registered namespace
+
+Page not found (404)
+Request Method:	GET
+Request URL:	http://127.0.0.1:8000/users/my-account/
 
 http://127.0.0.1:8000/users/my-account/
 NoReverseMatch at /users/my-account/
