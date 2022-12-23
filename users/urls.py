@@ -11,13 +11,14 @@ from allauth.account.views import LoginView, LogoutView, SignupView, ConfirmEmai
 # from allauth.account.views import LoginView, ConfirmEmailView
 
 urlpatterns = [
-    path('email/verify/', ConfirmEmailView.as_view(), name='account_confirm_email'),
-    #path('accounts/email/', ConfirmEmailView.as_view(), name='account_confirm_email'),
+    #path('email/verify/', ConfirmEmailView.as_view(), name='account_confirm_email'),
+    path('accounts/email/', ConfirmEmailView.as_view(), name='account_confirm_email'),
     path(
         "accounts/password/change/", PasswordChangeView.as_view(),
         name="account_change_password"
     ),
     path('my-account/', MyAccountPageView.as_view(), name='my_account'),
+    #path('my-account/', MyAccountPageView.as_view(), name='my_account'),
     path('login/', LoginView.as_view(), name='account_login'),
     path('logout/', LogoutView.as_view(), name='account_logout'),
     #path('login/', LoginPageView.as_view(), name='login'),

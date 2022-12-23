@@ -40,6 +40,10 @@ http://127.0.0.1:8000/accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA
 NoReverseMatch at /accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA0le7YhAfNXALv-gljc/
 'account' is not a registered namespace
 
+http://127.0.0.1:8000/users/my-account/
+NoReverseMatch at /users/my-account/
+'account' is not a registered namespace
+
 
 Game tracking and Leaderboards--
 --common/utils/queries.py -> sql queries to display top scores?
