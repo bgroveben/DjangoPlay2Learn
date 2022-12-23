@@ -8,36 +8,27 @@ Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
-
-User cannot log in or register from site, only admin works for login
-Logged in users can update their account information
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+BUGS BELOW
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
 
 -- Login, Signup, and Logout views
-    -- non-authenticated users see errors when they try to view the my accounts page.
+    -- non-authenticated users see an error when they try to view the my accounts page.
     Make sure that they can't get to /accounts/my-account/
     Redirect urls?
+    http://127.0.0.1:8000/users/my_account/
+    -> NoReverseMatch at /users/my_account/
+    'account' is not a registered namespace
+    -- logged-in users who log in again get a 403
+    Forbidden (403)
+    CSRF verification failed. Request aborted.
+    Help
+    Reason given for failure:
+    CSRF token from POST incorrect.
+    http://127.0.0.1:8000/accounts/login/
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-http://127.0.0.1:8000/users/my_account/ works
-http://127.0.0.1:8000/users/my-account/ doesn't
-
-http://127.0.0.1:8000/accounts/my-account/
-'account' is not a registered namespace
--- only throws error when user isn't logged in
-
-http://127.0.0.1:8000/accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA0le7YhAfNXALv-gljc/
-NoReverseMatch at /accounts/confirm-email/Mg:1p8UeA:ESTNjv66hJbFFZCFp9izCgdDA0le7YhAfNXALv-gljc/
-'account' is not a registered namespace
-
-Page not found (404)
-Request Method:	GET
-Request URL:	http://127.0.0.1:8000/users/my-account/
-
-http://127.0.0.1:8000/users/my-account/
-NoReverseMatch at /users/my-account/
-'account' is not a registered namespace
 
 
 Game tracking and Leaderboards--
@@ -45,13 +36,14 @@ Game tracking and Leaderboards--
 
 Graded:
     * Integrate Vue games -- Lessons 3, 6
-    Login and Registration -- Lessons 10, 11
+    * Login and Registration -- Lessons 10, 11
     * Game Tracking and Leaderboards -- Lesson 2.17 ListView, Lesson 9
     Reviews -- Lesson 9.5 JokeForm(ModelForm), Lesson 13.JokeVote Model
     Contact Us Page -- Lesson 8
     * Admin Site -- Lessons 5,17
 
     -- django admin ->  username:superuser  password:password
+
 
 Reviews and comments
 -- https://www.django-rest-framework.org/api-guide/serializers/

@@ -58,7 +58,6 @@ class DjangoAdminLog(models.Model):
     action_flag = models.SmallIntegerField()
     change_message = models.TextField()
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    #user = models.ForeignKey('UsersCustomuser', models.DO_NOTHING)
     user = models.ForeignKey('CustomUser', models.DO_NOTHING)
 
     class Meta:
@@ -109,33 +108,10 @@ class GamesGamescores(models.Model):
         managed = False
         db_table = 'games_gamescores'
 
-#class UsersCustomuser(models.Model):
+
 #class CustomUser(models.Model):
 class CustomUser(AbstractUser):
-    """
-    # https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/creating-a-custom-user-model-from-django-admin-and
-    # => AttributeError: type object 'CustomUser' has no attribute 'USERNAME_FIELD'
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
-    #REQUIRED_FIELDS = ('user',)
-    #user = models.OneToOneField(User, related_name='user', unique=True)
-    #user = models.ForeignKey('UsersCustomuser', models.DO_NOTHING)
-
-    id = models.BigAutoField(primary_key=True)
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField(blank=True)
-    is_anonymous = models.BooleanField()
-    is_authenticated = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField(blank=True, null=True)
-    """
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
@@ -144,10 +120,11 @@ class CustomUser(AbstractUser):
         validators=[validate_avatar]
     )
 
+
     def get_absolute_url(self):
         return reverse('my_account')
 
-    def __str__(self):
+    def __str__(self): # Do I need this?
         return f'{self.first_name} {self.last_name} ({self.username})'
 
     class Meta:
@@ -177,38 +154,3 @@ class CustomUserPermissions(models.Model):
         #managed = False
         #db_table = 'users_customuser_user_permissions'
         unique_together = (('customuser', 'permission'),)
-
-
-"""
-# From djangojokes
-from django.contrib.auth.models import AbstractUser
-from django.db import models
-from django.urls import reverse
-
-from django.core.exceptions import ValidationError
-from django.core.files.images import get_image_dimensions
-
-
-def validate_avatar(value):
-    w, h = get_image_dimensions(value)
-    if w > 200 or h > 200:
-        raise ValidationError('Avatar must be no bigger than 200x200 pixels.')
-
-
-class CustomUser(AbstractUser):
-    dob = models.DateField(
-        verbose_name="Date of Birth", null=True, blank=True
-    )
-    avatar = models.ImageField(upload_to='avatars/', blank=True,
-        help_text='Image must be 200px by 200px.',
-        validators=[validate_avatar]
-    )
-
-    def get_absolute_url(self):
-        return reverse('my-account')
-
-    def __str__(self):
-        # Used to populate the user dropdown in the joke form
-        return f'{self.first_name} {self.last_name} ({self.username})'
-
-"""
