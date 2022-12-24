@@ -120,6 +120,9 @@
         const data = {
           "username": this.username,
           "score": this.score,
+          "operation": this.operation,
+          "gamelength": this.gameLength,
+          "maxnum": this.maxNumber,
           "game": "MATH"
         };
         const response = (await this.axios.post("/record-score/", data)).data;  // why not "/game-score/" ?

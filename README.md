@@ -30,9 +30,12 @@ https://django-allauth.readthedocs.io/en/latest/views.html
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+NEXT -- REVIEWS
+
 
 Game tracking and Leaderboards--
 --common/utils/queries.py -> sql queries to display top scores?
+-- async recordScore() in AH and MF components for data passed to games view and game-scores template
 
 Graded:
     * Integrate Vue games -- Lessons 3, 6

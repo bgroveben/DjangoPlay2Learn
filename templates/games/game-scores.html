@@ -7,7 +7,14 @@
       <h2>Math Facts</h2>
       <ol>
         {% for score in math_scores %}
-          <li>{{ score.score }}: ({{ score.username }} -- {{ score.created }})</li>
+        <li>
+          Score: {{ score.score }} ---
+          Username: {{ score.username }} ---
+          Recorded: {{ score.created }} ---
+          Max Number: {{ score.maxnum }} ---
+          Game Length: {{ score.gamelength }} ---
+          Operation: {{ score.operation }}
+        </li>
         {% endfor %}
       </ol>
     </div>
@@ -15,7 +22,13 @@
       <h2>Anagram Hunt</h2>
       <ol>
         {% for score in anagram_scores %}
-          <li>{{ score.score }}: ({{ score.username }} -- {{ score.created }})</li>
+        <li>
+          Score: {{ score.score }} ---
+          Username: {{ score.username }} ---
+          Recorded: {{ score.created }} ---
+          Word Length: {{ score.maxnum }} ---
+          Game Length: {{ score.gamelength }}
+        </li>
         {% endfor %}
       </ol>
     </div>

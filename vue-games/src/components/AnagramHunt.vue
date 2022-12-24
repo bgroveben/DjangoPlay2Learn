@@ -122,6 +122,9 @@
         const data = {
           "username": this.username,
           "score": this.score,
+          "operation": this.maxNumber, // match json sent to django
+          "gamelength": this.gameLength,
+          "maxnum": this.maxNumber, // match json sent to django
           "game": "ANAGRAM"
         };
         const response = (await this.axios.post("/record-score/", data)).data;

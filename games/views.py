@@ -8,11 +8,17 @@ from .models import GameScores
 # from users.models import GamesGamescores
 
 def record_score(request):
+    """
+    Get data from Vue via the recordScore function in the AH and MF components
+    """
     data = json.loads(request.body)
     username = data["username"]
-    game = data["game"]
     score = data["score"]
-    new_score = GameScores(username=username, game=game, score=score)
+    gamelength = data["gamelength"]
+    maxnum = data["maxnum"]
+    operation = data["operation"]
+    game = data["game"]
+    new_score = GameScores(username=username, game=game, score=score, maxnum=maxnum, gamelength=gamelength, operation=operation)
     #new_score = GamesGameScores(username=username, game=game, score=score)
     new_score.save()
     response = {"success": True}
