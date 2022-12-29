@@ -30,7 +30,22 @@ https://django-allauth.readthedocs.io/en/latest/views.html
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-NEXT -- REVIEWS
+NEXT -- REVIEWS -> FORMS
+-- form, template(Bootstrap slideshow on homepage), model, view, admin, urls
+    -- games.views or users.views?  Users for now.
+https://github.com/bunnythecompiler/movie_review/tree/master/movie
+https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
+-- leave a comment and star rating for MF or AH
+-- review model has a many-to-one relationship with user
+https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
+https://michaelstromer.nyc/books/intro-to-django/django-reviews
+
+
+-- ProductReview(models.Model) https://www.youtube.com/watch?v=Hqy-9e2IBGc ~3:18
+-- https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
+-- https://pypi.org/project/django-review/
+Should I use a ManyToManyField to map reviews, games, and users?
+Include a rating (5 stars?) and comment field. Users have to be logged in to post a review.
 
 
 Game tracking and Leaderboards--

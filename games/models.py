@@ -1,6 +1,11 @@
 from django.db import models
 
-# Create your models here.
+# It’s perfectly OK to relate a model to one from another app. To do this,
+# import the related model at the top of the file where your model is
+# defined. Then, refer to the other model class wherever needed.
+
+# from users.models import CustomUser
+
 class GameScores(models.Model):
 
     """

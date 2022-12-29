@@ -12,6 +12,12 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
+# It’s perfectly OK to relate a model to one from another app. To do this,
+# import the related model at the top of the file where your model is
+# defined. Then, refer to the other model class wherever needed.
+
+# from games.models import GameScores
+
 
 def validate_avatar(value):
     w, h = get_image_dimensions(value)
@@ -111,7 +117,14 @@ class GamesGamescores(models.Model):
 
 #class CustomUser(models.Model):
 class CustomUser(AbstractUser):
+    # https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
+    # see Reviews below
+    # review = models.TextField(max_length=200) ??
+    # reviews = models.ManyToManyField('Review', blank=True) ??
+    # -- you just have to relate users and reviews, not games
+    # -- or should I do it anyway?
 
+    # CustomUser.objects.values()
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
@@ -119,7 +132,6 @@ class CustomUser(AbstractUser):
         help_text='Image must be 200px by 200px.',
         validators=[validate_avatar]
     )
-
 
     def get_absolute_url(self):
         return reverse('my_account')
@@ -154,3 +166,124 @@ class CustomUserPermissions(models.Model):
         #managed = False
         #db_table = 'users_customuser_user_permissions'
         unique_together = (('customuser', 'permission'),)
+
+
+#@classmethod ?
+#@login_required ?
+# class ReviewUpdate(Review) ?
+# class ReviewDelete(Review) ?
+class Review(models.Model):
+    # https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
+    comment = models.TextField(max_length=200)
+    game = models.CharField(max_length=20)
+    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    # https://docs.djangoproject.com/en/4.1/ref/models/fields/#choices
+    # The first element in each tuple is the value that will be stored in
+    # the database. The second element is displayed by the field’s form
+    # widget.
+    # GAMES = [('Math Facts', 'math-facts'), ('Anagram Hunt', 'anagram-hunt')]
+    # rating = models.?
+    # https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/model-fields-from-modelforms
+    # likes= models.PositiveIntegerField(default=0)
+    # dislikes = models.PositiveIntegerField(default=0)
+    # reviews = models.ManyToManyField('Review', blank=True) ??
+    # comment = models.TextField(max_length=200)
+
+    #user = models.ForeignKey(
+        #settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+        #related_name='reviews'
+    #)
+
+    #https://docs.djangoproject.com/en/4.1/ref/models/fields/#django.db.models.DateField.auto_now_add
+
+
+    def get_review(self):
+        # if customuser.is_validated:
+        return self.comment, self.customuser, self.created, self.updated
+
+    class Meta:
+        ordering = ['created']
+        # db_table = ['?']
+        # order_with_respect_to = ?
+        # https://docs.djangoproject.com/en/4.1/ref/models/options/#order-with-respect-to
+        # https://docs.djangoproject.com/en/4.1/ref/models/options/#default-permissions
+        # -- Defaults to ('add', 'change', 'delete', 'view').
+
+
+"""
+https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
+from django.db import models
+from django.utils import timezone
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=40)
+    description =  models.TextField(max_length=3000)
+    title_upload_date = models.DateTimeField(default=timezone.now)
+    movie_cover = models.FileField(upload_to='')
+
+    def __str__(self):
+        return self.title
+
+
+class Review(models.Model):
+    author = models.CharField(max_length=40, default="anonymous")
+    review_date = models.DateTimeField(default=timezone.now)
+    rate_choices = (
+        (1,1),
+        (2,2),
+        (3,3),
+        (4,4),
+        (5,5)
+    )
+    stars = models.IntegerField(choices=rate_choices)
+    comment = models.TextField(max_length=4000)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.movie.title
+"""
+
+
+"""
+class ProductReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    review_text = models.TextField()
+    review_rating = models.CharField(choices=RATING, max_Length=150)
+
+    def get_review_rating(self):
+        return self.review_rating
+"""
+
+"""
+def get_absolute_url(self):
+    return reverse('jokes:detail', args=[self.slug])
+
+def save(self, *args, **kwargs):
+    if not self.slug:
+        value = str(self)
+        self.slug = unique_slug(value, type(self))
+    super().save(*args, **kwargs)
+
+def __str__(self):
+    return self.review
+"""
+
+"""
+https://medium.com/django-rest/lets-build-a-basic-product-review-backend-with-drf-part-1-652dd9b95485
+https://gist.github.com/egitimplus/63cde11b9138c6a6cf85977f0d69c112#file-models-py
+
+class Comment(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+"""

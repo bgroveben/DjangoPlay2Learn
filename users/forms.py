@@ -25,3 +25,27 @@ class CustomUserChangeForm(UserChangeForm):
                 years = BIRTH_YEAR_CHOICES
             )
         }
+
+
+
+class ReviewForm(forms.Form):
+
+    game = forms.CharField()
+    comment = forms.CharField(max_length=200)
+    #customuser = forms.CharField() # username
+    #created = forms.DateTimeField()
+    #updated = forms.DateTimeField()
+    #rating = forms.?
+
+
+"""
+from users.models import Review
+from django import forms
+
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ["author","stars","comment"]
+"""

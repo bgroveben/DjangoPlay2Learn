@@ -4,6 +4,7 @@ from games.views import HomeView, GamesView, GameScoresView, record_score
 
 app_name = 'games'
 urlpatterns = [
+    # send reviews to homepage
     path('', HomeView.as_view(), name='homepage'),
     path('games/', GamesView.as_view(), name='games'),
     path('game-scores/', GameScoresView.as_view(), name='game-scores'),

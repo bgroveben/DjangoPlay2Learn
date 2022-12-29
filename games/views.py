@@ -43,3 +43,19 @@ class GameScoresView(TemplateView):
         context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
         context['test'] = ['this is a test']
         return context
+
+"""
+https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
+
+from django.shortcuts import render,redirect
+from . models import Movie
+from . models import Review
+from . forms import ReviewForm
+
+def home(request):
+    items = Movie.objects.all()
+    context = {
+        'items':items
+    }
+    return render(request, "movie/home.html",context)
+"""

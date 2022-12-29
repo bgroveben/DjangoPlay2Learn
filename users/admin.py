@@ -56,3 +56,17 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)
 admin.site.unregister(SocialToken)
+
+
+"""
+https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
+
+from django.contrib import admin
+
+from . models import Movie
+from . models import Review
+
+
+admin.site.register(Movie)
+admin.site.register(Review)
+"""
