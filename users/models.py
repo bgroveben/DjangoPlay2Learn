@@ -201,7 +201,7 @@ class Review(models.Model):
 
     def get_review(self):
         # if customuser.is_validated:
-        return self.comment, self.customuser, self.created, self.updated
+        return self.game, self.comment, self.customuser, self.created, self.updated
 
     class Meta:
         ordering = ['created']

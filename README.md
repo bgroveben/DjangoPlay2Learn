@@ -32,7 +32,6 @@ https://django-allauth.readthedocs.io/en/latest/views.html
 
 NEXT -- REVIEWS -> FORMS
 -- form, template(Bootstrap slideshow on homepage), model, view, admin, urls
-    -- games.views or users.views?  Users for now.
 https://github.com/bunnythecompiler/movie_review/tree/master/movie
 https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
 -- leave a comment and star rating for MF or AH

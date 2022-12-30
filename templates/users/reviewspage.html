@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block title%}Game reviews{% endblock title %}
+{% block main %}
+  <h1 class="text-center">Game Reviews</h1>
+  {% for review in reviews %}
+  <li>
+    Game: {{ review.game }} ---
+    Comment: {{ review.comment }} ---
+    Customuser: {{ review.customuser }} ---
+    Created: {{ review.created }} ---
+    Updated: {{ review.updated }} ---
+  </li>
+  {% endfor %}
+{% endblock main %}

@@ -1,11 +1,9 @@
 import json
 from django.http import JsonResponse
-
-# from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from .models import GameScores
-# from users.models import GamesGamescores
+
 
 def record_score(request):
     """
@@ -19,7 +17,6 @@ def record_score(request):
     operation = data["operation"]
     game = data["game"]
     new_score = GameScores(username=username, game=game, score=score, maxnum=maxnum, gamelength=gamelength, operation=operation)
-    #new_score = GamesGameScores(username=username, game=game, score=score)
     new_score.save()
     response = {"success": True}
     return JsonResponse(response)

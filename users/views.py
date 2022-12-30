@@ -4,9 +4,24 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 from django.urls import reverse_lazy
-from django.views.generic import FormView, UpdateView
+from django.views.generic import FormView, TemplateView, UpdateView
 
 from .forms import CustomUserChangeForm, ReviewForm
+from users.models import Review
+
+
+def record_review(request):
+    data = json.loads(request.body)
+    game = data['game']
+    comment = data['comment']
+    customuser = data['customuser']
+    created = data['created']
+    updated = data['updated']
+    review = Reviews(game=game, comment=comment, customuser=customuser, created=created, updated=updated)
+    review.save()
+    response = {"success": True}
+    return JsonResponse(response)
+
 
 class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
@@ -22,7 +37,21 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 class ReviewView(FormView):
     template_name = 'users/reviews.html'
     form_class = ReviewForm
-    success_url = reverse_lazy('users:reviews')
+    success_url = reverse_lazy('users:reviewspage')
+
+
+class ReviewsPageView(TemplateView):
+    template_name = "users/reviewspage.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewsPageView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.all()
+        #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
+        #context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
+        context['test'] = ['this is a test']
+        return context
+
+
 """
 https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
 
