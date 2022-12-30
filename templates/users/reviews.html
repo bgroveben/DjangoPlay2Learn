@@ -4,11 +4,11 @@
 {% block main %}
   <h2 class="text-center">Leave a Review</h2>
   <div class="card border-primary m-auto mb-3 p-3" style="max-width: 40rem">
-      <form method="post">
+      <form action='record_review' method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <!--{{ form }}-->
-        <button onclick="record_review()" class="btn btn-success float-right">Submit</button>
+        <button type="submit" class="btn btn-success float-right">Submit</button>
       </form>
   </div>
 {% endblock %}

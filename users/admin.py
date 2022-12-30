@@ -9,8 +9,9 @@ from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 from common.admin import DjangoPlay2LearnAdmin
 from common.utils.admin import append_fields, move_fields, remove_fields
 
+from .models import CustomUser, Review
 
-CustomUser = get_user_model()
+#CustomUser = get_user_model()
 
 @admin.register(CustomUser)
 class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
@@ -52,6 +53,17 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
     def get_form(self, request, obj=None, **kwargs):
         self.save_on_top = obj is not None
         return super().get_form(request, obj, **kwargs)
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    model = Review
+    list_display = ['comment', 'game', 'customuser', 'created', 'updated']
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj: # editing an existing object
+            return ('created', 'updated')
+        return ()
+
 
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)
