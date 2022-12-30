@@ -179,17 +179,9 @@ class Review(models.Model):
     customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    # https://docs.djangoproject.com/en/4.1/ref/models/fields/#choices
-    # The first element in each tuple is the value that will be stored in
-    # the database. The second element is displayed by the field’s form
-    # widget.
-    # GAMES = [('Math Facts', 'math-facts'), ('Anagram Hunt', 'anagram-hunt')]
-    # rating = models.?
-    # https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/model-fields-from-modelforms
-    # likes= models.PositiveIntegerField(default=0)
-    # dislikes = models.PositiveIntegerField(default=0)
-    # reviews = models.ManyToManyField('Review', blank=True) ??
-    # comment = models.TextField(max_length=200)
+
+    class Meta:
+        ordering = ['created']
 
     #user = models.ForeignKey(
         #settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
@@ -198,13 +190,9 @@ class Review(models.Model):
 
     #https://docs.djangoproject.com/en/4.1/ref/models/fields/#django.db.models.DateField.auto_now_add
 
-
-    def get_review(self):
+    #def get_review(self):
         # if customuser.is_validated:
-        return self.game, self.comment, self.customuser, self.created, self.updated
-
-    class Meta:
-        ordering = ['created']
+        #return self.game, self.comment, self.customuser, self.created, #self.updated
         # db_table = ['?']
         # order_with_respect_to = ?
         # https://docs.djangoproject.com/en/4.1/ref/models/options/#order-with-respect-to

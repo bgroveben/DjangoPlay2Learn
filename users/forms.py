@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
 
+from users.models import Review
+
 
 BIRTH_YEAR_CHOICES = range(1900, datetime.now().year)
 
@@ -28,11 +30,18 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 
-class ReviewForm(forms.Form):
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ['game', 'comment', 'customuser', 'created', 'updated']
 
     game = forms.CharField()
     comment = forms.CharField(max_length=200)
     #customuser = forms.CharField() # username
+    customuser = Review.customuser
+    created = Review.created
+    updated = Review.updated
     #created = forms.DateTimeField()
     #updated = forms.DateTimeField()
     #rating = forms.?
