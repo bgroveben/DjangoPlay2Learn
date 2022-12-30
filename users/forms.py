@@ -34,7 +34,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ['game', 'comment', 'customuser', 'created', 'updated']
+        fields = ['game', 'comment']
 
     game = forms.CharField()
     comment = forms.CharField(max_length=200)
