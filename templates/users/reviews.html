@@ -7,7 +7,8 @@
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-success float-right">Submit</button>
+        <!--{{ form }}-->
+        <button onclick="record_review()" class="btn btn-success float-right">Submit</button>
       </form>
   </div>
 {% endblock %}

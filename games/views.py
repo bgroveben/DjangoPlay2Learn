@@ -38,7 +38,7 @@ class GameScoresView(TemplateView):
         context['game_scores'] = GameScores.objects.all()
         context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
         context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
-        context['test'] = ['this is a test']
+        #context['test'] = ['this is a test']
         return context
 
 """

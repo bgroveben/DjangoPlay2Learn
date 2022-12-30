@@ -45,10 +45,10 @@ class ReviewsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ReviewsPageView, self).get_context_data(**kwargs)
-        context['reviews'] = Review.objects.all()
+        context['reviews'] = Review.objects.all().order_by('-created')
         #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
         #context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
-        context['test'] = ['this is a test']
+        #context['test'] = ['this is a test']
         return context
 
 

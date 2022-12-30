@@ -44,7 +44,7 @@
             <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
           </li>
           {% endif %}
-          {% if user.is_authenticated %}
+          <!--{% if user.is_authenticated %}-->
           <!-- If user is not logged in, don't display li below -->
           <li class="nav-item dropdown ml-5">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -53,7 +53,7 @@
               My DjangoPlay2Learn
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'my_account' %}">My Account</a>
+              <a class="dropdown-item" href="{% url 'users:my_account' %}">My Account</a>
               <div class="dropdown-divider"></div>
               <!--<a class="dropdown-item" href="#">Log out</a>-->
               <form method="post" action="{% url 'account_logout' %}">
@@ -62,7 +62,7 @@
               </form>
             </div>
           </li>
-          {% endif %}
+          <!--{% endif %}-->
         </ul>
       </div>
     </nav>
