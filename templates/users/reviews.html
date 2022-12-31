@@ -1,14 +1,51 @@
 {% extends "_base.html" %}
+{% load static %}
 
+{% block javascript %}
+  <script>
+    const ajaxURL = "{% url 'users:reviewspage' %}";
+  </script>
+  <script src="{% static 'js/reviews.js' %}"></script>
+{% endblock javascript %}
 {% block title %}Reviews{% endblock %}
 {% block main %}
   <h2 class="text-center">Leave a Review</h2>
-  <div class="card border-primary m-auto mb-3 p-3" style="max-width: 40rem">
-      <form action='record_review' method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <!--{{ form }}-->
-        <button type="submit" class="btn btn-success float-right">Submit</button>
-      </form>
+<div class="card border-primary m-auto mb-3 p-3" style="max-width: 40rem">
+  <!-- The current path, users/reviews/reviews, didn’t match any of these. -->
+    <!--<form action='reviews' method="POST">-->
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <!--{{ form }}-->
+      <button type="submit" class="btn btn-success float-right">Submit</button>
+      <p>
+        <button id="dislike-button" class="btn btn-light">
+          <i class="fas fa-thumbs-down fa-2x text-danger mx-3"></i>
+          <span id="dislikes">{{ review.num_dislikes }}</span>
+        </button>
+        <button id="like-button" class="btn btn-light">
+          <i class="fas fa-thumbs-up fa-2x text-success mx-3"></i>
+          <span id="likes">{{ review.num_likes }}</span>
+        </button>
+      </p>
+        <div id="output" class="text-info"></div>
+        <!--<span id="num-votes">{{ review.num_votes }}
+          vote{{ review.num_votes|pluralize }}</span>-->
+    </form>
   </div>
+  <!--
+  <div>
+    <p>
+      Your review is:
+      <span id="num-votes">
+        {{ review.num_votes|default:'no' }}
+        vote{{ review.num_votes|pluralize }}</span>{% if review.num_votes %}:
+      <span id="likes">{{ review.num_likes }}
+        like{{ review.num_likes|pluralize }}</span> and
+      <span id="dislikes">
+        {{ review.num_dislikes }}
+        dislike{{ review.num_dislikes|pluralize }}</span>{% endif %}.
+    </p>
+  </div>
+  -->
 {% endblock %}

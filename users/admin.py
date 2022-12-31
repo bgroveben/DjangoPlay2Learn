@@ -57,7 +57,7 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     model = Review
-    list_display = ['comment', 'game', 'customuser', 'created', 'updated']
+    list_display = ['vote', 'comment', 'game', 'customuser', 'created', 'updated']
 
     def get_readonly_fields(self, request, obj=None):
         if obj: # editing an existing object

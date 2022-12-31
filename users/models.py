@@ -173,13 +173,82 @@ class CustomUserPermissions(models.Model):
 # class ReviewUpdate(Review) ?
 # class ReviewDelete(Review) ?
 class Review(models.Model):
+    """
+    review = Review(
+        vote=1,
+        comment="comment",
+        game="game",
+        customuser=CustomUser.objects.first(),
+        created=datetime.now(),
+        updated=datetime.now())
+    """
     # https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
+    vote = models.SmallIntegerField()
     comment = models.TextField(max_length=200)
     game = models.CharField(max_length=20)
     customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return reverse('users:reviewspage')
+    """
+    @property
+    def num_votes(self):
+        return self.reviews.count()
+
+    @property
+    def num_likes(self):
+        return self.reviews.filter(vote=1).count()
+
+    @property
+    def num_dislikes(self):
+        return self.reviews.filter(vote=-1).count()
+
+    @property
+    def rating(self):
+        if self.num_votes == 0: # No reviews, so rating is 0
+            return 0
+
+        r = Review.objects.filter(review=self).aggregate(average=Avg('vote'))
+
+        # Return the rounded rating.
+        return round(5 + (r['average'] * 5), 2)
+
+    @property
+    def votes(self):
+        result = Review.objects.filter(review=self).aggregate(
+            num_votes=Count('vote'),
+            sum_votes=Sum('vote')
+        )
+
+        # If there aren't any votes yet, return a dictionary with values of 0.
+        if result['num_votes'] == 0:
+            return {'num_votes': 0, 'rating': 0, 'likes': 0, 'dislikes': 0}
+
+        # Otherwise, calculate the dict values using num_votes and sum_votes.
+        result['rating'] = round(
+            5 + ((result['sum_votes']/result['num_votes'])*5), 2
+        )
+        result['dislikes'] = int((result['num_votes'] - result['sum_votes'])/2)
+        result['likes'] = result['num_votes'] - result['dislikes']
+
+        return result
+
+    #def get_absolute_url(self):
+        #return reverse('users:reviewspage')
+
+    #def save(self, *args, **kwargs):
+        #if not self.slug:
+            #value = str(self)
+            #self.slug = unique_slug(value, type(self))
+
+        s#uper().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.review
+
+    """
     class Meta:
         ordering = ['created']
 
@@ -248,7 +317,7 @@ class ProductReview(models.Model):
 
 """
 def get_absolute_url(self):
-    return reverse('jokes:detail', args=[self.slug])
+    return reverse('reviews:detail', args=[self.slug])
 
 def save(self, *args, **kwargs):
     if not self.slug:

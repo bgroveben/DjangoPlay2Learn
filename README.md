@@ -29,8 +29,10 @@ https://django-allauth.readthedocs.io/en/latest/views.html
     http://127.0.0.1:8000/accounts/login/
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+REVIEWS -- SUBMIT FORM AND RECORD COMMENT AND VOTES
 
-NEXT -- REVIEWS -> FORMS
+
+
 -- form, template(Bootstrap slideshow on homepage), model, view, admin, urls
 https://github.com/bunnythecompiler/movie_review/tree/master/movie
 https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751

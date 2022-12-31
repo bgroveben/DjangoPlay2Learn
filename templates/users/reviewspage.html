@@ -5,6 +5,7 @@
   <h1 class="text-center">Game Reviews</h1>
   {% for review in reviews %}
   <li>
+    Vote: {{ review.vote }}
     Game: {{ review.game }} ---
     Comment: {{ review.comment }} ---
     Customuser: {{ review.customuser }} ---

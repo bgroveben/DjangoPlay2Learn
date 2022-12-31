@@ -38,6 +38,7 @@ class ReviewForm(forms.ModelForm):
 
     game = forms.CharField()
     comment = forms.CharField(max_length=200)
+    #vote = forms.IntegerField()
     #customuser = forms.CharField() # username
     customuser = Review.customuser
     created = Review.created
