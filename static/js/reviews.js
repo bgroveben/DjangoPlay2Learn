@@ -15,7 +15,8 @@ function register(vote) {
   const data = {
     'vote': vote,
     'likes': likes,
-    'dislikes': dislikes
+    'dislikes': dislikes//,
+    //'comment': comment
   }
   fetch(ajaxURL, {
     method: 'POST',

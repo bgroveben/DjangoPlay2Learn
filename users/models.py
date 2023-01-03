@@ -12,6 +12,8 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
+#from common.utils.text import unique_slug
+
 # It’s perfectly OK to relate a model to one from another app. To do this,
 # import the related model at the top of the file where your model is
 # defined. Then, refer to the other model class wherever needed.
@@ -186,12 +188,92 @@ class Review(models.Model):
     vote = models.SmallIntegerField()
     comment = models.TextField(max_length=200)
     game = models.CharField(max_length=20)
-    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    customuser = models.ForeignKey(
+            CustomUser,
+            on_delete=models.CASCADE,
+            related_name='reviewvotes')
+    #slug = models.SlugField(
+        #max_length=50, unique=True, null=False, editable=False
+    #)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+
+    @property
+    def num_votes(self):
+        return self.reviewvotes.count()
+
+    @property
+    def num_likes(self):
+        return self.reviewvotes.filter(vote=1).count()
+
+    @property
+    def num_dislikes(self):
+        return self.reviewvotes.filter(vote=-1).count()
+
+    @property
+    def rating(self):
+        if self.num_votes == 0: # No jokes, so rating is 0
+            return 0
+        r = ReviewVote.objects.filter(review=self).aggregate(average=Avg('vote'))
+        # Return the rounded rating.
+        return round(5 + (r['average'] * 5), 2)
+
+    @property
+    def votes(self):
+        result = ReviewVote.objects.filter(review=self).aggregate(
+            num_votes=Count('vote'),
+            sum_votes=Sum('vote')
+        )
+        # If there aren't any votes yet, return a dictionary with values of 0.
+        if result['num_votes'] == 0:
+            return {'num_votes': 0, 'rating': 0, 'likes': 0, 'dislikes': 0}
+        # Otherwise, calculate the dict values using num_votes and sum_votes.
+        result['rating'] = round(
+            5 + ((result['sum_votes']/result['num_votes'])*5), 2
+        )
+        result['dislikes'] = int((result['num_votes'] - result['sum_votes'])/2)
+        result['likes'] = result['num_votes'] - result['dislikes']
+
+        return result
+
     def get_absolute_url(self):
         return reverse('users:reviewspage')
+    #def get_absolute_url(self):
+        #return reverse('jokes:detail', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        #if not self.slug:
+            #value = str(self)
+            #self.slug = unique_slug(value, type(self))
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.question
+
+    # def __str__(self):
+    #   return str(self.id)
+
+    # def get_review(self):
+    #   return self.review
+
+class ReviewVote(models.Model):
+    customuser = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE
+        #related_name='reviewvotes'
+    )
+    vote = models.SmallIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    #class Meta:
+        #constraints = [
+            #models.UniqueConstraint(
+                #fields=['user', 'joke'], name='one_vote_per_user_per_joke'
+            #)
+        #]
+
     """
     @property
     def num_votes(self):
@@ -242,8 +324,8 @@ class Review(models.Model):
         #if not self.slug:
             #value = str(self)
             #self.slug = unique_slug(value, type(self))
-
-        s#uper().save(*args, **kwargs)
+        # Call super().save() to do whatever the save() method of models.Model does to save the object:
+        #super().save(*args, **kwargs)
 
     def __str__(self):
         return self.review

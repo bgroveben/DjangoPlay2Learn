@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
-from .views import MyAccountPageView, ReviewView, ReviewsPageView 
-#record_review, vote
-
+from .views import MyAccountPageView, ReviewView, ReviewsPageView
+# from views import ReviewCreateView, ReviewUpdateView, record_review, vote
+# from .views import (
+#    JokeCreateView, JokeDetailView, JokeListView, JokeUpdateView
+# )
 
 app_name = 'users'
 urlpatterns = [

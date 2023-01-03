@@ -13,11 +13,18 @@
 <div class="card border-primary m-auto mb-3 p-3" style="max-width: 40rem">
   <!-- The current path, users/reviews/reviews, didn’t match any of these. -->
     <!--<form action='reviews' method="POST">-->
-    <form method="POST">
+    <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <!--{{ form }}-->
-      <button type="submit" class="btn btn-success float-right">Submit</button>
+      <button class="btn btn-success float-right">Submit</button><!-- use onclick="register(vote)?"-->
+      <!--
+      https://realpython.com/django-social-post-3/#handle-post-requests-in-django-code-logic
+      HTML attributes for buttons:
+      'name' defines what key you’ll use to access the value in your view function. You set this key to "follow" for both buttons.
+      'value' defines what value the form will send to your view function under the key name defined in name when you press one of the buttons.
+      You set the value of the Follow button to "follow" and the value of the Unfollow button to "unfollow".
+      -->
       <p>
         <button id="dislike-button" class="btn btn-light">
           <i class="fas fa-thumbs-down fa-2x text-danger mx-3"></i>
@@ -31,6 +38,9 @@
         <div id="output" class="text-info"></div>
         <!--<span id="num-votes">{{ review.num_votes }}
           vote{{ review.num_votes|pluralize }}</span>-->
+          <!-- {{ review.customuser }} -->
+          <!-- {{ review.created_at }} -->
+          <!-- {{ review.comment }} -->
     </form>
   </div>
   <!--
