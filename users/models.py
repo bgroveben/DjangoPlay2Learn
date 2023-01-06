@@ -12,7 +12,8 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
-#from common.utils.text import unique_slug
+from common.utils.text import unique_slug
+#from django.utils.text import slugify
 
 # It’s perfectly OK to relate a model to one from another app. To do this,
 # import the related model at the top of the file where your model is
@@ -37,7 +38,7 @@ class AuthGroup(models.Model):
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
-    # https://stackoverflow.com/questions/35803443
+    # https://stackoverflow.com/games/35803443
     # /what-parameters-does-djangos-models-do-nothing-expect
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
@@ -83,15 +84,15 @@ class DjangoContentType(models.Model):
         unique_together = (('app_label', 'model'),)
 
 
-class DjangoMigrations(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
+#class DjangoMigrations(models.Model):
+    #id = models.BigAutoField(primary_key=True)
+    #app = models.CharField(max_length=255)
+    #name = models.CharField(max_length=255)
+    #applied = models.DateTimeField()
 
-    class Meta:
+    #class Meta:
         #managed = False
-        db_table = 'django_migrations'
+        #db_table = 'django_migrations'
 
 
 class DjangoSession(models.Model):
@@ -138,8 +139,8 @@ class CustomUser(AbstractUser):
     def get_absolute_url(self):
         return reverse('my_account')
 
-    def __str__(self): # Do I need this?
-        return f'{self.first_name} {self.last_name} ({self.username})'
+    #def __str__(self): # Do I need this?
+        #return f'{self.first_name} {self.last_name} ({self.username})'
 
     class Meta:
         #managed = False
@@ -174,7 +175,8 @@ class CustomUserPermissions(models.Model):
 #@login_required ?
 # class ReviewUpdate(Review) ?
 # class ReviewDelete(Review) ?
-class Review(models.Model):
+# Why do I have this in addition to the Review model above? Subclass?
+class ReviewModel(models.Model):
     """
     review = Review(
         vote=1,
@@ -184,16 +186,26 @@ class Review(models.Model):
         created=datetime.now(),
         updated=datetime.now())
     """
-    # https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
-    vote = models.SmallIntegerField()
-    comment = models.TextField(max_length=200)
-    game = models.CharField(max_length=20)
+    #vote = models.SmallIntegerField()
+    #comment = models.TextField(max_length=200)
+    #game = models.TextField(max_length=200)
+    #comment = models.TextField(max_length=100, blank=True)
+    #game = models.CharField(max_length=20)
+    game = models.TextField(max_length=200)
+    comment = models.TextField(max_length=100, blank=True)
     customuser = models.ForeignKey(
             CustomUser,
-            on_delete=models.CASCADE,
-            related_name='reviewvotes')
+            on_delete=models.CASCADE)#,
+            #related_name='reviewmodel')
+    #category = models.ForeignKey(
+        #'Category', on_delete=models.PROTECT, related_name='jokes'
+    #)
+    #tags = models.ManyToManyField('Tag', blank=True, related_name='jokes')
+    slug = models.SlugField(
+        max_length=50, unique=True, null=False, editable=False
+    )
     #slug = models.SlugField(
-        #max_length=50, unique=True, null=False, editable=False
+        #max_length=50, editable=False
     #)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -237,20 +249,23 @@ class Review(models.Model):
 
         return result
 
-    def get_absolute_url(self):
-        return reverse('users:reviewspage')
+
     #def get_absolute_url(self):
         #return reverse('jokes:detail', args=[self.slug])
+    def get_absolute_url(self):
+        #return reverse('users:reviewspage', args=[self.slug])
+        return reverse('users', args=[self.slug])
 
     def save(self, *args, **kwargs):
-        #if not self.slug:
-            #value = str(self)
-            #self.slug = unique_slug(value, type(self))
+        if not self.slug:
+            value = str(self)
+            self.slug = unique_slug(value, type(self))
+            #self.slug = slugify(value)
 
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.question
+        return self.game
 
     # def __str__(self):
     #   return str(self.id)
@@ -258,171 +273,31 @@ class Review(models.Model):
     # def get_review(self):
     #   return self.review
 
+    class Meta:
+        #managed = False
+        db_table = 'users_reviewmodel'
+
+
+# Why do I have this in addition to the Review model above? Subclass?
 class ReviewVote(models.Model):
     customuser = models.ForeignKey(
         CustomUser, on_delete=models.CASCADE
         #related_name='reviewvotes'
     )
+    review = models.ForeignKey(
+        ReviewModel, on_delete=models.CASCADE,
+        related_name='reviewvotes'
+    )
     vote = models.SmallIntegerField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['created']
+        #db_table = 'users_reviewvote'
     #class Meta:
         #constraints = [
             #models.UniqueConstraint(
                 #fields=['user', 'joke'], name='one_vote_per_user_per_joke'
             #)
         #]
-
-    """
-    @property
-    def num_votes(self):
-        return self.reviews.count()
-
-    @property
-    def num_likes(self):
-        return self.reviews.filter(vote=1).count()
-
-    @property
-    def num_dislikes(self):
-        return self.reviews.filter(vote=-1).count()
-
-    @property
-    def rating(self):
-        if self.num_votes == 0: # No reviews, so rating is 0
-            return 0
-
-        r = Review.objects.filter(review=self).aggregate(average=Avg('vote'))
-
-        # Return the rounded rating.
-        return round(5 + (r['average'] * 5), 2)
-
-    @property
-    def votes(self):
-        result = Review.objects.filter(review=self).aggregate(
-            num_votes=Count('vote'),
-            sum_votes=Sum('vote')
-        )
-
-        # If there aren't any votes yet, return a dictionary with values of 0.
-        if result['num_votes'] == 0:
-            return {'num_votes': 0, 'rating': 0, 'likes': 0, 'dislikes': 0}
-
-        # Otherwise, calculate the dict values using num_votes and sum_votes.
-        result['rating'] = round(
-            5 + ((result['sum_votes']/result['num_votes'])*5), 2
-        )
-        result['dislikes'] = int((result['num_votes'] - result['sum_votes'])/2)
-        result['likes'] = result['num_votes'] - result['dislikes']
-
-        return result
-
-    #def get_absolute_url(self):
-        #return reverse('users:reviewspage')
-
-    #def save(self, *args, **kwargs):
-        #if not self.slug:
-            #value = str(self)
-            #self.slug = unique_slug(value, type(self))
-        # Call super().save() to do whatever the save() method of models.Model does to save the object:
-        #super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.review
-
-    """
-    class Meta:
-        ordering = ['created']
-
-    #user = models.ForeignKey(
-        #settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
-        #related_name='reviews'
-    #)
-
-    #https://docs.djangoproject.com/en/4.1/ref/models/fields/#django.db.models.DateField.auto_now_add
-
-    #def get_review(self):
-        # if customuser.is_validated:
-        #return self.game, self.comment, self.customuser, self.created, #self.updated
-        # db_table = ['?']
-        # order_with_respect_to = ?
-        # https://docs.djangoproject.com/en/4.1/ref/models/options/#order-with-respect-to
-        # https://docs.djangoproject.com/en/4.1/ref/models/options/#default-permissions
-        # -- Defaults to ('add', 'change', 'delete', 'view').
-
-
-"""
-https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751
-from django.db import models
-from django.utils import timezone
-
-
-class Movie(models.Model):
-    title = models.CharField(max_length=40)
-    description =  models.TextField(max_length=3000)
-    title_upload_date = models.DateTimeField(default=timezone.now)
-    movie_cover = models.FileField(upload_to='')
-
-    def __str__(self):
-        return self.title
-
-
-class Review(models.Model):
-    author = models.CharField(max_length=40, default="anonymous")
-    review_date = models.DateTimeField(default=timezone.now)
-    rate_choices = (
-        (1,1),
-        (2,2),
-        (3,3),
-        (4,4),
-        (5,5)
-    )
-    stars = models.IntegerField(choices=rate_choices)
-    comment = models.TextField(max_length=4000)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.movie.title
-"""
-
-
-"""
-class ProductReview(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    review_text = models.TextField()
-    review_rating = models.CharField(choices=RATING, max_Length=150)
-
-    def get_review_rating(self):
-        return self.review_rating
-"""
-
-"""
-def get_absolute_url(self):
-    return reverse('reviews:detail', args=[self.slug])
-
-def save(self, *args, **kwargs):
-    if not self.slug:
-        value = str(self)
-        self.slug = unique_slug(value, type(self))
-    super().save(*args, **kwargs)
-
-def __str__(self):
-    return self.review
-"""
-
-"""
-https://medium.com/django-rest/lets-build-a-basic-product-review-backend-with-drf-part-1-652dd9b95485
-https://gist.github.com/egitimplus/63cde11b9138c6a6cf85977f0d69c112#file-models-py
-
-class Comment(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.title
-"""

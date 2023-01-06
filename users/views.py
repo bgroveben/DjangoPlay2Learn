@@ -5,12 +5,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import JsonResponse
 from django.urls import reverse_lazy
-from django.views.generic import FormView, TemplateView, UpdateView
+from django.views.generic import FormView, TemplateView, UpdateView, ListView
 # from django.views.generic import (
 #    CreateView, DeleteView, DetailView, ListView, UpdateView
 #)
 from .forms import CustomUserChangeForm, ReviewForm
-from .models import CustomUser, Review
+from .models import CustomUser, ReviewModel, ReviewVote
 
 
 """
@@ -23,6 +23,9 @@ def Review_rate(request):
         review.save()
         return redirect('?', x=x)
 """
+
+# Each view is responsible for doing one of two things: Returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
+# https://docs.djangoproject.com/en/4.1/intro/tutorial03/#write-views-that-actually-do-something
 
 
 class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
@@ -37,38 +40,10 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-class ReviewView(FormView, SuccessMessageMixin, LoginRequiredMixin):
-    # When I include UpdateView above:
-    # => Generic detail view ReviewView must be called with either an object pk or a slug in the URLconf.
-    # https://stackoverflow.com/questions/59638245/how-do-i-call-a-function-when-i-make-a-post-request-at-python
-    model = Review
-    template_name = 'users/reviews.html'
-    success_message = 'Review Submitted'
-    form_class = ReviewForm
-    success_url = reverse_lazy('users:reviewspage')
-    #record_review(request)
-    #vote(request)
-
-    #def get_object(self):
-        #return self.request.user
-
-
-class ReviewsPageView(TemplateView):
-    template_name = "users/reviewspage.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(ReviewsPageView, self).get_context_data(**kwargs)
-        context['reviews'] = Review.objects.all().order_by('-created')
-        #context['reviews'] = Review.objects.filter('-created')
-        #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
-        #context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
-        #context['test'] = ['this is a test']
-        return context
-
-def my_reviews(request):
+#def my_reviews(request):
     #review = Reviews.objects.all()
-    review = Review.objects.all().order_by('-created')
-    return render(request, 'user/reviews.html',{'reviews':reviews})
+    #review = Review.objects.all().order_by('-created')
+    #return render(request, 'user/reviews.html',{'reviews':reviews})
     #return render(request,
                 #'user/reviewspage.html'
                 #{'reviewspage':reviewspage}
@@ -90,7 +65,7 @@ def vote(request):
     if user.is_anonymous: # User not logged in. Can't vote.
         msg = 'Sorry, you have to be logged in to vote.'
     else: # User is logged in.
-        if Review.objects.filter(customuseruser=customuser, review=review).exists():
+        if ReviewModel.objects.filter(customuseruser=customuser, review=review).exists():
             # User already voted. Get user's past vote:
             review = Review.objects.get(user=user, review=review)
 
@@ -129,6 +104,43 @@ def vote(request):
         'dislikes': dislikes
     }
     return JsonResponse(response) # Return object as JSON.
+
+
+class ReviewListView(ListView):
+    model = ReviewModel
+
+
+
+class ReviewView(FormView, SuccessMessageMixin, LoginRequiredMixin):
+    # When I include UpdateView above:
+    # => Generic detail view ReviewView must be called with either an object pk or a slug in the URLconf.
+    # https://stackoverflow.com/questions/59638245/how-do-i-call-a-function-when-i-make-a-post-request-at-python
+    model = ReviewModel
+    template_name = 'users/reviews.html'
+    success_message = 'Review Submitted'
+    form_class = ReviewForm
+    #success_url = reverse_lazy('users:reviewspage')
+    success_url = reverse_lazy('users')
+    #record_review(request)
+    #vote(request)
+
+    #def get_object(self):
+        #return self.request.user
+
+
+class ReviewsPageView(TemplateView):
+    model = ReviewModel
+    template_name = "users/reviewspage.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewsPageView, self).get_context_data(**kwargs)
+        context['reviews'] = ReviewModel.objects.all().order_by('-created')
+        #context['reviews'] = Review.objects.filter('-created')
+        #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
+        #context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
+        #context['test'] = ['this is a test']
+        return context
+
 
 """
 https://realpython.com/django-social-post-3/#handle-post-requests-in-django-code-logic

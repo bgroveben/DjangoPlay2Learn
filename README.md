@@ -33,23 +33,19 @@ Check the database tables shown in the assignment for help with models.
 
 
 REVIEWS -- SUBMIT FORM AND RECORD COMMENT AND VOTES
-!!!! POST request submitted and user redirected but:
-==> [03/Jan/2023 21:34:16] "POST /users/reviews/ HTTP/1.1" 302 0
--- Lesson 2:22 GET and POST requests
--- Try putting all data into the register function in reviews.js
-    -- https://www.youtube.com/watch?v=S2gkqC1fmbA
-The action attribute specifies where to send the form-data when a form is submitted.
--- form needs an action
--- call vote function in view?
--- https://docs.djangoproject.com/en/4.1/topics/forms/#instantiating-processing-and-rendering-forms
-    -- get_name(request) in views
-    -- set up slugs or add a url containing a variable named either pk or slug? -> https://koenwoortman.com/python-django-generic-detail-view-must-be-called-with-object-pk-or-slug/
-    You can either rotate through all reviews or allow admin users to select whether or not a review is “featured” in the admin site.
-    -- ProductReview(models.Model) https://www.youtube.com/watch?v=Hqy-9e2IBGc ~3:18
-    -- https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
-    -- https://pypi.org/project/django-review/
-    Should I use a ManyToManyField to map reviews, games, and users?
-    Include a rating (5 stars?) and comment field. Users have to be logged in to post a review.
+/jokes/ ~= /users/
+set up slugs
+check models -> Jokes Model = Review Model -> question=game, answer=comment
+                JokeListView = ReviewListView
+check urls
+-- http://127.0.0.1:8000/users/reviewspage/
+    405 error on review submission, but link to reviewspage works
+    https://stackoverflow.com/questions/68270841/405-error-method-is-not-allowed-python-django
+check form
+check view
+vote function to register reviews
+
+
 
 
 -- form, template(Bootstrap slideshow on homepage), model, view, admin, urls

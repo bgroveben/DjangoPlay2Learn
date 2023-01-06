@@ -1,0 +1,23 @@
+{% extends "_base.html" %}
+
+{% block title %}reviews{% endblock %}
+{% block main %}
+  <h1 class="text-center">Game Reviews</h1>
+  {% for review in reviews %}
+  <li>
+    Vote: {{ review.vote }}
+    Game: {{ review.game }} ---
+    Comment: {{ review.comment }} ---
+    Customuser: {{ review.customuser }} ---
+    Created: {{ review.created }} ---
+    Updated: {{ review.updated }} ---
+  </li>
+  {% endfor %}
+
+  <h2>Reviews</h2>
+  <ul class="list-group list-group-flush mb-3">
+    {% for review in review_list %}
+      <li class="list-group-item">{{ review.game }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
