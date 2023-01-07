@@ -34,6 +34,8 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = CustomUserChangeForm
     success_message = 'Update Successful'
     template_name = 'account/my_account.html'
+    # AFTER UPDATE is clicked: Exceptioon
+    # Reverse for 'my_account' not found. 'my_account' is not a valid view function or pattern name.
     success_url = reverse_lazy('my_account')
 
     def get_object(self):
@@ -48,13 +50,28 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
                 #'user/reviewspage.html'
                 #{'reviewspage':reviewspage}
                 #)
+"""
+https://www.youtube.com/watch?v=1ihn3iRXtsY  11:23
+def contact(request):
+    submitted = False
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # assert False
+            return HttpResponseRedirect('/contact?submitted=True')
+    else:
+        form = ContactForm()
+        if 'submitted' in request.GET:
+            submitted = True
 
+    return render(request, 'pages/contact.html', { 'form': form, 'page_list': Page.objects.all(), 'submitted': submitted })
+"""
 
-
-#def vote(request, slug):
-def vote(request):
+#def vote(request, slug): replace slug with url?
+def vote(request, slug):
     customuser = request.customuser # The logged-in user (or AnonymousUser).
-    #review = review.objects.get(slug=slug) # The review instance.
+    review = review.objects.get(slug=slug) # The review instance.
     data = json.loads(request.body) # Data from the JavaScript.
 
     # Set simple variables.

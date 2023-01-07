@@ -281,13 +281,21 @@ class ReviewModel(models.Model):
 # Why do I have this in addition to the Review model above? Subclass?
 class ReviewVote(models.Model):
     customuser = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE
-        #related_name='reviewvotes'
+        CustomUser, on_delete=models.CASCADE,
+        related_name='reviewvotes'
     )
     review = models.ForeignKey(
         ReviewModel, on_delete=models.CASCADE,
         related_name='reviewvotes'
     )
+    """
+
+    This means that Review and CustomUser instances will be able to access
+    their related ReviewVote instances via the reviewvotes property.
+    For example:
+    customuser.reviewvotes.count() would get the number of votes a user has made.
+    review.reviewvotes.count() would get the number of votes on a review.
+    """
     vote = models.SmallIntegerField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -301,3 +309,14 @@ class ReviewVote(models.Model):
                 #fields=['user', 'joke'], name='one_vote_per_user_per_joke'
             #)
         #]
+
+class Comment(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    #product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
+    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.title
