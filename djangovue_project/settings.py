@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # Local Apps
+    'contact.apps.ContactConfig',
     'games.apps.GamesConfig',
     'users.apps.UsersConfig',
 ]

@@ -54,6 +54,7 @@ urlpatterns = [
 from django.contrib import admin
 from django.urls import path, include
 from allauth.account import urls
+from contact import views as contact_views
 
 
 urlpatterns = [
@@ -65,4 +66,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # Games
     path('', include("games.urls")),
+    # Contact
+    path('contact/', contact_views.contact_view, name='contact'),
 ]

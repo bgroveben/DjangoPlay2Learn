@@ -35,9 +35,10 @@ Pages app for Contact and Reviews?
 -- Lesson 8 Creating a Job Application Form
 https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/creating-a-job-application-form-from-forms-and-wid
 https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
-
+-- BadHeaderError to prevent attackers from adding headers
 https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid
 -- Create the Contacts app
+
 https://www.youtube.com/watch?v=1ihn3iRXtsY
 
 DONE Admin Site: 25%
