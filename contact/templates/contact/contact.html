@@ -1,2 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
+
+
 <h1>It Works!</h1>
 <h2>This is the contact page.</h2>
+<br />
+<form action="" method="post">
+   {% csrf_token %}
+   {{ form }}
+   <input type="submit" value="Submit">
+</form>

@@ -30,14 +30,14 @@ Reviews: 10%
 (5%) User reviews rotate in the slideshow on the homepage.
 
 Contact Us: 10%
-Pages app for Contact and Reviews?
 (10%) The contact us form sends an email to the admin email.
--- Lesson 8 Creating a Job Application Form
-https://www.webucator.com/self-paced-courses/course/sp-reg-django-training-for-python-developers-benja/creating-a-job-application-form-from-forms-and-wid
+NEXT:
+https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid
+-- Automated emails with Twilio SendGrid
+
 https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
 -- BadHeaderError to prevent attackers from adding headers
-https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid
--- Create the Contacts app
+
 
 https://www.youtube.com/watch?v=1ihn3iRXtsY
 
