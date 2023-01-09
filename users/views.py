@@ -36,7 +36,7 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'account/my_account.html'
     # AFTER UPDATE is clicked: Exceptioon
     # Reverse for 'my_account' not found. 'my_account' is not a valid view function or pattern name.
-    success_url = reverse_lazy('my_account')
+    success_url = reverse_lazy('users:my_account')
 
     def get_object(self):
         return self.request.user
