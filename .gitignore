@@ -2,6 +2,7 @@
 node_modules
 
 djangovue_project/local_settings.py
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -13,6 +13,10 @@ import os
 from pathlib import Path
 from django.urls import reverse_lazy
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -129,8 +133,13 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
 DEFAULT_FROM_EMAIL = 'bgroveben@gmail.com'
+CONTACT_EMAIL = 'bgroveben@gmail.com'
+ADMIN_EMAILS = ['bgroveben@gmail.com',]
+#ADMIN_EMAILS = os.environ.get('ADMIN_EMAILS')
+#CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, even w/o `allauth`
@@ -192,9 +201,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
 #LOGOUT_REDIRECT_URL = reverse_lazy('account:logout')
 ACCOUNT_LOGIN_REDIRECT_URL = reverse_lazy('games:homepage')
 ACCOUNT_USERNAME_REQUIRED = True # Default: True
-
-
-
 
 
 ## allauth.account.forms

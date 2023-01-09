@@ -8,10 +8,11 @@ Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
+NEXT:
 Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
-(10%) Logged in users can edit their information in a My Account page.
+NEXT : (10%) Logged in users can edit their information in a My Account page.
 ??? !!! Can users change their password, or does the POST request fail?
 !!! Click on email confirmation link => NoReverseMatch:
 --- 'account' is not a registered namespace
@@ -30,15 +31,10 @@ Reviews: 10%
 (5%) User reviews rotate in the slideshow on the homepage.
 
 Contact Us: 10%
-(10%) The contact us form sends an email to the admin email.
-NEXT:
+DONE (10%) The contact us form sends an email to the admin email.
 https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid
--- Automated emails with Twilio SendGrid
-
 https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
 -- BadHeaderError to prevent attackers from adding headers
-
-
 https://www.youtube.com/watch?v=1ihn3iRXtsY
 
 DONE Admin Site: 25%
