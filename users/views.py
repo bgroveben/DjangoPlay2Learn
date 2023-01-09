@@ -71,7 +71,8 @@ def contact(request):
 #def vote(request, slug): replace slug with url?
 def vote(request, slug):
     customuser = request.customuser # The logged-in user (or AnonymousUser).
-    review = review.objects.get(slug=slug) # The review instance.
+    #review = review.objects.get(slug=slug) # The review instance.
+    review = review.objects.get(slug='{% users:reviewspage %}') # The review instance.
     data = json.loads(request.body) # Data from the JavaScript.
 
     # Set simple variables.
@@ -125,6 +126,7 @@ def vote(request, slug):
 
 class ReviewListView(ListView):
     model = ReviewModel
+    template_name = 'users/review_list.html'
 
 
 
@@ -136,8 +138,9 @@ class ReviewView(FormView, SuccessMessageMixin, LoginRequiredMixin):
     template_name = 'users/reviews.html'
     success_message = 'Review Submitted'
     form_class = ReviewForm
-    #success_url = reverse_lazy('users:reviewspage')
-    success_url = reverse_lazy('users')
+    #success_url = reverse_lazy('users:reviews')
+    success_url = reverse_lazy('users:reviewspage')
+    #success_url = reverse_lazy('users')
     #record_review(request)
     #vote(request)
 
