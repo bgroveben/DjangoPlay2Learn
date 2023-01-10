@@ -1,4 +1,11 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block title%}Contact{% endblock title %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
+{% block main %}
 <h1>It Works!</h1>
 
 <h2>Thank you for your inquiry</h2>
 <p>Your contact information and message was successfully submitted.</p>
+{% endblock main %}

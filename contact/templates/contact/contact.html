@@ -1,8 +1,9 @@
+{% extends "_base.html" %}
 {% load static %}
+{% block title%}Contact{% endblock title %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
-
-
+{% block main %}
 <h1>It Works!</h1>
 <h2>This is the contact page.</h2>
 <br />
@@ -11,3 +12,4 @@
    {{ form }}
    <input type="submit" value="Submit">
 </form>
+{% endblock main %}

@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'games.apps.GamesConfig',
     'users.apps.UsersConfig',
+    'review.apps.ReviewConfig'
 ]
 
 SITE_ID = 1 # django-allauth

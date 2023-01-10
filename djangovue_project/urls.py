@@ -68,4 +68,7 @@ urlpatterns = [
     path('', include("games.urls")),
     # Contact
     path('contact/', contact_views.contact_view, name='contact'),
+    # Review
+    #path('reviews/', include('reviews.urls')),
+    path('review/', include('review.urls')),
 ]
