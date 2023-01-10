@@ -9,6 +9,11 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
+NEXT:
+REVIEWS:
+https://docs.djangoproject.com/en/4.1/intro/tutorial03/
+
+
 Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
@@ -25,6 +30,9 @@ DONE (5%) Leaderboards exist for both games.
 (10%) Game tracking shows just the user’s scores.
 DONE (10%) Leaderboards shows all the scores.
 
+
+NEXT:
+https://docs.djangoproject.com/en/4.1/intro/tutorial03/
 Reviews: 10%
 (5%) Logged-in users can successfully leave reviews.
 --- ??? Only admin can leave reviews

@@ -3,11 +3,18 @@ import datetime
 
 
 class Game(models.Model):
+    id= models.CharField(max_length=20,primary_key=True,serialize=False,
+    verbose_name='Game ID')
     game = models.CharField(max_length=200)
     reviewed = models.DateTimeField('date reviewed')
 
+    def save(self,*args, **kwargs):
+        # because recursion is divine
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.game
+        #return self.game
+        return str(self.id)
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
@@ -15,6 +22,9 @@ class Game(models.Model):
 
 class Review(models.Model):
     #user = models.CharField(max_length=40, default="anonymous")
+    #id = models.IntegerField(primary_key=True)
+    id= models.CharField(max_length=20,primary_key=True,serialize=False,
+    verbose_name='Review ID')
     user = models.CharField(max_length=40)
     # customuser
     #review_date = models.DateTimeField(default=timezone.now())
@@ -27,13 +37,15 @@ class Review(models.Model):
     )
     votes = models.IntegerField(choices=rating)
     comment = models.TextField(max_length=4000)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    #game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey('Game', null=True, blank=True,
+    on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.game.title
+        # return self.game.title
         # return self.game
         # return self.votes
-        # return self.comment
+        return self.comment
         # return self.rating
 """
 class Question(models.Model):
