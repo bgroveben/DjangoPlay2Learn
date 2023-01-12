@@ -1,9 +1,37 @@
+import json
+from django.http import JsonResponse
+from django.views.generic import TemplateView
+
+from .models import Review
+
 from django.http import HttpResponse
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the review index.")
 
+
+def record_review(request):
+    data = json.loads(request.body)
+    username = data["username"]
+    game = data["game"]
+    votes = data["votes"]
+    comment = data["comment"]
+    new_review = Review(username=username, game=game, votes=votes, comment=comment)
+    new_review.save()
+    response = {"success": True}
+    return JsonResponse(response)
+
+
+class ReviewView(TemplateView):
+    template_name = "review/reviews.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.all()
+        #context['anagram_reviews'] = #Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
+        #context['math_reviews'] = #Review.objects.filter(game__exact='MATH').order_by('-votes')
+        return context
 
 """
 from django.shortcuts import render,redirect

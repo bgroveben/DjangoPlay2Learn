@@ -36,6 +36,9 @@
           <li class="nav-item ml-5 mr-3">
             <a class="nav-link" href="{% url 'games:game-scores' %}">Scores</a>
           </li>
+          <li class="nav-item ml-5 mr-3">
+            <a class="nav-link" href="{% url 'review' %}">Reviews</a>
+          </li>
           {% if not user.is_authenticated %}
           <li class="nav-item ml-5">
             <a class="nav-link" href="{% url 'account_login' %}">Log In</a>

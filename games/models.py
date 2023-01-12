@@ -17,7 +17,6 @@ class GameScores(models.Model):
 
     MATH = "MATH"
     ANAGRAM = "ANAGRAM"
-
     GAME_CHOICES = [
     (MATH,"Math Game"),
     (ANAGRAM, "Anagram Game")

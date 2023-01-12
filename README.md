@@ -8,11 +8,22 @@ Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
+??? Switch back to sqlite3 ???
 
 NEXT:
 REVIEWS:
+Try using models and views from games app.
 https://docs.djangoproject.com/en/4.1/intro/tutorial03/
+-- Comment action – handles posting comments to a given entry.
+generate id for games and reviews when they are submitted
 
+REVIEWS -- SUBMIT FORM AND RECORD COMMENT AND VOTES
+Lesson 2:22 Creating and Updating Jokes
+/jokes/ ~= /users/
+set up slugs
+check models -> Joke Model = Review Model -> question=game, answer=comment
+                JokeListView = ReviewListView
+                JokeVoteAdmin -> 'joke' = 'review'
 
 Login and Registration: 25%
 DONE (10%) Users can register.
