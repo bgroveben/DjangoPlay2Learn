@@ -1,14 +1,25 @@
 import json
 from django.http import JsonResponse
 from django.views.generic import TemplateView
+from django.shortcuts import render, redirect
 
 from .models import Review
+from .forms import ReviewForm
 
 from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the review index.")
+    #return HttpResponse("Hello, world. You're at the review index.")
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #return render(request, 'review/reviews.html')
+            return redirect('review')
+    form = ReviewForm()
+    context = {'form': form}
+    return render(request, 'review/home.html', context)
 
 
 def record_review(request):
