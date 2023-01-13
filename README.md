@@ -12,10 +12,7 @@ You can use the JavaScript games you've created in previous projects.
 
 NEXT:
 REVIEWS:
-Try using models and views from games app.
-https://docs.djangoproject.com/en/4.1/intro/tutorial03/
--- Comment action – handles posting comments to a given entry.
-generate id for games and reviews when they are submitted
+
 
 REVIEWS -- SUBMIT FORM AND RECORD COMMENT AND VOTES
 Lesson 2:22 Creating and Updating Jokes
@@ -43,7 +40,10 @@ DONE (10%) Leaderboards shows all the scores.
 
 
 NEXT:
+Try using models and views from games app.
 https://docs.djangoproject.com/en/4.1/intro/tutorial03/
+-- Comment action – handles posting comments to a given entry.
+generate id for games and reviews when they are submitted
 Reviews: 10%
 (5%) Logged-in users can successfully leave reviews.
 --- ??? Only admin can leave reviews

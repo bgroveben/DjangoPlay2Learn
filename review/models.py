@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.conf import settings
 
 
 # Try removing Game model and putting everything into the review model
@@ -39,7 +40,11 @@ class Review(models.Model):
         (4,4),
         (5,5)
     )
-    username = models.TextField()
+    #username = models.TextField()
+    username = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name='reviews'
+    )
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
     #game_id = models.TextField(choices=GAME_CHOICES, default=1)
     #game_id = models.TextField(choices=GAME_CHOICES, default="Math Game")
