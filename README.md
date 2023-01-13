@@ -10,10 +10,6 @@ You can use the JavaScript games you've created in previous projects.
 
 ??? Switch back to sqlite3 ???
 
-
-
-
-
 NEXT:
 REVIEWS:
 Try using models and views from games app.

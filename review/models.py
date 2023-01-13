@@ -25,15 +25,11 @@ class Game(models.Model):
 
 class Review(models.Model):
 
-    #MATH = "MATH"
-    #ANAGRAM = "ANAGRAM"
-    #MATH = 1
-    #ANAGRAM = 2
+    MATH = "MATH"
+    ANAGRAM = "ANAGRAM"
     GAME_CHOICES = [
-    (1, 'Math Game'),
-    (2, 'Anagram Game')
-    #(MATH,"Math Game"),
-    #(ANAGRAM, "Anagram Game")
+    (MATH,"Math Game"),
+    (ANAGRAM, "Anagram Game")
     ]
 
     RATING = (
@@ -43,14 +39,17 @@ class Review(models.Model):
         (4,4),
         (5,5)
     )
-    user = models.TextField()
+    username = models.TextField()
+    game = models.TextField(choices=GAME_CHOICES, default=MATH)
     #game_id = models.TextField(choices=GAME_CHOICES, default=1)
     #game_id = models.TextField(choices=GAME_CHOICES, default="Math Game")
-    game_id = models.IntegerField(choices=GAME_CHOICES, default=1)
+    #game_id = models.IntegerField(choices=GAME_CHOICES, default=1)
     votes = models.IntegerField(choices=RATING)
     comment = models.TextField(max_length=3000)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     #id = models.CharField(max_length=20)
-    id = models.CharField(max_length=20,primary_key=True)
+    #id = models.CharField(max_length=20,primary_key=True)
     #user = models.CharField(max_length=40, default="anonymous")
     # review_id = models.IntegerField(primary_key=True)
     # id = models.CharField(max_length=20,primary_key=True,serialize=False,
@@ -60,7 +59,7 @@ class Review(models.Model):
     #review_date = models.DateTimeField(default=timezone.now())
     #game = models.ForeignKey('Game', null=True, blank=True,
     #on_delete=models.CASCADE)
-    # game = models.TextField(choices=GAME_CHOICES, default=MATH)
+
 
     #def __str__(self):
         # return self.game.title

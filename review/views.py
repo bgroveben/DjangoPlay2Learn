@@ -29,8 +29,8 @@ class ReviewView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ReviewView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.all()
-        #context['anagram_reviews'] = #Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
-        #context['math_reviews'] = #Review.objects.filter(game__exact='MATH').order_by('-votes')
+        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
+        context['math_reviews'] = Review.objects.filter(game__exact='MATH').order_by('-votes')
         return context
 
 """

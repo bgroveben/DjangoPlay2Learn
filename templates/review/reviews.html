@@ -7,9 +7,41 @@
       <ol>
         {% for review in reviews %}
         <li>
+          Game: {{ review.game }} --
           Votes: {{ review.votes }} ---
           Comment: {{ review.comment }}
+          Username: {{ review.username }} ---
+          Recorded: {{ review.created }}
         </li>
         {% endfor %}
       </ol>
+    </div>
+    <div>
+      <h2>Anagram Hunt</h2>
+      <ol>
+        {% for review in anagram_reviews %}
+        <li>
+          Game: {{ review.game }} --
+          Votes: {{ review.votes }} ---
+          Comment: {{ review.comment }}
+          Username: {{ review.username }} ---
+          Recorded: {{ review.created }}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div>
+      <h2>Math Facts</h2>
+      <ol>
+        {% for review in math_reviews %}
+        <li>
+          Game: {{ review.game }} --
+          Votes: {{ review.votes }} ---
+          Comment: {{ review.comment }}
+          Username: {{ review.username }} ---
+          Recorded: {{ review.created }}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
 {% endblock main %}
