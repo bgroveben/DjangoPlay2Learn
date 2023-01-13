@@ -107,14 +107,15 @@ WSGI_APPLICATION = 'djangovue_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-"""
+}
 
+"""
 # also in local_settings.py
 DATABASES = {
     'default': {
@@ -126,7 +127,7 @@ DATABASES = {
         'PORT': 5432
     }
 }
-
+"""
 
 # EMAIL
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
@@ -172,7 +173,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # project. It defaults to 'auth.User'. This code overrides that default to
 # set it to the CustomUser class.
 AUTH_USER_MODEL = 'users.CustomUser'
-# AUTH_USER_MODEL = 'auth.User'
+#AUTH_USER_MODEL = 'auth.User'
 #LOGIN_URL = 'account_login'
 LOGIN_URL = reverse_lazy('account:login')
 # LOGIN_REDIRECT_URL = '/'
