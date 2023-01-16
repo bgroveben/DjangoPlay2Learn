@@ -9,6 +9,10 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
+Game tracking:
+https://stackoverflow.com/questions/64017057/how-to-get-user-object-using-username-in-django-template
+
+
 Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.

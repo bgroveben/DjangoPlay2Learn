@@ -1,8 +1,45 @@
 {% extends "_base.html" %}
+{% load filters %}
 
 {% block title%}Game Scores{% endblock title %}
 {% block main %}
   <h1 class="text-center">Game Scores</h1>
+  <!--<h4>queryset: {{ queryset }}</h4>-->
+  <!--<h4>username: {{ username }}</h4>-->
+    <div>
+      {% if user.is_authenticated %}
+      <h2>My Scores</h2>
+        <ol>
+          {% for score in myscores %}
+            <li>
+              Score: {{ score.score }} ---
+              Username: {{ score.username }} ---
+              Recorded: {{ score.created }} ---
+              Max Number: {{ score.maxnum }} ---
+              Game Length: {{ score.gamelength }} ---
+              Operation: {{ score.operation }}
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </div>
+    <div>
+      {% if user.is_authenticated %}
+      <h2>All Scores</h2>
+        <ol>
+          {% for score in allscores %}
+            <li>
+              Score: {{ score.score }} ---
+              Username: {{ score.username }} ---
+              Recorded: {{ score.created }} ---
+              Max Number: {{ score.maxnum }} ---
+              Game Length: {{ score.gamelength }} ---
+              Operation: {{ score.operation }}
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </div>
     <div>
       <h2>Math Facts</h2>
       <ol>

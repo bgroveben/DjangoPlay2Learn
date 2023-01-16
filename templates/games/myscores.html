@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+{% load filters %}
+
+{% block title%}Game Scores{% endblock title %}
+{% block main %}
+  <h1 class="text-center">My Scores</h1>
+    <div>
+      <ol>
+        {% for score in game_scores %}
+        <li>
+          Score: {{ score.score }} ---
+          Username: {{ score.username }} ---
+          Recorded: {{ score.created }} ---
+          Max Number: {{ score.maxnum }} ---
+          Game Length: {{ score.gamelength }} ---
+          Operation: {{ score.operation }}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+
+{% endblock main %}

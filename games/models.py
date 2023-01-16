@@ -29,4 +29,6 @@ class GameScores(models.Model):
     maxnum = models.TextField() # only needed for math facts
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
 
+    #def __str__(self):
+        #return self.username
     # https://stackoverflow.com/users/saves/4806473

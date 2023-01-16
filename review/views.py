@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .models import Review
 from .forms import ReviewForm
 
-from django.http import HttpResponse
+#from django.http import HttpResponse
 
 
 def index(request):

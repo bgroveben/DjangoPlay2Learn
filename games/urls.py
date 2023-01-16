@@ -9,4 +9,5 @@ urlpatterns = [
     path('games/', GamesView.as_view(), name='games'),
     path('game-scores/', GameScoresView.as_view(), name='game-scores'),
     path('record-score/', record_score, name="record-score"),
+    #path('myscores/', record_score, name="myscores"),
 ]
