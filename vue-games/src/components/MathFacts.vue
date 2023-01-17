@@ -18,7 +18,7 @@
             <strong class="h3">You Answered</strong>
             <div class="display-2">{{score}}</div>
             <strong class="h3">Questions Correctly</strong>
-
+            <!--
             <div>
               <label for="username">Username</label>
               <input name="username" id="username" v-model="username" />
@@ -28,11 +28,9 @@
               <input name="score" id="score" v-model="score" />
             </div>
             <div>
-            <!--<button @click="recordScore">Record Score</button>-->
             <button v-on:click="recordScore()">Record Score</button>
-            <!--<button>Record Score</button>-->
             </div>
-
+            -->
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
               v-on:click="restart()">
                 Play Again
@@ -131,10 +129,10 @@
         console.log(response);
         console.log(data);
         console.log(data.username);
-        //window.location.replace("http://www.w3schools.com");
-        window.location.replace("/game-scores/");
+        //window.location.replace("/game-scores/");  redirect to scores page
       },
       config() {
+        this.recordScore();
         this.screen = "config";
       },
       play() {
@@ -215,6 +213,7 @@
         }
       },
       restart() {
+        this.recordScore();
         this.score = 0;
         this.startTimer();
         this.newQuestion();

@@ -19,7 +19,7 @@
             <strong class="h3">You Answered</strong>
             <div class="display-2">{{score}}</div>
             <strong class="h3">Questions Correctly</strong>
-
+            <!--
             <div>
               <label for="username">Username</label>
               <input name="username" id="username" v-model="username" />
@@ -31,6 +31,7 @@
             <div>
             <button v-on:click="recordScore()">Record Score</button>
             </div>
+          -->
 
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
               v-on:click="restart()">
@@ -132,7 +133,7 @@
         const response = (await this.axios.post("/record-score/", data)).data;
         console.log(response);
         console.log(data);
-        window.location.replace("/game-scores/");
+        // window.location.replace("/game-scores/"); redirect to scores page
       },
       chooseAnagram() {
         if (this.outerArray.length === 0 && this.randomOuter.length === 0) {
@@ -180,6 +181,7 @@
           this.$nextTick(() => this.$refs.answer.focus());
       },
       config() {
+        this.recordScore();
         this.screen = "config";
       },
       chooseWordLength() {
@@ -233,6 +235,7 @@
         }
       },
       restart() {
+        this.recordScore();
         this.score = 0;
          // Deep Copy
         this.anagrams = JSON.parse(JSON.stringify(Object.values(anagrams)));
