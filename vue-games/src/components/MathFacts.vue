@@ -73,6 +73,8 @@
         </template>
       </transition>
     </div>
+    <br />
+    <br />
   </main>
 </template>
 

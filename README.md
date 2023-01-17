@@ -9,6 +9,10 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
+NEXT: CAROUSEL
+-- try to do it in just the view and template using homepage url
+-- https://stackoverflow.com/questions/27219078/bootstrap-carousel-implementation-in-django
+
 Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
 -- users.models -> do I need ReviewModel, ReviewVote, or Comment?

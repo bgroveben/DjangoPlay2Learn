@@ -10,6 +10,7 @@ urlpatterns = [
     #path('success',views.success, name="success"),
     #path('rate/<int:id>',views.rate,name="rate"),
     #path('', views.index, name='index'),
+    #path('', HomeView.as_view(), name='homepage'),
     path('', views.index, name='review-index'),# http://127.0.0.1:8000/review/
     #path('', ReviewView.as_view(), name='review-index'),# http://127.0.0.1:8000/review/
     path('review/', ReviewView.as_view(), name='review'),

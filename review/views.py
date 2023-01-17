@@ -9,6 +9,15 @@ from .forms import ReviewForm
 #from django.http import HttpResponse
 
 
+# https://github.com/dubirajara/django_carousel_photos/blob/master/django_carousel/core/views.py
+def review_carousel(request):
+    queryset = Review.objects.all()
+    context = {
+        "reviews": queryset,
+    }
+    return render(request, 'home.html', context)
+
+
 def index(request):
     #return HttpResponse("Hello, world. You're at the review index.")
     if request.method == 'POST':
@@ -34,6 +43,9 @@ def record_review(request):
     return JsonResponse(response)
 
 
+#class HomeView(TemplateView):
+    #template_name = "home.html"
+
 class ReviewView(TemplateView):
     template_name = "review/reviews.html"
 
@@ -43,6 +55,7 @@ class ReviewView(TemplateView):
         context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
         context['math_reviews'] = Review.objects.filter(game__exact='MATH').order_by('-votes')
         return context
+
 
 """
 from django.shortcuts import render,redirect

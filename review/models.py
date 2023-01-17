@@ -31,3 +31,8 @@ class Review(models.Model):
 
     #def __str__(self):  YAGNI?
         #return self.game.title
+        # return self.game
+
+    class Meta:
+        ordering = ["created"]
+        verbose_name = 'Review'
