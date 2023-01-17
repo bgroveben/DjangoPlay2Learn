@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView
 
 from .models import GameScores
-
+from review.models import Review
+from review.views import record_review
 
 def record_score(request):
     """
@@ -24,6 +25,13 @@ def record_score(request):
 
 class HomeView(TemplateView):
     template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.all()
+        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
+        context['math_reviews'] = Review.objects.filter(game__exact='MATH').order_by('-votes')
+        return context
 
 
 class GamesView(TemplateView):
