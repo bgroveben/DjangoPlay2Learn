@@ -130,7 +130,9 @@
         const response = (await this.axios.post("/record-score/", data)).data;  // why not "/game-score/" ?
         console.log(response);
         console.log(data);
-        console.log(data.username)
+        console.log(data.username);
+        //window.location.replace("http://www.w3schools.com");
+        window.location.replace("/game-scores/");
       },
       config() {
         this.screen = "config";

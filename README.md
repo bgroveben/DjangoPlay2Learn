@@ -9,24 +9,19 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-
 Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
--- users.models -> do I need ReviewModel, ReviewVote, or Comment?
 
 
 Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
 DONE (10%) Logged in users can edit their information in a My Account page.
-??? !!! Can users change their password, or does the POST request fail?
-!!! Click on email confirmation link => NoReverseMatch:
---- 'account' is not a registered namespace
 
 
 Game Tracking and Leaderboards: 30%
 !!! users can record each score more than once; needs redirect to leaderboard
-??? should anonymous users have scores added to the leaderboard?
+* AnonymousUser(s) have scores added to the leaderboard
 DONE (5%) Game tracking page exists for both games.
 DONE (5%) Leaderboards exist for both games.
 DONE (10%) Game tracking shows just the user’s scores.
@@ -38,10 +33,6 @@ DONE (5%) User reviews rotate in the slideshow on the homepage.
 
 Contact Us: 10%
 DONE (10%) The contact us form sends an email to the admin email.
-https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid
-https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend
--- BadHeaderError to prevent attackers from adding headers
-https://www.youtube.com/watch?v=1ihn3iRXtsY
 
 DONE Admin Site: 25%
 DONE (5%) Admin users can access the admin site.
@@ -54,6 +45,9 @@ Check the database tables shown in the assignment for help with models.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 BUGS BELOW
+
+!!! users can record each score more than once; needs redirect to leaderboard
+
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
 

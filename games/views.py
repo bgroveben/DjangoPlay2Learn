@@ -1,10 +1,14 @@
 import json
 from django.http import JsonResponse
 from django.views.generic import TemplateView
+from django.shortcuts import redirect
+#from django.core.urlresolvers import reverse
 
 from .models import GameScores
 from review.models import Review
 from review.views import record_review
+from review.forms import ReviewForm
+
 
 def record_score(request):
     """
@@ -20,12 +24,15 @@ def record_score(request):
     new_score = GameScores(username=username, game=game, score=score, maxnum=maxnum, gamelength=gamelength, operation=operation)
     new_score.save()
     response = {"success": True}
+    #redirect('')
+    #redirect(reverse(''))
     return JsonResponse(response)
 
 
 class HomeView(TemplateView):
     template_name = "home.html"
-
+    # For bootstrap carousel that shows reviews
+    # Even though this is the games app
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.all()

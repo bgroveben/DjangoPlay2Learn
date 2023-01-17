@@ -34,7 +34,7 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = CustomUserChangeForm
     success_message = 'Update Successful'
     template_name = 'account/my_account.html'
-    # AFTER UPDATE is clicked: Exceptioon
+    # AFTER UPDATE is clicked: Exception
     # Reverse for 'my_account' not found. 'my_account' is not a valid view function or pattern name.
     success_url = reverse_lazy('users:my_account')
 

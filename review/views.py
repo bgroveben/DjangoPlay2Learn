@@ -7,7 +7,6 @@ from .models import Review
 from .forms import ReviewForm
 
 
-
 def index(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
