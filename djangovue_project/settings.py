@@ -98,9 +98,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
             ],
             # template filters
-            'libraries':{
-                'filters': 'templates.filters',
-                }
+            #'libraries':{
+                #'filters': 'templates.filters',
+                #}
         },
     },
 ]

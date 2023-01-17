@@ -4,11 +4,12 @@ from games.views import HomeView, GamesView, GameScoresView, record_score, MySco
 
 app_name = 'games'
 urlpatterns = [
-    # send reviews to homepage
     path('', HomeView.as_view(), name='homepage'),
     path('games/', GamesView.as_view(), name='games'),
     path('game-scores/', GameScoresView.as_view(), name='game-scores'),
     path('myscores/', MyScoresView.as_view(), name='myscores'),
+    # unauthenticated users who visit /myscores/ will only see
+    # My Scores heading followed by blank screen
     path('record-score/', record_score, name="record-score"),
     #path('myscores/', record_score, name="myscores"),
 ]

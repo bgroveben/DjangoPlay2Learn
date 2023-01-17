@@ -11,6 +11,7 @@ You can use the JavaScript games you've created in previous projects.
 
 Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
+-- users.models -> do I need ReviewModel, ReviewVote, or Comment?
 
 
 Login and Registration: 25%
@@ -25,9 +26,9 @@ DONE (10%) Logged in users can edit their information in a My Account page.
 Game Tracking and Leaderboards: 30%
 !!! users can record each score more than once; needs redirect to leaderboard
 ??? should anonymous users have scores added to the leaderboard?
-TODO (5%) Game tracking page exists for both games.
+DONE (5%) Game tracking page exists for both games.
 DONE (5%) Leaderboards exist for both games.
-TODO (10%) Game tracking shows just the user’s scores.
+DONE (10%) Game tracking shows just the user’s scores.
 DONE (10%) Leaderboards shows all the scores.
 
 Reviews: 10%
