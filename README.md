@@ -9,9 +9,6 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT: CAROUSEL
--- try to do it in just the view and template using homepage url
--- https://stackoverflow.com/questions/27219078/bootstrap-carousel-implementation-in-django
 
 Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
@@ -37,7 +34,7 @@ DONE (10%) Leaderboards shows all the scores.
 
 Reviews: 10%
 DONE (5%) Logged-in users can successfully leave reviews.
-TODO (5%) User reviews rotate in the slideshow on the homepage.
+DONE (5%) User reviews rotate in the slideshow on the homepage.
 
 Contact Us: 10%
 DONE (10%) The contact us form sends an email to the admin email.

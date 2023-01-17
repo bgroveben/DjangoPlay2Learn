@@ -6,20 +6,9 @@ from django.shortcuts import render, redirect
 from .models import Review
 from .forms import ReviewForm
 
-#from django.http import HttpResponse
-
-
-# https://github.com/dubirajara/django_carousel_photos/blob/master/django_carousel/core/views.py
-def review_carousel(request):
-    queryset = Review.objects.all()
-    context = {
-        "reviews": queryset,
-    }
-    return render(request, 'home.html', context)
 
 
 def index(request):
-    #return HttpResponse("Hello, world. You're at the review index.")
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -42,9 +31,6 @@ def record_review(request):
     response = {"success": True}
     return JsonResponse(response)
 
-
-#class HomeView(TemplateView):
-    #template_name = "home.html"
 
 class ReviewView(TemplateView):
     template_name = "review/reviews.html"
