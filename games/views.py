@@ -47,39 +47,16 @@ class GamesView(TemplateView):
 class GameScoresView(TemplateView):
     # template filters -> {{ value|filter:arg }}
     template_name = "games/game-scores.html"
-    # https://docs.djangoproject.com/en/4.1/topics/class-based-views/generic-display/#viewing-subsets-of-objects:
-    #context_object_name = 'username'
-    #queryset = Publisher.objects.all()
 
-    # https://stackoverflow.com/questions/36950416/when-to-use-get-get-queryset-get-context-data-in-django
     def get_context_data(self, **kwargs):
         context = super(GameScoresView, self).get_context_data(**kwargs)
         context['game_scores'] = GameScores.objects.all()
         context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
         context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
         context['allscores'] = GameScores.objects.all().order_by('-username')
-        #context['myscores'] = GameScores.objects.filter(username='admin')
-        #context['username'] = GameScores.objects.all().filter(username='admin')
         context['myscores'] = GameScores.objects.all().filter(username=self.request.user)
-        #context['queryset'] = GameScores.objects.get_queryset()
         context['queryset'] = GameScores.objects.get_queryset().filter(username=self.request.user)
 
-        #context['username'] = GameScores.objects.all().filter(username)
-        #context['username'] = GameScores.objects.username
-        #context['username'] = self.kwargs['score']
-        #context['username'] = self.kwargs['pk']
-        #context['username'] = self.kwargs['username']
-        #context['data'] = self.kwargs.get({'kwargs':kwargs})
-        #context['data'] = GameScores.get_context_data(**kwargs)
-        #context['username'] = get_object_or_404(GameScores, username=self.kwargs.get('username'))
-
-        #context['myscores'] = GameScores.objects.filter(username=str(GameScores.username))
-        #context['myscores'] = GameScores.username
-        #context['myscores'] = GameScores.objects.filter(username__exact=GameScores.username)
-        #context['myscores'] = GameScores.objects.filter(username__exact=GameScores.username).order_by('-score')
-        #context['test'] = ['this is a test']
-        #context['myscores'] = GameScores.objects.filter(username__exact=request.user)
-        #context['myscores'] = GameScores.objects.filter(username__exact=GameScores.username).order_by('-score')
         return context
 
 
@@ -90,12 +67,11 @@ class MyScoresView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MyScoresView, self).get_context_data(**kwargs)
         context['game_scores'] = GameScores.objects.all()
-        context['myscores'] = GameScores.objects.filter(username='admin')
-        #context['myscores'] = #GameScores.objects.filter(username__exact=request.user)
-        #context['myscores'] = GameScores.objects.filter()
-        #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
-        #context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
-        #context['test'] = ['this is a test']
+        context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
+        context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
+        context['allscores'] = GameScores.objects.all().order_by('-username')
+        context['myscores'] = GameScores.objects.all().filter(username=self.request.user)
+        context['queryset'] = GameScores.objects.get_queryset().filter(username=self.request.user)
         return context
 
 """

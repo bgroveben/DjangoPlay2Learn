@@ -1,22 +1,67 @@
 {% extends "_base.html" %}
-{% load filters %}
 
 {% block title%}Game Scores{% endblock title %}
 {% block main %}
   <h1 class="text-center">My Scores</h1>
-    <div>
+  {% if user.is_authenticated %}
+  <div>
+    <h2>My Scores</h2>
       <ol>
-        {% for score in game_scores %}
-        <li>
-          Score: {{ score.score }} ---
-          Username: {{ score.username }} ---
-          Recorded: {{ score.created }} ---
-          Max Number: {{ score.maxnum }} ---
-          Game Length: {{ score.gamelength }} ---
-          Operation: {{ score.operation }}
-        </li>
+        {% for score in myscores %}
+          <li>
+            Score: {{ score.score }} ---
+            Username: {{ score.username }} ---
+            Recorded: {{ score.created }} ---
+            Max Number: {{ score.maxnum }} ---
+            Game Length: {{ score.gamelength }} ---
+            Operation: {{ score.operation }}
+          </li>
         {% endfor %}
       </ol>
-    </div>
-
+  </div>
+  <div>
+    <h2>All Scores</h2>
+      <ol>
+        {% for score in allscores %}
+          <li>
+            Score: {{ score.score }} ---
+            Username: {{ score.username }} ---
+            Recorded: {{ score.created }} ---
+            Max Number: {{ score.maxnum }} ---
+            Game Length: {{ score.gamelength }} ---
+            Operation: {{ score.operation }}
+          </li>
+        {% endfor %}
+      </ol>
+  </div>
+  <div>
+    <h2>Math Facts</h2>
+    <ol>
+      {% for score in math_scores %}
+      <li>
+        Score: {{ score.score }} ---
+        Username: {{ score.username }} ---
+        Recorded: {{ score.created }} ---
+        Max Number: {{ score.maxnum }} ---
+        Game Length: {{ score.gamelength }} ---
+        Operation: {{ score.operation }}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  <div>
+    <h2>Anagram Hunt</h2>
+    <ol>
+      {% for score in anagram_scores %}
+      <li>
+        Score: {{ score.score }} ---
+        Username: {{ score.username }} ---
+        Recorded: {{ score.created }} ---
+        Word Length: {{ score.maxnum }} ---
+        Game Length: {{ score.gamelength }}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endif %}
 {% endblock main %}

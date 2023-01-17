@@ -10,7 +10,7 @@ You can use the JavaScript games you've created in previous projects.
 
 
 Game tracking:
-https://stackoverflow.com/questions/64017057/how-to-get-user-object-using-username-in-django-template
+https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
 
 
 Login and Registration: 25%

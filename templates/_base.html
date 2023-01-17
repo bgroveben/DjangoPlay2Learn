@@ -72,6 +72,10 @@
   </header>
   <main>
     {% block main %}{% endblock %}
+    <div>
+      <br />
+      <br />
+    </div>
   </main>
   <footer class="fixed-bottom bg-light row">
       <div class="col">
@@ -85,6 +89,7 @@
             -->
             {% if user.is_authenticated %}
             <li><a class="nav-item"><a class="nav-link" href="{% url 'review-index' %}">Leave A Review</a></li>
+            <li><a class="nav-item"><a class="nav-link" href="{% url 'games:myscores' %}">Game Tracking</a></li>
             {% endif %}
             <!--<li><a class="nav-item"><a class="nav-link" href="{% url 'users:reviewspage' %}">Read Reviews</a></li>-->
             {% if user.is_superuser %}
