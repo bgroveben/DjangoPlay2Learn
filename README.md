@@ -44,6 +44,8 @@ DONE (10%) Admin users can update and delete user data.
 
 BUGS BELOW
 
+User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
+
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
 

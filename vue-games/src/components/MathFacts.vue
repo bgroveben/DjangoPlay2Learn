@@ -155,19 +155,37 @@
         this.input = '';
       },
       getRandNumbers(operator, low, high) {
+        /*
+        Not totally random, because the user would hate that.
+        Division by zero or subtraction with negative sums are out.
+        Division quotient shall have no remainder
+        */
         let num1 = randInt(low, high);
         let num2 = randInt(low, high);
-        const numHigh = Math.max(num1, num2);
-        const numLow = Math.min(num1, num2);
-
+        let numHigh = Math.max(num1, num2);
+        let numLow = Math.min(num1, num2);
+        while(num1 == num2) {
+          num1 = randInt(low, high);
+          numHigh = Math.max(num1, num2);
+          numLow = Math.min(num1, num2);
+        }
+        while(num1 == 0 || num1 == 0){
+          num1 = randInt(low, high);
+        }
+        while(num2 == 0 || num2 == 0){
+          num2 = randInt(low, high);
+        }
         if(operator === '-') { // Make sure higher num comes first
           num1 = numHigh;
           num2 = numLow;
+          //num1 = Math.max(num1, num2);
+          //num2 = Math.min(num1, num2);
         }
-
         if(operator === '/') {
-          if (num2 === 0) { // No division by zero
-            num2 = randInt(1, high);
+          while (num2 === 0) { // No division by zero -- do I need this?
+            num1 = numHigh;
+            num2 = numLow;
+            num2 = randInt(2, high);
           }
           num1 = (num1 * num2);
         }

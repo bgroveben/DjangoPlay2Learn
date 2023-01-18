@@ -1,12 +1,13 @@
+
 export function checkAnswer(input,correctAnswer) {
- 
-  
+
+
   let fullAnswer = String(input);
-    
-  if (parseInt(fullAnswer) !== correctAnswer) { 
-     
+
+  if (parseInt(fullAnswer) !== correctAnswer) {
+
       return false;
-    
+
   } else { //answer is correct
 
         return true;
@@ -66,7 +67,3 @@ export function getCorrectAnswer(oper,num1,num2) {
       return;
   }
 }
-
-
-
-  
