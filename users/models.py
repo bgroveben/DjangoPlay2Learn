@@ -84,15 +84,15 @@ class DjangoContentType(models.Model):
         unique_together = (('app_label', 'model'),)
 
 
-#class DjangoMigrations(models.Model):
-    #id = models.BigAutoField(primary_key=True)
-    #app = models.CharField(max_length=255)
-    #name = models.CharField(max_length=255)
-    #applied = models.DateTimeField()
+class DjangoMigrations(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
 
-    #class Meta:
-        #managed = False
-        #db_table = 'django_migrations'
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
 
 
 class DjangoSession(models.Model):
@@ -176,6 +176,7 @@ class CustomUserPermissions(models.Model):
 # class ReviewUpdate(Review) ?
 # class ReviewDelete(Review) ?
 # Why do I have this in addition to the Review model above? Subclass?
+
 class ReviewModel(models.Model):
     """
     review = Review(
@@ -186,27 +187,15 @@ class ReviewModel(models.Model):
         created=datetime.now(),
         updated=datetime.now())
     """
-    #vote = models.SmallIntegerField()
-    #comment = models.TextField(max_length=200)
-    #game = models.TextField(max_length=200)
-    #comment = models.TextField(max_length=100, blank=True)
-    #game = models.CharField(max_length=20)
+
     game = models.TextField(max_length=200)
     comment = models.TextField(max_length=100, blank=True)
     customuser = models.ForeignKey(
             CustomUser,
-            on_delete=models.CASCADE)#,
-            #related_name='reviewmodel')
-    #category = models.ForeignKey(
-        #'Category', on_delete=models.PROTECT, related_name='jokes'
-    #)
-    #tags = models.ManyToManyField('Tag', blank=True, related_name='jokes')
+            on_delete=models.CASCADE)
     slug = models.SlugField(
         max_length=50, unique=True, null=False, editable=False
     )
-    #slug = models.SlugField(
-        #max_length=50, editable=False
-    #)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -250,10 +239,7 @@ class ReviewModel(models.Model):
         return result
 
 
-    #def get_absolute_url(self):
-        #return reverse('jokes:detail', args=[self.slug])
     def get_absolute_url(self):
-        #return reverse('users:reviewspage', args=[self.slug])
         return reverse('users', args=[self.slug])
 
     def save(self, *args, **kwargs):
@@ -267,57 +253,7 @@ class ReviewModel(models.Model):
     def __str__(self):
         return self.game
 
-    # def __str__(self):
-    #   return str(self.id)
-
-    # def get_review(self):
-    #   return self.review
 
     class Meta:
         #managed = False
         db_table = 'users_reviewmodel'
-
-
-# Why do I have this in addition to the Review model above? Subclass?
-class ReviewVote(models.Model):
-    customuser = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE,
-        related_name='reviewvotes'
-    )
-    review = models.ForeignKey(
-        ReviewModel, on_delete=models.CASCADE,
-        related_name='reviewvotes'
-    )
-    """
-
-    This means that Review and CustomUser instances will be able to access
-    their related ReviewVote instances via the reviewvotes property.
-    For example:
-    customuser.reviewvotes.count() would get the number of votes a user has made.
-    review.reviewvotes.count() would get the number of votes on a review.
-    """
-    vote = models.SmallIntegerField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['created']
-        #db_table = 'users_reviewvote'
-    #class Meta:
-        #constraints = [
-            #models.UniqueConstraint(
-                #fields=['user', 'joke'], name='one_vote_per_user_per_joke'
-            #)
-        #]
-"""
-class Comment(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    #product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
-    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comments', related_query_name='comment')
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.title
-"""

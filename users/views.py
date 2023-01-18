@@ -10,7 +10,7 @@ from django.views.generic import FormView, TemplateView, UpdateView, ListView
 #    CreateView, DeleteView, DetailView, ListView, UpdateView
 #)
 from .forms import CustomUserChangeForm, ReviewForm
-from .models import CustomUser, ReviewModel, ReviewVote
+from .models import CustomUser, ReviewModel
 
 
 # Each view is responsible for doing one of two things: Returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
