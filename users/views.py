@@ -13,17 +13,6 @@ from .forms import CustomUserChangeForm, ReviewForm
 from .models import CustomUser, ReviewModel, ReviewVote
 
 
-"""
-# https://www.youtube.com/watch?v=reFJ9hBLFUY
-def Review_rate(request):
-    if request.method == 'GET':
-        comment = request.GET.get('comment')
-        ...
-        review = Reviews(vote=vote, game=game, comment=comment, customuser=customuser, created=created, updated=updated)
-        review.save()
-        return redirect('?', x=x)
-"""
-
 # Each view is responsible for doing one of two things: Returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
 # https://docs.djangoproject.com/en/4.1/intro/tutorial03/#write-views-that-actually-do-something
 

@@ -309,7 +309,7 @@ class ReviewVote(models.Model):
                 #fields=['user', 'joke'], name='one_vote_per_user_per_joke'
             #)
         #]
-
+"""
 class Comment(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -320,3 +320,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.title
+"""
