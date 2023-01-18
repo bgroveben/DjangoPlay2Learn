@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load common_filters %}
 
 {% block title%}Game Scores{% endblock title %}
 {% block main %}
@@ -12,7 +13,7 @@
           Recorded: {{ score.created }} ---
           Max Number: {{ score.maxnum }} ---
           Game Length: {{ score.gamelength }} ---
-          Operation: {{ score.operation }}
+          Operation: {{ score.operation|swap }}
         </li>
         {% endfor %}
       </ol>

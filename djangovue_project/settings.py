@@ -101,6 +101,10 @@ TEMPLATES = [
             #'libraries':{
                 #'filters': 'templates.filters',
                 #}
+            # template filters
+            'libraries':{
+                'common_filters': 'common.templatetags.common_filters',
+                }
         },
     },
 ]

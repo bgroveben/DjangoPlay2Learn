@@ -20,7 +20,6 @@ DONE (10%) Logged in users can edit their information in a My Account page.
 
 
 Game Tracking and Leaderboards: 30%
-!!! users can record each score more than once; needs redirect to leaderboard
 * AnonymousUser(s) have scores added to the leaderboard
 DONE (5%) Game tracking page exists for both games.
 DONE (5%) Leaderboards exist for both games.
@@ -40,13 +39,10 @@ DONE (10%) Admin users can view user data.
 DONE (10%) Admin users can update and delete user data.
 
 
-Check the database tables shown in the assignment for help with models.
 {% startbugs %}
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 BUGS BELOW
-
-!!! users can record each score more than once; needs redirect to leaderboard
 
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
