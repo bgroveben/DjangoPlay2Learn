@@ -5,11 +5,11 @@ from django.conf import settings
 
 class Review(models.Model):
 
-    MATH = "MATH"
-    ANAGRAM = "ANAGRAM"
+    MATH = "MATH FACTS"
+    ANAGRAM = "ANAGRAM HUNT"
     GAME_CHOICES = [
-    (MATH,"Math Game"),
-    (ANAGRAM, "Anagram Game")
+    (MATH, "Math Facts"),
+    (ANAGRAM, "Anagram Hunt")
     ]
 
     RATING = (
@@ -25,13 +25,13 @@ class Review(models.Model):
     )
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
     votes = models.IntegerField(choices=RATING)
-    comment = models.TextField(max_length=3000)
+    comment = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    #def __str__(self):  YAGNI?
+    def __str__(self):
         #return self.game.title
-        # return self.game
+        return self.game
 
     class Meta:
         ordering = ["created"]

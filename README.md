@@ -27,6 +27,7 @@ DONE (10%) Game tracking shows just the user’s scores.
 DONE (10%) Leaderboards shows all the scores.
 
 Reviews: 10%
+-- Have username recorded automagically when form is submitted
 DONE (5%) Logged-in users can successfully leave reviews.
 DONE (5%) User reviews rotate in the slideshow on the homepage.
 
@@ -43,6 +44,8 @@ DONE (10%) Admin users can update and delete user data.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 BUGS BELOW
+
+User can choose any username on Review form.
 
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
 

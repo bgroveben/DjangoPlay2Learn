@@ -7,9 +7,9 @@
 
 {% block title %}Home{% endblock title %}
 {% block main %}
-  <h1 class="text-center">Home</h1>
-  <h2 class="text-center">Reviews Carousel</h2>
-  
+  <h1 class="text-center">DjangoPlay2Learn</h1>
+  <!--<h2 class="text-center">Reviews Carousel</h2>-->
+
   <!-- CAROUSEL -->
   <div class="carousel slide" id="homepage-carousel" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
@@ -20,37 +20,14 @@
           <div class="carousel-item">
         {% endif %}
         <blockquote>
-          <!-- <h2>{{ review.game }}</h2>  MATH or ANAGRAM -->
+          <h2>{{ review.game }}</h2>  <!-- MATH or ANAGRAM -->
           <h4>{{ review.comment }}</h4>
           <p>{{ review.username }} -- {{ review.created }}</p>
         </blockquote>
-          </div>
+      </div> <!-- for carousel-item above -->
       {%endfor%}
-          </div>
-      <!-- CAROUSEL CONTROLS
-      <a class="left carousel-control" href="#demo-carousel" role="button" data-slide="prev">
-        <span class="icon-prev"></span><span class="sr-only">Previous</span></a>
-      <a class="right carousel-control" href="#demo-carousel" role="button" data-slide="next">
-        <span class="icon-next"></span><span class="sr-only">Next</span></a>
-      -->
+      </div> <!-- for carousel-item active above -->
     </div>
-    <br />
-    <br />
   </div>
   <!-- END CAROUSEL -->
-
-  <h3>Reviews List</h3>
-    <div>
-      <ol>
-        {% for review in reviews %}
-        <li>
-          Game: {{ review.game }} --
-          Comment: {{ review.comment }}
-          Username: {{ review.username }} ---
-          Recorded: {{ review.created }}
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
-    <div>
 {% endblock main %}

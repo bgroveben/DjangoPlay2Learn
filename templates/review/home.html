@@ -1,15 +1,16 @@
 {% extends "_base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 {% block title%}Review{% endblock title %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
 {% block main %}
-<h1 class="text-center">Review</h1>
-<h2>This is the page where the user posts a review</h2>
+<h1 class="text-center">Leave A Review</h1>
 <br />
 <form action="" method="post">
    {% csrf_token %}
-   {{ form }}
+   {{ form|crispy }}
    <input type="submit" value="Submit">
 </form>
 <br />

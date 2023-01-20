@@ -8,12 +8,23 @@ from .forms import ReviewForm
 
 
 def index(request):
+    #instance = ReviewForm.objects.filter(user=request.username).first()
     if request.method == 'POST':
+        #form = ReviewForm(request.POST, instance=instance)
         form = ReviewForm(request.POST)
         if form.is_valid():
-            form.save()
+            sendreview = form.save(commit=False)
+            # automagically get username for review
+            sendreview.username = request.user
+            sendreview.save()
+            #form.save()
             #return render(request, 'review/reviews.html')
             return redirect('review')
+        #else:
+            #return redirect(?)
+    #else:
+        #form = ReviewForm(instance=instance)
+        #return render(request, '?', {'form': form})
     form = ReviewForm()
     context = {'form': form}
     return render(request, 'review/home.html', context)
@@ -21,11 +32,13 @@ def index(request):
 
 def record_review(request):
     data = json.loads(request.body)
-    username = data["username"]
+    #username = data["username"]
+    #username = models.Review.objects.get(id="username_id")
+    #username = request.user
     game = data["game"]
     votes = data["votes"]
     comment = data["comment"]
-    new_review = Review(username=username, game=game, votes=votes, comment=comment)
+    new_review = Review(username=request.user, game=game, votes=votes, comment=comment)
     new_review.save()
     response = {"success": True}
     return JsonResponse(response)
@@ -37,8 +50,8 @@ class ReviewView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ReviewView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.all()
-        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
-        context['math_reviews'] = Review.objects.filter(game__exact='MATH').order_by('-votes')
+        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
+        context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
         return context
 
 

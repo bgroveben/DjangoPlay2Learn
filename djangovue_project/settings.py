@@ -68,6 +68,7 @@ SITE_ID = 1 # django-allauth
 #ACCOUNT_EMAIL_REQUIRED = True  See AUTHENTICATION SETTINGS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # django-crispy-forms
+#CRISPY_TEMPLATE_PACK = 'bootstrap5' # django-crispy-forms
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

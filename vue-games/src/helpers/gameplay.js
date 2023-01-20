@@ -35,6 +35,7 @@ export function getRandNumbers(operator,low,high) {
 }
 
 export function randInt(low, high, weighted=false) {
+  // set low=2 so 0 and 1 are excluded?
   var rndDec = Math.random();
   if (!weighted) {
     return Math.floor(rndDec * (high - low + 1) + low);
