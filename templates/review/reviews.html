@@ -3,6 +3,7 @@
 {% block title%}Reviews{% endblock title %}
 {% block main %}
   <h1 class="text-center">Reviews</h1>
+  <!--
   <h2 class="text-center">All Reviews</h2>
   <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
     <div class="list-group list-group-flush">
@@ -19,7 +20,8 @@
       </div>
     </div
     <div>
-        <h2 class="text-center">Anagram Hunt</h2>
+    -->
+        <h3 class="ms-5 ps-5">Anagram Hunt</h3>
         <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
           <div class="list-group list-group-flush">
             {% for review in anagram_reviews %}
@@ -50,7 +52,7 @@
 -->
     </div>
     <div>
-      <h2 class="text-center">Math Facts</h2>
+      <h3 class="ms-5 ps-5">Math Facts</h3>
       <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
         <div class="list-group list-group-flush">
           {% for review in math_reviews %}

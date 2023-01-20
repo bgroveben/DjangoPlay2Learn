@@ -7,8 +7,8 @@
 
 {% block title %}Home{% endblock title %}
 {% block main %}
-  <h1 class="text-center">DjangoPlay2Learn</h1>
-  <!--<h2 class="text-center">Reviews Carousel</h2>-->
+  <h1 class="ms-5">DjangoPlay2Learn</h1>
+  <h3 class="text-center">Player Reviews:</h3>
 
   <!-- CAROUSEL -->
   <div class="carousel slide" id="homepage-carousel" data-ride="carousel">
@@ -19,11 +19,16 @@
         {% else %}
           <div class="carousel-item">
         {% endif %}
-        <blockquote>
-          <h2>{{ review.game }}</h2>  <!-- MATH or ANAGRAM -->
+        <!--<blockquote>-->
+        <div class="card border-primary m-auto mb-3 p-3 text-center" style="max-width: 50rem">
+          <h3>{{ review.game }}</h3>  <!-- MATH or ANAGRAM -->
+          <hr />
           <h4>{{ review.comment }}</h4>
-          <p>{{ review.username }} -- {{ review.created }}</p>
-        </blockquote>
+          <h5>-- {{ review.username }}</h5>
+          <p>{{ review.created }}</p>
+          <hr />
+        </div>
+        <!--</blockquote>-->
       </div> <!-- for carousel-item above -->
       {%endfor%}
       </div> <!-- for carousel-item active above -->
