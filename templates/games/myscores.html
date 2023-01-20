@@ -5,8 +5,34 @@
 {% block main %}
   <h1 class="text-center">My Scores</h1>
   {% if user.is_authenticated %}
-  <div>
-    <h2>My Scores</h2>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container col-md-8">
+        <!--<h2>Math Facts</h2>-->
+        <hr />
+        <ol class="text-center">
+        {% for score in myscores %}
+          <li class="h5">
+          <div class="row">
+            <!--<div class="col-md-4">
+              <p class="ms-3">{{ score.score }}  {{ score.username }}</p>
+            </div>-->
+            <div>
+              <p class="ms-5 h2">{{ score.score }} -> {{ score.username }}</p>
+              <p>
+                {{ score.operation|swap }} --
+                {{ score.created|date }} --
+                Max Number: {{ score.maxnum }} --
+                Game Length: {{ score.gamelength }}
+              </p>
+            </div>
+          </div>
+          </li>
+        <hr />
+        {% endfor %}
+        </ol>
+      </div>
+    </div>
+    <!--
       <ol>
         {% for score in myscores %}
           <li>
@@ -19,7 +45,9 @@
           </li>
         {% endfor %}
       </ol>
-  </div>
+    -->
+
+  <!--
   <div>
     <h2>All Scores</h2>
       <ol>
@@ -65,4 +93,5 @@
     </ol>
   </div>
   {% endif %}
+  -->
 {% endblock main %}
