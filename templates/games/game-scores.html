@@ -12,9 +12,6 @@
         {% for score in math_scores %}
           <li class="h5">
           <div class="row">
-            <!--<div class="col-md-4">
-              <p class="ms-3">{{ score.score }}  {{ score.username }}</p>
-            </div>-->
             <div>
               <p class="ms-5 h2">{{ score.score }} -> {{ score.username }}</p>
               <p>
@@ -40,9 +37,6 @@
         {% for score in anagram_scores %}
           <li class="h5">
           <div class="row">
-            <!--<div class="col-md-4">
-              <p class="ms-3">{{ score.score }}  {{ score.username }}</p>
-            </div>-->
             <div>
               <p class="ms-5 h2">{{ score.score }} -> {{ score.username }}</p>
               <p>
@@ -58,36 +52,4 @@
         </ol>
       </div>
     </div>
-      <!--
-      <ol>
-        {% for score in math_scores %}
-        <li>
-          Score: {{ score.score }} ---
-          Username: {{ score.username }} ---
-          Recorded: {{ score.created|date }} ---
-          Max Number: {{ score.maxnum }} ---
-          Game Length: {{ score.gamelength }} ---
-          Operation: {{ score.operation|swap }}
-        </li>
-        {% endfor %}
-      </ol>
-      -->
-    <!--
-    <div>
-      <h2>Anagram Hunt</h2>
-      <ol>
-        {% for score in anagram_scores %}
-        <li>
-          Score: {{ score.score }} ---
-          Username: {{ score.username }} ---
-          Recorded: {{ score.created }} ---
-          Word Length: {{ score.maxnum }} ---
-          Game Length: {{ score.gamelength }}
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
-    <br />
-    <br />
-    -->
 {% endblock main %}

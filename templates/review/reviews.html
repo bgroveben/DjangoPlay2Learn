@@ -3,59 +3,11 @@
 {% block title%}Reviews{% endblock title %}
 {% block main %}
   <h1 class="text-center">Reviews</h1>
-  <!--
-  <h2 class="text-center">All Reviews</h2>
-  <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
-    <div class="list-group list-group-flush">
-      {% for review in reviews %}
-        <ul class="list-group-item" style="list-style: none;">
-          <li class="text-center">
-            On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
-          </li>
-          <li class="my-2 pb-2">
-            "{{ review.comment }}"
-          </li>
-        </ul>
-      {% endfor %}
-      </div>
-    </div
     <div>
-    -->
-        <h3 class="ms-5 ps-5">Anagram Hunt</h3>
-        <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
-          <div class="list-group list-group-flush">
-            {% for review in anagram_reviews %}
-              <ul class="list-group-item" style="list-style: none;">
-                <li class="text-center">
-                  On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
-                </li>
-                <li class="my-2 pb-2">
-                  "{{ review.comment }}"
-                </li>
-              </ul>
-            {% endfor %}
-            </div>
-          </div
-          <div>
-<!--
-      <ol>
-        {% for review in anagram_reviews %}
-        <li>
-          Game: {{ review.game }} --
-          Votes: {{ review.votes }} ---
-          Comment: {{ review.comment }}
-          Username: {{ review.username }} ---
-          Recorded: {{ review.created }}
-        </li>
-        {% endfor %}
-      </ol>
--->
-    </div>
-    <div>
-      <h3 class="ms-5 ps-5">Math Facts</h3>
+      <h3 class="ms-5 ps-5">Anagram Hunt</h3>
       <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
         <div class="list-group list-group-flush">
-          {% for review in math_reviews %}
+          {% for review in anagram_reviews %}
             <ul class="list-group-item" style="list-style: none;">
               <li class="text-center">
                 On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
@@ -66,22 +18,23 @@
             </ul>
           {% endfor %}
           </div>
-      </div
-    <div>
-<!--
-      <ol>
-        {% for review in math_reviews %}
-        <li>
-          Game: {{ review.game }} --
-          Votes: {{ review.votes }} ---
-          Comment: {{ review.comment }}
-          Username: {{ review.username }} ---
-          Recorded: {{ review.created }}
-        </li>
-        {% endfor %}
-      </ol>
--->
+      </div>
     </div>
-
-
+    <div>
+    <h3 class="ms-5 ps-5">Math Facts</h3>
+    <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
+      <div class="list-group list-group-flush">
+        {% for review in math_reviews %}
+          <ul class="list-group-item" style="list-style: none;">
+            <li class="text-center">
+              On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
+            </li>
+            <li class="my-2 pb-2">
+              "{{ review.comment }}"
+            </li>
+          </ul>
+        {% endfor %}
+        </div>
+    </div>
+  </div>
 {% endblock main %}
