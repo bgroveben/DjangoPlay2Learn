@@ -32,9 +32,6 @@ def index(request):
 
 def record_review(request):
     data = json.loads(request.body)
-    #username = data["username"]
-    #username = models.Review.objects.get(id="username_id")
-    #username = request.user
     game = data["game"]
     votes = data["votes"]
     comment = data["comment"]

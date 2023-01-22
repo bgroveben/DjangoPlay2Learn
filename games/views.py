@@ -31,8 +31,9 @@ def record_score(request):
 
 class HomeView(TemplateView):
     template_name = "home.html"
-    # For bootstrap carousel that shows reviews
+    # For the bootstrap carousel that shows reviews
     # Even though this is the games app
+    # Put the games on the home page with the carousel?
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.all()

@@ -12,6 +12,33 @@ You can use the JavaScript games you've created in previous projects.
 Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
 
+??? Put the games on the home page with the carousel?
+??? Organize reviews by created date? 
+
+NEXT: TESTS
+
+Django Testing Tutorial
+https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM
+
+* Use unittest
+* Use Django’s test client to establish that the correct template is being rendered and that the template is passed the correct context data.
+* Use RequestFactory to test view functions directly, bypassing the routing and middleware layers.
+* Use in-browser frameworks like Selenium to test rendered HTML and the behavior of web pages, namely JavaScript functionality. Django also provides special support for those frameworks; see the section on LiveServerTestCase for more details.
+
+It’s a good idea to run your tests with Python warnings enabled: python -Wa manage.py test. The -Wa flag tells Python to display deprecation warnings.
+!!! The test client does not require the web server to be running.
+
+The test client is not capable of retrieving web pages that are not powered by your Django project. Vue games should have separate tests, and only the part where Django talks to Vue needs testing.
+
+https://docs.djangoproject.com/en/4.1/intro/tutorial05/
+-- testing tutorial
+
+https://docs.djangoproject.com/en/4.1/topics/testing/tools/
+-- test client for GET, POST, HTTP response, chain of redirects, etc.
+
+Testing with django and selenium
+https://ordinarycoders.com/blog/article/testing-django-selenium
+
 
 Login and Registration: 25%
 DONE (10%) Users can register.
@@ -42,7 +69,7 @@ DONE (10%) Admin users can update and delete user data.
 
 {% startbugs %}
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+!!!!!! Don't forget to remove unused code!!!!!!
 BUGS BELOW
 
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
