@@ -41,8 +41,6 @@ https://docs.djangoproject.com/en/4.1/intro/tutorial05/
 https://docs.djangoproject.com/en/4.1/topics/testing/tools/
 -- test client for GET, POST, HTTP response, chain of redirects, etc.
 
-Testing with django and selenium
-https://ordinarycoders.com/blog/article/testing-django-selenium
 
 
 Login and Registration: 25%
