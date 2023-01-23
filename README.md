@@ -13,9 +13,14 @@ Game tracking:
 https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
 
 ??? Put the games on the home page with the carousel?
-??? Organize reviews by created date? 
+??? Organize reviews by created date?
+??? Make font sizes on scores pages smaller?
 
 NEXT: TESTS
+users, contact, games, review apps
+
+Functional tests:
+https://www.obeythetestinggoat.com/book/chapter_02_unittest.html#_the_python_standard_librarys_unittest_module
 
 Django Testing Tutorial
 https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM
@@ -79,6 +84,7 @@ https://django-allauth.readthedocs.io/en/latest/views.html
 
 -- Login, Signup, and Logout views
     -- non-authenticated users see an error when they try to view the my accounts page.
+    ??? Try if user.is_authenticated else clause
     Make sure that they can't get to /accounts/my-account/
     Redirect urls?
     http://127.0.0.1:8000/users/my_account/
