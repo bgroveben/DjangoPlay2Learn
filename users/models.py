@@ -139,6 +139,9 @@ class CustomUser(AbstractUser):
     def get_absolute_url(self):
         return reverse('my_account')
 
+    #def get_username(self):
+        #return self.username
+
     #def __str__(self): # Do I need this?
         #return f'{self.first_name} {self.last_name} ({self.username})'
 
