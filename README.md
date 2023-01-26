@@ -24,7 +24,8 @@ contact - started
 games - todo
 review - started
 
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing#views
+
 
 Functional tests:
 https://www.obeythetestinggoat.com/book/chapter_02_unittest.html#_the_python_standard_librarys_unittest_module
