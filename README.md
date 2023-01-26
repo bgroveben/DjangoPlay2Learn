@@ -17,7 +17,14 @@ https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get
 ??? Make font sizes on scores pages smaller?
 
 NEXT: TESTS
-users, contact, games, review apps
+functional - started
+common?
+users - todo
+contact - started
+games - todo
+review - started
+
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing
 
 Functional tests:
 https://www.obeythetestinggoat.com/book/chapter_02_unittest.html#_the_python_standard_librarys_unittest_module

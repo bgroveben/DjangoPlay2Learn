@@ -18,11 +18,12 @@ class GameScores(models.Model):
     (ANAGRAM, "Anagram Game")
     ]
     created = models.DateTimeField(auto_now_add=True) # time, for now
-    username = models.TextField()
+    username = models.TextField() # use ForeignKeyField with string repr?
     score = models.IntegerField()
     operation = models.TextField() # Game settings
     gamelength = models.TextField()
     maxnum = models.TextField() # only needed for math facts
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
 
-    #  ??? def __str__(self) ???
+    def __str__(self):
+        return self.username

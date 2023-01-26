@@ -104,7 +104,7 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
-
+"""
 class GamesGamescores(models.Model):
 
     id = models.BigAutoField(primary_key=True)
@@ -116,7 +116,7 @@ class GamesGamescores(models.Model):
     class Meta:
         managed = False
         db_table = 'games_gamescores'
-
+"""
 
 #class CustomUser(models.Model):
 class CustomUser(AbstractUser):
@@ -141,7 +141,8 @@ class CustomUser(AbstractUser):
 
     #def get_username(self):
         #return self.username
-
+    # def get_absolute_url(self):
+        # ???
     #def __str__(self): # Do I need this?
         #return f'{self.first_name} {self.last_name} ({self.username})'
 
