@@ -2,11 +2,13 @@ import json
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Review
 from .forms import ReviewForm
 
 
+@login_required
 def index(request):
     #instance = ReviewForm.objects.filter(user=request.username).first()
     if request.method == 'POST':

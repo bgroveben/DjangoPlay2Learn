@@ -35,18 +35,16 @@ class YourTestClass(TestCase):
 
 class TemplatesTest(TestCase):
     # Make sure templates, views, and urls match up
-    def test_uses_reviews_template(self):
-        response = self.client.get('/users/my-account/')
-        self.assertTemplateUsed(response, 'account/my-account.html')
-        self.assertTemplateUsed(response, '_base.html')
 
     def test_uses_reviews_template(self):
         response = self.client.get('/users/reviews/')
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/reviews.html')
         self.assertTemplateUsed(response, '_base.html')
 
     def test_uses_reviewspage_template(self):
         response = self.client.get('/users/reviewspage/')
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/reviewspage.html')
         self.assertTemplateUsed(response, '_base.html')
 
@@ -72,20 +70,3 @@ class CustomUserModelTest(TestCase):
         customuser = CustomUser.objects.get(id=1)
         field_label = customuser._meta.get_field('username').verbose_name
         self.assertEqual(field_label, 'username')
-        #pass
-    """
-     models line 140, in get_absolute_url
-    return reverse('my_account')
-
-    def test_get_absolute_url(self):
-        CustomUser.objects.create(
-                        username="TestUser",
-                        email="test@email.com",
-                        first_name="Test",
-                        last_name="User"
-                        )
-        customuser = CustomUser.objects.get(id=1)
-        #self.assertEqual(customuser.get_absolute_url(), '/users/customuser/1')
-        #self.assertEqual(customuser.get_absolute_url(), reverse('my_account'))
-        self.assertEqual(customuser.get_absolute_url(), '/users/my-account/')
-    """

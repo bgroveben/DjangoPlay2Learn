@@ -10,16 +10,10 @@ class ContactsTest(TestCase):
     User should be able to fill out and submit contact form
     POST request should be valid
     """
-    """
-    @classmethod
-    def setUpContactTest(cls):
-        data={'email': 'test@email.net', 'subject': 'Test Subject', 'message': 'This is a test message.'}
-        response = self.client.post('/contact/', data)
-        form = ContactForm(data=data)
-    """
 
     def test_uses_contact_templates(self):
         response = self.client.get('/contact/')
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact/contact.html')
         self.assertTemplateUsed(response, '_base.html')
 

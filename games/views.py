@@ -2,7 +2,6 @@ import json
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
-#from django.core.urlresolvers import reverse
 
 from .models import GameScores
 from review.models import Review
