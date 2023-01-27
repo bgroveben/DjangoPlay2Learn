@@ -10,8 +10,11 @@ from review.models import Review
 
 
 class ReviewsTest(TestCase):
-    # Make sure templates, views, and urls match up
-    # Only logged in users can submit a review
+    """
+    Make sure templates, views, and urls match up
+    Only logged in users can submit a review
+    View uses @login_required decorator
+    """
 
     def setUp(self):
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')

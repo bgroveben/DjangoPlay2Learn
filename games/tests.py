@@ -1,8 +1,14 @@
-from django.test import TestCase
-
+#import json
+#import unittest
+from django.test import TestCase# , RequestFactory
+#from django.test import Client
 from django.urls import reverse_lazy
 
+from datetime import datetime
+
 from users.models import CustomUser
+from .models import GameScores
+from .views import record_score, HomeView, GamesView, GameScoresView, MyScoresView
 
 
 class TemplatesTest(TestCase):
@@ -34,3 +40,15 @@ class TemplatesTest(TestCase):
         self.assertTemplateUsed(response, 'games/myscores.html')
         self.assertTemplateUsed(response, '_base.html')
         #self.assertTemplateUsed(response, '_base_vue.html') => fail
+
+"""
+class RecordGameScoresTest(TestCase):
+
+    def test_can_save_POST_request(self):
+        newscore = GameScores(username='admin', game='MATH', score=10, maxnum='50', gamelength='30', operation='+')
+        scoresdict = {'username':'admin', 'game':'MATH', 'score':10, 'maxnum':'50', 'gamelength':'30', 'operation':'+'}
+        gamescoresdict = GameScores(scoresdict)
+        #response = self.client.post('record_score', data=new_score)
+        response = self.client.post(reverse_lazy('games:record-score'), data=gamescoresdict)
+        print(newscore)
+"""
