@@ -11,11 +11,11 @@ class GameScores(models.Model):
     score for each game.
     """
 
-    MATH = "MATH"
-    ANAGRAM = "ANAGRAM"
+    MATH = "MATH FACTS"
+    ANAGRAM = "ANAGRAM HUNT"
     GAME_CHOICES = [
-    (MATH,"Math Game"),
-    (ANAGRAM, "Anagram Game")
+    (MATH, "Math Facts"),
+    (ANAGRAM, "Anagram Hunt")
     ]
     created = models.DateTimeField(auto_now_add=True) # time, for now
     username = models.TextField() # use ForeignKeyField with string repr?

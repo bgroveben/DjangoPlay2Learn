@@ -50,23 +50,35 @@ class TemplatesTest(TestCase):
 
 
 class CustomUserModelTest(TestCase):
-    """
-    @classmethod
-    def SetUpTestData(cls):
-        CustomUser.objects.create(
-                username="TestUser",
-                email="test@email.com",
-                first_name="Test",
-                last_name="User"
-                )
-    """
-    def test_username_label(self):
-        CustomUser.objects.create(
-                        username="TestUser",
-                        email="test@email.com",
-                        first_name="Test",
-                        last_name="User"
-                        )
+
+    def setUp(self):
+        # Create test user
+        testuser1 = CustomUser.objects.create_user(
+                            username='testuser1',
+                            password='1X<ISRUkw+tuK'
+                            )
+        testuser1.save()
+        login = self.client.login(username=testuser1,
+                                password='1X<ISRUkw+tuK'
+                                )
+
+    def test_field_labels(self):
         customuser = CustomUser.objects.get(id=1)
-        field_label = customuser._meta.get_field('username').verbose_name
-        self.assertEqual(field_label, 'username')
+        username_label = customuser._meta.get_field('username').verbose_name
+        self.assertEqual(username_label, 'username')
+        email_label = customuser._meta.get_field('email').verbose_name
+        self.assertEqual(email_label, 'email address')
+        first_name_label = customuser._meta.get_field('first_name').verbose_name
+        self.assertEqual(first_name_label, 'first name')
+        last_name_label = customuser._meta.get_field('last_name').verbose_name
+        self.assertEqual(last_name_label, 'last name')
+        dob_label = customuser._meta.get_field('dob').verbose_name
+        self.assertEqual(dob_label, 'Date of Birth')
+        avatar_label = customuser._meta.get_field('avatar').verbose_name
+        self.assertEqual(avatar_label, 'Your Image')
+
+    def test_customuser_model(self):
+        sample = CustomUser.objects.get(id=1)
+        #sample.save()
+        self.assertTrue(sample)
+        self.assertEqual(sample.username, 'testuser1')

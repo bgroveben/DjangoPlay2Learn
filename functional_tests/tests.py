@@ -1,7 +1,8 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 # from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-
+#import time
 import unittest
 
 
@@ -30,9 +31,49 @@ class WorksInChromeTest(unittest.TestCase):
         self.browser.get('http://127.0.0.1:8000/')
         self.assertIn('Home | DjangoPlay2Learn', self.browser.title)
 
-    #def test_find_contact_page(self):
-        #self.browser.get('http://127.0.0.1:8000/contact/')
-        #self.assertIn('Contact | DjangoPlay2Learn', self.browser.title)
+
+class UsersCanFindWebPages(unittest.TestCase):
+    # run locally at 'http://127.0.0.1:8000/'
+    def setUp(self):
+        self.browser = webdriver.Chrome()
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_can_find_home_page(self):
+        self.browser.get('http://127.0.0.1:8000/')
+        self.assertIn('Home | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_contact_page(self):
+        self.browser.get('http://127.0.0.1:8000/contact/')
+        self.assertIn('Contact | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_gamescores_page(self):
+        self.browser.get('http://127.0.0.1:8000/game-scores/')
+        self.assertIn('Game Scores | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_games_page(self):
+        self.browser.get('http://127.0.0.1:8000/games/')
+        self.assertIn('Games | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_myscores_page(self):
+        self.browser.get('http://127.0.0.1:8000/myscores/')
+        self.assertIn('My Scores | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_reviews_page(self):
+        self.browser.get('http://127.0.0.1:8000/review/review/')
+        self.assertIn('Reviews | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_login_page(self):
+        self.browser.get('http://127.0.0.1:8000/accounts/login/')
+        self.assertIn('Log in | DjangoPlay2Learn', self.browser.title)
+
+    def test_can_find_registration_page(self):
+        self.browser.get('http://127.0.0.1:8000/accounts/signup/')
+        self.assertIn('Register | DjangoPlay2Learn', self.browser.title)
+
+#def test_can_access_site(self):
+    #self.browser.get(self.live_server_url)
 """
 
 class ContactPageTest(unittest.TestCase):

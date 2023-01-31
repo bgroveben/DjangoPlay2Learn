@@ -12,7 +12,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
-from common.utils.text import unique_slug
+#from common.utils.text import unique_slug
 #from django.utils.text import slugify
 
 # It’s perfectly OK to relate a model to one from another app. To do this,
@@ -132,6 +132,8 @@ class CustomUser(AbstractUser):
         verbose_name="Date of Birth", null=True, blank=True
     )
     avatar = models.ImageField(upload_to='avatars/', blank=True,
+        # ?????? Where is your avatars/ directory ?????
+        verbose_name="Your Image",
         help_text='Image must be 200px by 200px.',
         validators=[validate_avatar]
     )

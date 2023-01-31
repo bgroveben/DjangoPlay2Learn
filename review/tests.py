@@ -17,11 +17,23 @@ class ReviewsTest(TestCase):
     """
 
     def setUp(self):
+        # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()
-        login = self.client.login(username='testuser1', password='1X<ISRUkw+tuK')
+        login = self.client.login(username=testuser1, password='1X<ISRUkw+tuK')
 
-    def test_uses_home_templates(self):
+    def test_review_model(self):
+        sample = Review(username=CustomUser.objects.get(username='testuser1'), game='MATH FACTS', votes=3, comment="This is a test comment", created=datetime.now, updated=datetime.now)
+        sample.save()
+        self.assertTrue(sample)
+        self.assertEqual(sample.username, CustomUser.objects.get(username='testuser1'))
+        self.assertEqual(sample.game, "MATH FACTS")
+        self.assertEqual(sample.votes, 3)
+        self.assertEqual(sample.comment, "This is a test comment")
+        self.assertTrue(sample.created)
+        self.assertTrue(sample.updated)
+
+    def test_uses_review_template(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')

@@ -11,6 +11,14 @@ class ContactsTest(TestCase):
     POST request should be valid
     """
 
+    def test_contact_model(self):
+        sample = Contact(email='emailtest@email.com', subject='Test Subject', message='This is a test')
+        sample.save()
+        self.assertTrue(sample)
+        self.assertEqual(sample.email, 'emailtest@email.com')
+        self.assertEqual(sample.subject, 'Test Subject')
+        self.assertEqual(sample.message, 'This is a test')
+
     def test_uses_contact_templates(self):
         response = self.client.get('/contact/')
         self.assertEqual(response.status_code, 200)

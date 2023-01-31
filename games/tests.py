@@ -41,14 +41,22 @@ class TemplatesTest(TestCase):
         self.assertTemplateUsed(response, '_base.html')
         #self.assertTemplateUsed(response, '_base_vue.html') => fail
 
-"""
-class RecordGameScoresTest(TestCase):
 
-    def test_can_save_POST_request(self):
-        newscore = GameScores(username='admin', game='MATH', score=10, maxnum='50', gamelength='30', operation='+')
-        scoresdict = {'username':'admin', 'game':'MATH', 'score':10, 'maxnum':'50', 'gamelength':'30', 'operation':'+'}
-        gamescoresdict = GameScores(scoresdict)
-        #response = self.client.post('record_score', data=new_score)
-        response = self.client.post(reverse_lazy('games:record-score'), data=gamescoresdict)
-        print(newscore)
-"""
+class GameScoresModelsTest(TestCase):
+
+    def setUp(self):
+        # Create test user
+        testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
+        testuser1.save()
+        login = self.client.login(username=testuser1, password='1X<ISRUkw+tuK')
+
+    def test_gamescores_model(self):
+        sample = GameScores(created=datetime.now(), username=CustomUser.objects.get(username='testuser1'), score=50, operation='+', gamelength='30', maxnum='20', game='MATH FACTS')
+        sample.save()
+        self.assertTrue(sample)
+        self.assertEqual(sample.username, CustomUser.objects.get(username='testuser1'))
+        self.assertEqual(sample.score, 50)
+        self.assertEqual(sample.operation, '+')
+        self.assertEqual(sample.gamelength, '30')
+        self.assertEqual(sample.maxnum, '20')
+        self.assertEqual(sample.game, "MATH FACTS")

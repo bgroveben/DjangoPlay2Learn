@@ -15,20 +15,20 @@ https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get
 ??? Put the games on the home page with the carousel?
 ??? Organize reviews by created date?
 ??? Make font sizes on scores pages smaller?
+!!! CharField requires a length restriction, TextField doesn't.
+!!! Make sure all of your POST requests redirect.
+!!! Setup, Exercise, Assert is the typical structure for a unit test.
+
 
 NEXT: TESTS
 functional - started
 common?
-users - todo
+users - started
 contact - started
-games - todo
+games - started
 review - started
 
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing#views
-
-
-Functional tests:
-https://www.obeythetestinggoat.com/book/chapter_02_unittest.html#_the_python_standard_librarys_unittest_module
+https://www.obeythetestinggoat.com/book/chapter_post_and_database.html#_saving_the_post_to_the_database
 
 Django Testing Tutorial
 https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM
@@ -43,11 +43,7 @@ It’s a good idea to run your tests with Python warnings enabled: python -Wa ma
 
 The test client is not capable of retrieving web pages that are not powered by your Django project. Vue games should have separate tests, and only the part where Django talks to Vue needs testing.
 
-https://docs.djangoproject.com/en/4.1/intro/tutorial05/
--- testing tutorial
 
-https://docs.djangoproject.com/en/4.1/topics/testing/tools/
--- test client for GET, POST, HTTP response, chain of redirects, etc.
 
 
 
@@ -83,7 +79,13 @@ DONE (10%) Admin users can update and delete user data.
 !!!!!! Don't forget to remove unused code!!!!!!
 BUGS BELOW
 
+common app has to be tested with unittest because it's not a django app
+-- [project_root]=> python3 manage.py test common
+--(.venv) ➜  DjangoPlay2Learn git:(main) => python3 manage.py test common
+
+
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
+-- record score, then redirect to either the leaderboard, start, or menu
 
 SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
