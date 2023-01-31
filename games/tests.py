@@ -1,4 +1,4 @@
-#import json
+import json
 #import unittest
 from django.test import TestCase# , RequestFactory
 #from django.test import Client
@@ -60,3 +60,9 @@ class GameScoresModelsTest(TestCase):
         self.assertEqual(sample.gamelength, '30')
         self.assertEqual(sample.maxnum, '20')
         self.assertEqual(sample.game, "MATH FACTS")
+
+    def test_record_score_function(self):
+        sample = GameScores(created=datetime.now(), username=CustomUser.objects.get(username='testuser1'), score=50, operation='+', gamelength='30', maxnum='20', game='MATH FACTS')
+        sample.save()
+        self.assertTrue(str(GameScores.objects.get(id=1)), 'testuser1')
+        data={'username': CustomUser.objects.get(username='testuser1'), 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}

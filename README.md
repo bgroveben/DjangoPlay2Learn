@@ -21,6 +21,12 @@ https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get
 
 
 NEXT: TESTS
+
+$=> coverage run --omit='*/venv/*' manage.py test
+$=> coverage report
+$=> coverage html
+
+
 functional - started
 common?
 users - started

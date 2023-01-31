@@ -15,6 +15,8 @@ class ContactsTest(TestCase):
         sample = Contact(email='emailtest@email.com', subject='Test Subject', message='This is a test')
         sample.save()
         self.assertTrue(sample)
+        self.assertEqual(str(sample), "emailtest@email.com")
+        self.assertEqual(sample, Contact.objects.get(email='emailtest@email.com'))
         self.assertEqual(sample.email, 'emailtest@email.com')
         self.assertEqual(sample.subject, 'Test Subject')
         self.assertEqual(sample.message, 'This is a test')

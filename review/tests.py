@@ -25,7 +25,9 @@ class ReviewsTest(TestCase):
     def test_review_model(self):
         sample = Review(username=CustomUser.objects.get(username='testuser1'), game='MATH FACTS', votes=3, comment="This is a test comment", created=datetime.now, updated=datetime.now)
         sample.save()
+        #print(sample)
         self.assertTrue(sample)
+        self.assertEqual(str(sample), "MATH FACTS")
         self.assertEqual(sample.username, CustomUser.objects.get(username='testuser1'))
         self.assertEqual(sample.game, "MATH FACTS")
         self.assertEqual(sample.votes, 3)
