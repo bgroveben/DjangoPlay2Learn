@@ -64,7 +64,12 @@ class GameScoresModelsTest(TestCase):
     def test_record_score_function(self):
         sample = GameScores(created=datetime.now(), username=CustomUser.objects.get(username='testuser1'), score=50, operation='+', gamelength='30', maxnum='20', game='MATH FACTS')
         sample.save()
+        data={'username': CustomUser.objects.get(username='testuser1'), 'score': 50, 'operation': '+', 'gamelength': '30', 'maxnum': '20', 'game': 'MATH FACTS'}
         self.assertTrue(str(GameScores.objects.get(id=1)), 'testuser1')
-        data={'username': CustomUser.objects.get(username='testuser1'), 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
-        #request = self.client.post('/record-score/', GameScores.objects.get(id=1))
-        
+        #print(sample)
+        sample_score = record_score(sample)
+        #print(sample_score)
+
+        #self.assertEqual()
+        #response = self.client.post('/record-score/', GameScores.objects.get(id=1))
+        response = self.client.post('/record-score/', sample_score)
