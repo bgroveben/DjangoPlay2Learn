@@ -66,3 +66,5 @@ class GameScoresModelsTest(TestCase):
         sample.save()
         self.assertTrue(str(GameScores.objects.get(id=1)), 'testuser1')
         data={'username': CustomUser.objects.get(username='testuser1'), 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
+        #request = self.client.post('/record-score/', GameScores.objects.get(id=1))
+        

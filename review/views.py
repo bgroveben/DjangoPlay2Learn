@@ -23,7 +23,7 @@ def index(request):
             #return render(request, 'review/reviews.html')
             return redirect('review')
         #else:
-            #return redirect(?)
+            #return redirect('')
     #else:
         #form = ReviewForm(instance=instance)
         #return render(request, '?', {'form': form})

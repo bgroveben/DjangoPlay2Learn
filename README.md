@@ -21,6 +21,13 @@ https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get
 
 
 NEXT: TESTS
+-- models are okay, views are next
+https://www.obeythetestinggoat.com/book/chapter_explicit_waits_1.html
+
+common app has to be tested with unittest because it's not a django app
+-- [project_root]=> python3 manage.py test common
+--(.venv) ➜  DjangoPlay2Learn git:(main) => python3 manage.py test common
+-- !!! try adding an __init__.py file to make it a valid Python package directory !!!
 
 $=> coverage run --omit='*/venv/*' manage.py test
 $=> coverage report
@@ -83,12 +90,8 @@ DONE (10%) Admin users can update and delete user data.
 {% startbugs %}
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!! Don't forget to remove unused code!!!!!!
-BUGS BELOW
 
-common app has to be tested with unittest because it's not a django app
--- [project_root]=> python3 manage.py test common
---(.venv) ➜  DjangoPlay2Learn git:(main) => python3 manage.py test common
-
+vvvvvv  BUGS BELOW  vvvvvv
 
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
 -- record score, then redirect to either the leaderboard, start, or menu
