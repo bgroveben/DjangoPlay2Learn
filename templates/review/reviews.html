@@ -2,13 +2,13 @@
 
 {% block title%}Reviews{% endblock title %}
 {% block main %}
-  <h1 class="text-center">Reviews</h1>
+  <h1 class="text-center text-warning">Reviews</h1>
     <div>
-      <h3 class="ms-5 ps-5">Anagram Hunt</h3>
-      <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
+      <h3 class="ms-5 ps-5 text-center text-warning">Anagram Hunt</h3>
+      <div class="card m-auto mb-3 p-3" style="max-width: 50rem">
         <div class="list-group list-group-flush">
           {% for review in anagram_reviews %}
-            <ul class="list-group-item" style="list-style: none;">
+            <ul class="list-group-item border border-danger rounded" style="list-style: none;">
               <li class="text-center">
                 On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
               </li>
@@ -21,11 +21,11 @@
       </div>
     </div>
     <div>
-    <h3 class="ms-5 ps-5">Math Facts</h3>
+    <h3 class="ms-5 ps-5 text-center text-warning">Math Facts</h3>
     <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
       <div class="list-group list-group-flush">
         {% for review in math_reviews %}
-          <ul class="list-group-item" style="list-style: none;">
+          <ul class="list-group-item border border-danger" style="list-style: none;">
             <li class="text-center">
               On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
             </li>

@@ -3,25 +3,27 @@
 
 {% block title%}Game Scores{% endblock title %}
 {% block main %}
-  <h1 class="text-center">Game Scores</h1>
+  <h1 class="text-center text-warning">Game Scores</h1>
     <div class="jumbotron jumbotron-fluid">
       <div class="container col-md-8">
-        <h2>Math Facts</h2>
+        <h2 class="text-warning">Math Facts</h2>
         <hr />
-        <ol class="text-center">
+        <ol class="bg-light border border-danger rounded">
         {% for score in math_scores %}
-          <li class="h5">
-          <div class="row">
-            <div>
-              <p class="ms-5 h2">{{ score.score }} -> {{ score.username }}</p>
-              <p>
+          <li class="h4">
+            <div class="row">
+
+              <p class="ms-5 h3">{{ score.score }} -> {{ score.username }}</p>
+              <p class="ms-5 h4 text-center">
                 {{ score.operation|swap }} --
-                {{ score.created|date }} --
+                {{ score.created|date }}
+              </p>
+              <p class="ms-5 h4 text-center">
                 Max Number: {{ score.maxnum }} --
                 Game Length: {{ score.gamelength }}
               </p>
+
             </div>
-          </div>
           </li>
         <hr />
         {% endfor %}
@@ -31,16 +33,18 @@
     <div><br /></div>
     <div class="jumbotron jumbotron-fluid">
       <div class="container col-md-8">
-        <h2>Anagram Hunt</h2>
+        <h2 class="text-warning">Anagram Hunt</h2>
         <hr />
-        <ol class="text-center">
+        <ol class="bg-light">
         {% for score in anagram_scores %}
-          <li class="h5">
+          <li class="h4">
           <div class="row">
             <div>
-              <p class="ms-5 h2">{{ score.score }} -> {{ score.username }}</p>
-              <p>
-                {{ score.created|date }} --
+              <p class="ms-5 h3">{{ score.score }} -> {{ score.username }}</p>
+              <p class="ms-5 h4 text-center">
+                {{ score.created|date }}
+              </p>
+              <p class="ms-5 h4 text-center">
                 Max Number: {{ score.maxnum }} --
                 Game Length: {{ score.gamelength }}
               </p>
