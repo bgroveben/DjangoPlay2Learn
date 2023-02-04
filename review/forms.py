@@ -1,6 +1,6 @@
 from .models import Review
 from django import forms
-from django.forms import TextInput
+#from django.forms import TextInput
 
 
 class ReviewForm(forms.ModelForm):
@@ -9,6 +9,7 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ["game","votes","comment"]
         #fields = '__all__'
-        #widgets = {
+        widgets = {
             #'username': TextInput(attrs={'readonly': 'readonly'})
-        #}
+            'comment': forms.Textarea(attrs={'rows': '3'})
+        }

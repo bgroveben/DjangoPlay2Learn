@@ -93,6 +93,8 @@ DONE (10%) Admin users can update and delete user data.
 
 vvvvvv  BUGS BELOW  vvvvvv
 
+time is not local -- a score recorded after 4pm locally is posted with tomorrow's date.
+
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
 -- record score, then redirect to either the leaderboard, start, or menu
 

@@ -12,9 +12,8 @@
   <form action="" method="post" novalidate>
      {% csrf_token %}
      {{ form|crispy }}
-     <input id="submit_contact_form" type="submit" value="Submit">
+     <br />
+     <input class="form-control bg-primary text-white" type="submit" id="submit_contact_form" type="submit" value="Submit">
   </form>
 </div>
-<br />
-<br />
 {% endblock main %}
