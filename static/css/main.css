@@ -1,7 +1,25 @@
+
+body {
+  background-image: linear-gradient(to bottom right, darkslateblue, skyblue);
+}
+
 header {
-  background-color: aqua;
+  background-image: linear-gradient(to bottom right, mediumblue, deepskyblue);
+  border-bottom: .5em;
+  border-style: solid;
+  border-color: blue;
+}
+
+#app {
+  background-image: linear-gradient(to bottom right, royalblue, deepskyblue);
+  border: .5em;
+  border-style: solid;
+  border-color: slateblue;
 }
 
 footer {
-  background-color: orange;
+  background-image: linear-gradient(to bottom right, slateblue, salmon);
+  border-top: .5em;
+  border-style: solid;
+  border-color: darkmagenta;
 }
