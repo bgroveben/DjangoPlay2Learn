@@ -48,17 +48,17 @@
         <template v-if="timeLeft > 0">
           <div class="w-50 mx-auto">
             <div class="row border-bottom" id="scoreboard">
-              <div class="col px-3 fs-2">
+              <div class="col px-3 fs-2 text-white">
                 <Score :score="score" />
               </div>
-              <div class="col px-3 fs-2">
+              <div class="col px-3 fs-2 text-white">
                 <Timer :timeLeft="parseInt(timeLeft)" />
               </div>
             </div>
             <div class="row border-bottom">
               <div class="col text-center mt-2">
-                <h2 class="fw-bold text-primary fs-1" id="anagram">{{anagram}}</h2>
-                <h2 class="fw-bold text-secondary fs-1" id="answer">{{answer}}</h2>
+                <h2 class="fw-bold text-white fs-1" id="anagram">{{anagram}}</h2>
+                <h2 class="fw-bold text-warning fs-1" id="answer">{{answer}}</h2>
                 <div>
                   <div class="my-3">
                     <input type="text" class="col-6 fs-4 form-control-lg" v-model="answer" ref="answer" placeholder="Answer" aria-label="Answer" id="answer" aria-describedby="Answer" />

@@ -1,5 +1,5 @@
 <template>
-  <div id="equation" class="row display-4">
+  <div id="equation" class="row text-white display-4">
     <div class="col-6 text-end">{{question}}</div>
     <div class="col-1">=</div>
     <div class="col-4 text-start">{{answer}}</div>

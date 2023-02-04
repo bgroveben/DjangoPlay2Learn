@@ -46,10 +46,10 @@
         <template v-if="timeLeft > 0">
           <div class="w-50 mx-auto">
             <div class="row border-bottom" id="scoreboard">
-              <div class="col px-3 text-left fs-2">
+              <div class="col px-3 text-left text-white fs-2">
                 <Score :score="score" />
               </div>
-              <div class="col px-3 text-right fs-2">
+              <div class="col px-3 text-right text-white fs-2">
                 <Timer :timeLeft="parseInt(timeLeft)" />
               </div>
             </div>

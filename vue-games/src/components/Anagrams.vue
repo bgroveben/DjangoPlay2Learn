@@ -4,10 +4,10 @@
         <div class="row">
             <h4 class="text-danger">Remaining: {{anagramsLeft}}</h4>
           <div class="row mt-1">
-            <h2 class="text-secondary">Guessed: {{anagramsGuessed.toString()}}</h2>
+            <h2 class="text-white">Guessed: {{anagramsGuessed.toString()}}</h2>
           </div>
         </div>
-    </div>   
+    </div>
   </div>
 </template>
 
