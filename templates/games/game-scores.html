@@ -5,20 +5,20 @@
 {% block main %}
   <h1 class="text-center text-warning">Game Scores</h1>
     <div class="jumbotron jumbotron-fluid">
-      <div class="container col-md-8">
+      <div class="container col-md-6">
         <h2 class="text-warning">Math Facts</h2>
         <hr />
-        <ol class="bg-light border border-danger rounded">
+        <ol class="text-danger bg-light border border-info rounded">
         {% for score in math_scores %}
           <li class="h4">
             <div class="row">
 
-              <p class="ms-5 h3">{{ score.score }} -> {{ score.username }}</p>
-              <p class="ms-5 h4 text-center">
+              <p class="ms-5 h3 text-success">{{ score.score }} --> {{ score.username }}</p>
+              <p class="ms-5 h4 text-primary">
                 {{ score.operation|swap }} --
                 {{ score.created|date }}
               </p>
-              <p class="ms-5 h4 text-center">
+              <p class="ms-5 h4 text-primary">
                 Max Number: {{ score.maxnum }} --
                 Game Length: {{ score.gamelength }}
               </p>
@@ -32,20 +32,20 @@
     </div>
     <div><br /></div>
     <div class="jumbotron jumbotron-fluid">
-      <div class="container col-md-8">
+      <div class="container col-md-6">
         <h2 class="text-warning">Anagram Hunt</h2>
         <hr />
-        <ol class="bg-light">
+        <ol class="text-danger bg-light border border-info rounded">
         {% for score in anagram_scores %}
           <li class="h4">
           <div class="row">
             <div>
-              <p class="ms-5 h3">{{ score.score }} -> {{ score.username }}</p>
-              <p class="ms-5 h4 text-center">
+              <p class="ms-5 h3 text-success">{{ score.score }} --> {{ score.username }}</p>
+              <p class="ms-5 h4 text-primary">
                 {{ score.created|date }}
               </p>
-              <p class="ms-5 h4 text-center">
-                Max Number: {{ score.maxnum }} --
+              <p class="ms-5 h4 text-primary">
+                Word Length: {{ score.maxnum }} --
                 Game Length: {{ score.gamelength }}
               </p>
             </div>

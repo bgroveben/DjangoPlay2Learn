@@ -4,15 +4,15 @@
 {% block main %}
   <h1 class="text-center text-warning">Reviews</h1>
     <div>
-      <h3 class="ms-5 ps-5 text-center text-warning">Anagram Hunt</h3>
+      <h2 class="ms-5 ps-5 text-warning">Anagram Hunt</h2>
       <div class="card m-auto mb-3 p-3" style="max-width: 50rem">
         <div class="list-group list-group-flush">
           {% for review in anagram_reviews %}
             <ul class="list-group-item border border-danger rounded" style="list-style: none;">
-              <li class="text-center">
+              <li class="text-center text-success h5">
                 On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
               </li>
-              <li class="my-2 pb-2">
+              <li class="my-2 pb-2 h5 text-primary">
                 "{{ review.comment }}"
               </li>
             </ul>
@@ -21,15 +21,16 @@
       </div>
     </div>
     <div>
-    <h3 class="ms-5 ps-5 text-center text-warning">Math Facts</h3>
+    <br />
+    <h2 class="ms-5 ps-5 text-warning">Math Facts</h2>
     <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
       <div class="list-group list-group-flush">
         {% for review in math_reviews %}
-          <ul class="list-group-item border border-danger" style="list-style: none;">
-            <li class="text-center">
+          <ul class="list-group-item border border-danger rounded" style="list-style: none;">
+            <li class="text-center text-success h5">
               On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
             </li>
-            <li class="my-2 pb-2">
+            <li class="my-2 pb-2 h5 text-primary">
               "{{ review.comment }}"
             </li>
           </ul>

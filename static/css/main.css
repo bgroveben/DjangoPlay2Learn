@@ -23,3 +23,13 @@ footer {
   border-style: solid;
   border-color: darkmagenta;
 }
+
+.carousel-item {
+  border: 1px;
+  border-style: solid;
+  border-color: mediumslateblue;
+}
+
+#homepage-carousel {
+  background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);
+}

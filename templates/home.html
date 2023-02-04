@@ -17,13 +17,12 @@
           <div class="carousel-item">
         {% endif %}
         <!--<blockquote>-->
-        <div class="card border-primary m-auto p-3 text-center" style="max-width: 50rem">
-          <h3>{{ review.game }}</h3>  <!-- MATH or ANAGRAM -->
+        <div class="card border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+          <h2 style="color: turquoise;">{{ review.game }}</h2>  <!-- MATH or ANAGRAM -->
           <hr />
-          <h4>{{ review.comment }}</h4>
-          <h5>-- {{ review.username }}</h5>
-          <p>{{ review.created }}</p>
-          <hr />
+          <h3 style="color: mistyrose;">{{ review.comment }}</h3>
+          <h4 style="color: lavender;">-- {{ review.username }}</h4>
+          <h5 style="color: lightyellow;" class="py-3">{{ review.created }}</h5>
         </div>
         <!--</blockquote>-->
       </div> <!-- for carousel-item above -->
