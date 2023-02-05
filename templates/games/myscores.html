@@ -5,24 +5,21 @@
 {% block main %}
   <h1 class="text-center text-warning">My Scores</h1>
   {% if user.is_authenticated %}
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container col-md-6">
-        <hr />
-        <ol class="text-danger bg-light border border-info rounded">
+    <div class="jumbotron jumbotron-fluid"  style="background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+      <div class="container col-md-8">
+        <ol class="ps-5 border border-info rounded">
         {% for score in myscores %}
-          <li class="h4">
-          <div class="row">
-            <div>
-              <p class="ms-5 h3 text-success">{{ score.score }} --> {{ score.username }}</p>
-              <p class="ms-5 h4 text-primary">
-                {{ score.operation|swap }} --
-                {{ score.created|date }}
-              </p>
-              <p class="ms-5 h4 text-primary">
-                Max Number: {{ score.maxnum }} --
-                Game Length: {{ score.gamelength }}
-              </p>
-            </div>
+          <li class="h4"  style="color: ivory;">
+          <div class="row card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);">
+            <p class="h3" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4" ></span>{{ score.username }}</p>
+            <p class="h4">
+              {{ score.operation|swap }} --
+              {{ score.created|date }}
+            </p>
+            <p class="h4">
+              Max Length: {{ score.maxnum }} --
+              Game Length: {{ score.gamelength }}
+            </p>
           </div>
           </li>
         <hr />

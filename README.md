@@ -67,8 +67,8 @@ time is not local -- a score recorded after 4pm locally is posted with tomorrow'
 
 User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
 -- record score, then redirect to either the leaderboard, start, or menu
+-- have 3 buttons, tell user to pick obe to record their score
 
-SuccessMessageMixin works in admin but not on site
 https://django-allauth.readthedocs.io/en/latest/views.html
 
 -- Login, Signup, and Logout views
