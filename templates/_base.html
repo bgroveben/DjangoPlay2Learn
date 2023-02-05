@@ -76,6 +76,21 @@
   </header>
 
   <main class="pb-1">
+
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <div class="alert message{{ message.tags }} alert-dismissible text-white text-center" role="alert">
+          <strong><i class="fas fa-regular fa-thumbs-up me-2"></i>{{message}}</strong>
+          <button type="button" class="close" data-dismiss="alert"
+            aria-label="Close">
+            <i class="fas fa-window-close"></i>
+          </button>
+        </div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     {% block main %}{% endblock %}
   </main>
 

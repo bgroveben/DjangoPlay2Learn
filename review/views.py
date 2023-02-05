@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 #from django.core import validators
 from django.contrib import messages
 #from django.core.exceptions import ValidationError
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Review
 from .forms import ReviewForm
@@ -54,8 +55,10 @@ def record_review(request):
     return JsonResponse(response)
 
 
-class ReviewView(TemplateView):
+class ReviewView(SuccessMessageMixin, TemplateView):
     template_name = "review/reviews.html"
+    form_class = ReviewForm
+    success_message = 'Your review has been submitted'
 
     def get_context_data(self, **kwargs):
         context = super(ReviewView, self).get_context_data(**kwargs)
