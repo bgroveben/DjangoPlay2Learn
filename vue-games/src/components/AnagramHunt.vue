@@ -15,10 +15,11 @@
       <transition name="slide">
         <template v-if="timeLeft === 0">
           <div>
-            <h2 class="fs-1">Time's Up!</h2>
-            <strong class="h3">You Answered</strong>
-            <div class="display-2">{{score}}</div>
-            <strong class="h3">Questions Correctly</strong>
+            <h2 class="fs-1 text-white">Time's Up!</h2>
+            <strong class="h3 text-white">You Answered</strong>
+            <div class="display-2 text-warning">{{score}}</div>
+            <strong class="h3 text-white">Questions Correctly</strong>
+            <div class="h4 mt-3">Click a button below to record your score</div>
             <!--
             <div>
               <label for="username">Username</label>

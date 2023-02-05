@@ -9,17 +9,6 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-Game tracking:
-https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get-object-method
-
-??? Put the games on the home page with the carousel?
-??? Organize reviews by created date?
-??? Make font sizes on scores pages smaller?
-!!! CharField requires a length restriction, TextField doesn't.
-!!! Make sure all of your POST requests redirect.
-!!! Setup, Exercise, Assert is the typical structure for a unit test.
-
-
 NEXT: TESTS
 
 $=> coverage run --omit='*/venv/*' manage.py test
@@ -65,27 +54,7 @@ vvvvvv  BUGS BELOW  vvvvvv
 
 time is not local -- a score recorded after 4pm locally is posted with tomorrow's date.
 
-User records score when the game ends by clicking play again or change settings. Add button to record score and redirect to the leaderboard?
--- record score, then redirect to either the leaderboard, start, or menu
--- have 3 buttons, tell user to pick obe to record their score
 
-https://django-allauth.readthedocs.io/en/latest/views.html
-
--- Login, Signup, and Logout views
-    -- non-authenticated users see an error when they try to view the my accounts page.
-    ??? Try if user.is_authenticated else clause
-    Make sure that they can't get to /accounts/my-account/
-    Redirect urls?
-    http://127.0.0.1:8000/users/my_account/
-    -> NoReverseMatch at /users/my_account/
-    'account' is not a registered namespace
-    -- logged-in users who log in again get a 403
-    Forbidden (403)
-    CSRF verification failed. Request aborted.
-    Help
-    Reason given for failure:
-    CSRF token from POST incorrect.
-    http://127.0.0.1:8000/accounts/login/
 
 END BUGS
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
