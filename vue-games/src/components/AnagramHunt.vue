@@ -1,14 +1,14 @@
 <template>
   <main id="main-container">
     <div v-if="screen === 'config'" id="config-container" class="col-5 mx-auto">
-      <h1 class="text-center mb-2">Anagram Hunt</h1>
+      <h1 class="text-center text-white mb-2">Anagram Hunt</h1>
       <SelectInput :currentValue="maxNumber" label="Choose Word Length"
         id="max-number" v-model="maxNumber" :options="numbers" />
       <SelectInput :currentValue="gameLength.toString()" label="Choose Game Length"
         id="game-length" v-model="gameLength" :options="times" />
       <PlayButton @play-button-click="play" />
-      <div class="text-center">
-        <small class="text-muted">anagrams courtesy of enchantedlearning.com</small>
+      <div class="text-center text-dark">
+        <small>anagrams courtesy of enchantedlearning.com</small>
       </div>
     </div>
     <div v-else-if="screen === 'play'" id="game-container" class="text-center">

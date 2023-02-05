@@ -1,8 +1,12 @@
 import json
 from django.http import JsonResponse
 from django.views.generic import TemplateView
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponse, render, redirect
 from django.contrib.auth.decorators import login_required
+
+#from django.core import validators
+from django.contrib import messages
+#from django.core.exceptions import ValidationError
 
 from .models import Review
 from .forms import ReviewForm
@@ -19,11 +23,18 @@ def index(request):
             # automagically get username for review
             sendreview.username = request.user
             sendreview.save()
+            #return HttpResponse("data submitted successfully")
             #form.save()
             #return render(request, 'review/reviews.html')
+            messages.success(request, 'Your review has been submitted')
             return redirect('review')
-        #else:
-            #return redirect('')
+        else:
+            #raise ValidationError('Please fill out all fields')
+            return redirect('/')
+            #form = ReviewForm()
+            #context = {'form': form}
+            #return render(request, 'review/home.html', context)
+
     #else:
         #form = ReviewForm(instance=instance)
         #return render(request, '?', {'form': form})

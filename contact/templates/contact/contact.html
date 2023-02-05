@@ -9,7 +9,7 @@
 <h1 class="text-center text-warning">Contact Us</h1>
 <br />
 <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
-  <form action="" method="post" novalidate>
+  <form action="" method="post">
      {% csrf_token %}
      {{ form|crispy }}
      <br />

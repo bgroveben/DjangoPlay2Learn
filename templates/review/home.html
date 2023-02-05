@@ -7,8 +7,17 @@
 <link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
 {% block main %}
 <h1 class="text-center text-warning">Leave A Review</h1>
+<!--
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+-->
 <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
-  <form action="" method="post" novalidate>
+  <form action="" method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <!--
