@@ -8,7 +8,7 @@
   <h4 class="text-center text-warning">Player Reviews:</h4>
 
   <!-- CAROUSEL -->
-  <div class="carousel slide pb-2" id="homepage-carousel" data-ride="carousel">
+  <div class="carousel slide carousel-fade pb-2" id="homepage-carousel" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
       {% for review in reviews %}
         {% if forloop.first %}
@@ -17,12 +17,12 @@
           <div class="carousel-item">
         {% endif %}
         <!--<blockquote>-->
-        <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
-          <h2 style="color: lavender;">{{ review.game }}</h2>  <!-- MATH or ANAGRAM -->
+        <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);">
+          <h2 style="color: lightblue;">{{ review.game }}</h2>  <!-- MATH or ANAGRAM -->
           <hr />
-          <h3 style="color: yellow;">{{ review.comment }}</h3>
-          <h4 style="color: gold;">-- {{ review.username }}</h4>
-          <h5 style="color: turquoise;" class="py-3">{{ review.created }}</h5>
+          <h3 style="color: ivory;">{{ review.comment }}</h3>
+          <h4 style="color: lightgoldenrodyellow">-- {{ review.username }}</h4>
+          <h5 style="color: thistle" class="py-3">{{ review.created }}</h5>
         </div>
         <!--</blockquote>-->
       </div> <!-- for carousel-item above -->

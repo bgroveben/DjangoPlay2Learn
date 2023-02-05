@@ -1,7 +1,7 @@
 <template>
   <main id="main-container">
     <div v-if="screen === 'config'" id="config-container" class="col-5 mx-auto">
-      <h1 class="text-center mb-3">Math Facts</h1>
+      <h1 class="text-center text-light mb-3">Math Facts</h1>
       <SelectInput :currentValue="operation" label="Choose Operation"
         id="operation" v-model="operation" :options="operations" />
       <SelectInput :currentValue="maxNumber" label="Choose Max Number"

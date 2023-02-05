@@ -86,29 +86,28 @@
     {% csrf_token %}
   </main>
 
-<footer>
-  <div class="pb-2 mb-1"></div>
-  <nav class="navbar navbar-expand-lg">
-    <ul class="navbar-nav m-auto">
-      <li class="nav-item ms-5 me-3">
-        <a class="nav-link text-warning" href="{% url 'contact' %}">Contact</a>
-      </li>
-      {% if user.is_authenticated %}
-      <li class="nav-item ms-5 me-3">
-        <a class="nav-link text-warning" href="{% url 'review-index' %}">Leave A Review</a>
-      </li>
-      <li class="nav-item ms-5 me-3">
-        <a class="nav-link text-warning" href="{% url 'games:myscores' %}">Game Tracking</a>
-      </li>
-      {% endif %}
-      {% if user.is_superuser %}
-      <li class="nav-item ms-5 me-3">
-        <a class="nav-link text-warning" href="/admin/">Admin</a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-</footer>
+  <footer class="mb-1">
+    <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item ms-5 me-3">
+          <a class="nav-link" href="{% url 'contact' %}" style="color: yellow;">Contact</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item ms-5 me-3">
+          <a class="nav-link" href="{% url 'review-index' %}"  style="color: yellow;">Leave A Review</a>
+        </li>
+        <li class="nav-item ms-5 me-3">
+          <a class="nav-link" href="{% url 'games:myscores' %}"  style="color: yellow;">Game Tracking</a>
+        </li>
+        {% endif %}
+        {% if user.is_superuser %}
+        <li class="nav-item ms-5 me-3">
+          <a class="nav-link" href="/admin/" style="color: bisque;">Admin</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
