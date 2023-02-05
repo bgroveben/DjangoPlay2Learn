@@ -4,15 +4,16 @@
 {% block main %}
   <h1 class="text-center text-warning">Reviews</h1>
     <div>
-      <h2 class="ms-5 ps-5 text-warning">Anagram Hunt</h2>
-      <div class="card m-auto mb-3 p-3" style="max-width: 50rem">
+      <h2 class="text-center text-warning">Anagram Hunt</h2>
+      <!--<div class="card m-auto mb-3 p-3" style="max-width: 50rem">-->
+      <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
         <div class="list-group list-group-flush">
           {% for review in anagram_reviews %}
-            <ul class="list-group-item border border-danger rounded" style="list-style: none;">
-              <li class="text-center text-success h5">
-                On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
+            <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+              <li class="text-center h5" style="color: moccasin;">
+                On <span style="color:turquoise;">{{ review.created|date }}</span>, <span style="color:gold;">{{ review.username }}</span> gave <span style="color:lavender;">Anagram Hunt</span> {{ review.votes }} votes and said:
               </li>
-              <li class="my-2 pb-2 h5 text-primary">
+              <li class="my-2 pb-2 h5" style="color: yellow;">
                 "{{ review.comment }}"
               </li>
             </ul>
@@ -22,19 +23,20 @@
     </div>
     <div>
     <br />
-    <h2 class="ms-5 ps-5 text-warning">Math Facts</h2>
-    <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
-      <div class="list-group list-group-flush">
-        {% for review in math_reviews %}
-          <ul class="list-group-item border border-danger rounded" style="list-style: none;">
-            <li class="text-center text-success h5">
-              On {{ review.created|date }}, {{ review.username }} gave {{ review.game }} {{ review.votes }} votes and said:
-            </li>
-            <li class="my-2 pb-2 h5 text-primary">
-              "{{ review.comment }}"
-            </li>
-          </ul>
-        {% endfor %}
+    <h2 class="text-center text-warning">Math Facts</h2>
+    <!--<div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">-->
+      <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+        <div class="list-group list-group-flush">
+          {% for review in anagram_reviews %}
+            <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+              <li class="text-center h5" style="color: moccasin;">
+                On <span style="color: turquoise;">{{ review.created|date }}</span>, <span style="color:gold;">{{ review.username }}</span> gave <span style="color:lavender;">Math Facts</span> {{ review.votes }} votes and said:
+              </li>
+              <li class="my-2 pb-2 h5" style="color: yellow;">
+                "{{ review.comment }}"
+              </li>
+            </ul>
+          {% endfor %}
         </div>
     </div>
   </div>

@@ -21,44 +21,14 @@ https://codefellows.github.io/sea-python-401d5/lectures/django_cbv2.html#the-get
 
 
 NEXT: TESTS
--- models are okay, views are next
-https://www.obeythetestinggoat.com/book/chapter_explicit_waits_1.html
-
-common app has to be tested with unittest because it's not a django app
--- [project_root]=> python3 manage.py test common
---(.venv) ➜  DjangoPlay2Learn git:(main) => python3 manage.py test common
--- !!! try adding an __init__.py file to make it a valid Python package directory !!!
 
 $=> coverage run --omit='*/venv/*' manage.py test
 $=> coverage report
 $=> coverage html
 
 
-functional - started
-common?
-users - started
-contact - started
-games - started
-review - started
-
-https://www.obeythetestinggoat.com/book/chapter_post_and_database.html#_saving_the_post_to_the_database
-
-Django Testing Tutorial
-https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM
-
-* Use unittest
-* Use Django’s test client to establish that the correct template is being rendered and that the template is passed the correct context data.
-* Use RequestFactory to test view functions directly, bypassing the routing and middleware layers.
-* Use in-browser frameworks like Selenium to test rendered HTML and the behavior of web pages, namely JavaScript functionality. Django also provides special support for those frameworks; see the section on LiveServerTestCase for more details.
-
-It’s a good idea to run your tests with Python warnings enabled: python -Wa manage.py test. The -Wa flag tells Python to display deprecation warnings.
-!!! The test client does not require the web server to be running.
-
-The test client is not capable of retrieving web pages that are not powered by your Django project. Vue games should have separate tests, and only the part where Django talks to Vue needs testing.
-
-
-
-
+??? Semantic html for the folks with special needs ???
+!!! HTML validator !!!
 
 Login and Registration: 25%
 DONE (10%) Users can register.
