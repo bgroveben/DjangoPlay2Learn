@@ -1,25 +1,10 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `#managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
+
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
-
-#from common.utils.text import unique_slug
-#from django.utils.text import slugify
-
-# It’s perfectly OK to relate a model to one from another app. To do this,
-# import the related model at the top of the file where your model is
-# defined. Then, refer to the other model class wherever needed.
-
-# from games.models import GameScores
 
 
 def validate_avatar(value):
@@ -38,8 +23,6 @@ class AuthGroup(models.Model):
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
-    # https://stackoverflow.com/games/35803443
-    # /what-parameters-does-djangos-models-do-nothing-expect
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
@@ -104,30 +87,11 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
-"""
-class GamesGamescores(models.Model):
 
-    id = models.BigAutoField(primary_key=True)
-    username = models.TextField()
-    game = models.TextField()
-    score = models.IntegerField()
-    created = models.DateTimeField()
 
-    class Meta:
-        managed = False
-        db_table = 'games_gamescores'
-"""
 
-#class CustomUser(models.Model):
 class CustomUser(AbstractUser):
-    # https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
-    # see Reviews below
-    # review = models.TextField(max_length=200) ??
-    # reviews = models.ManyToManyField('Review', blank=True) ??
-    # -- you just have to relate users and reviews, not games
-    # -- or should I do it anyway?
 
-    # CustomUser.objects.values()
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )

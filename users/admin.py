@@ -25,14 +25,14 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
     readonly_fields = ['password_form']
 
     # Fields for editing existing user.
-    new_fields = ('dob', 'avatar')
+    #new_fields = ('dob', 'avatar')
     # Add new fields to 'Personal info' fieldset.
-    append_fields(UserAdmin.fieldsets, 'Personal info', new_fields)
+    #append_fields(UserAdmin.fieldsets, 'Personal info', new_fields)
     # Move email field from 'Personal info' fieldset to unlabelled fieldset
-    move_fields(UserAdmin.fieldsets, 'Personal info', None, ('email',))
+    #move_fields(UserAdmin.fieldsets, 'Personal info', None, ('email',))
     # Remove password field.
-    remove_fields(UserAdmin.fieldsets, None, ('password',))
-    append_fields(UserAdmin.fieldsets, None, ('password_form',))
+    #remove_fields(UserAdmin.fieldsets, None, ('password',))
+    #append_fields(UserAdmin.fieldsets, None, ('password_form',))
 
     # Fields for adding new user.
     new_fields = ('email', )
@@ -40,10 +40,10 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
     append_fields(UserAdmin.add_fieldsets, None, new_fields)
 
     # Add optional fields to new 'Optional Fields' fieldset.
-    optional_fields = ('first_name', 'last_name', 'dob')
-    add_fieldsets = append_fields(
-        UserAdmin.add_fieldsets, 'Optional Fields', optional_fields
-    )
+    #optional_fields = ('first_name', 'last_name', 'dob')
+    #add_fieldsets = append_fields(
+    #    UserAdmin.add_fieldsets, 'Optional Fields', optional_fields
+    #)
 
     def password_form(self, obj):
         url = reverse('admin:auth_user_password_change', args=[obj.pk])

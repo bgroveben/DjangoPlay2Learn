@@ -53,6 +53,8 @@ DONE (10%) Admin users can update and delete user data.
 
 vvvvvv  BUGS BELOW  vvvvvv
 
+confirmation email is sent on registration, but user is logged in immediately. I like it this way, so maybe it's not a bug
+
 time is not local -- a score recorded after 4pm locally is posted with tomorrow's date.
 
 

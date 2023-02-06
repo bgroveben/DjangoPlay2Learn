@@ -17,7 +17,7 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = (
-            'email', 'username', 'first_name', 'last_name', 'dob', 'avatar'
+            'email', 'username', 'first_name', 'last_name', 'dob'#, 'avatar'
         )
         widgets = {
             'dob': forms.SelectDateWidget(
@@ -29,7 +29,6 @@ class CustomUserChangeForm(UserChangeForm):
         }
 
 
-
 class ReviewForm(forms.ModelForm):
 
     class Meta:
@@ -38,24 +37,6 @@ class ReviewForm(forms.ModelForm):
 
     game = forms.CharField()
     comment = forms.CharField(max_length=200)
-    #vote = forms.IntegerField()
-    #customuser = forms.CharField() # username
     customuser = ReviewModel.customuser
     created = ReviewModel.created
     updated = ReviewModel.updated
-    #created = forms.DateTimeField()
-    #updated = forms.DateTimeField()
-    #rating = forms.?
-
-
-"""
-from users.models import Review
-from django import forms
-
-
-class ReviewForm(forms.ModelForm):
-
-    class Meta:
-        model = Review
-        fields = ["author","stars","comment"]
-"""

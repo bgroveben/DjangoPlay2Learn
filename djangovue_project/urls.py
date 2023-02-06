@@ -62,8 +62,8 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     # User Management
-    path('users/', include('users.urls')),
     path('accounts/', include('allauth.urls')),
+    path('users/', include('users.urls')),
     # Games
     path('', include("games.urls")),
     # Contact
