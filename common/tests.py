@@ -1,11 +1,10 @@
-#from django.test import TestCase -- common isn't a django app, just a directory
-import unittest
+from django.test import TestCase 
 
 from common.templatetags import common_filters
 from common.utils import email
 
 
-class SwapValuesFunctionTest(unittest.TestCase):
+class SwapValuesFunctionTest(TestCase):
 
     def test_swap_addition(self):
         addition = common_filters.swap('+')
@@ -34,7 +33,7 @@ class SwapValuesFunctionTest(unittest.TestCase):
             self.assertEqual(common_filters.swap(number), 'Anagram Hunt')
 
 
-class UserCanSendEmailTest(unittest.TestCase):
+class UserCanSendEmailTest(TestCase):
 
     def test_user_can_submit_message(self):
         message = email.send_email('test@example.com', 'Test Subject', 'This is a test')

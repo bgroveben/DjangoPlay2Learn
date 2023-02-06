@@ -32,7 +32,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['localhost:8000']
 # Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
-ALLOWED_HOSTS = ['localhost'] # still doesn't work
+# ALLOWED_HOSTS = ['localhost'] # still doesn't work
 
 # Application definition
 
@@ -178,24 +178,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 #############################################################################
 # AUTHENTICATION SETTINGS
-# The AUTH_USER_MODEL setting sets the model used to represent a User in the
-# project. It defaults to 'auth.User'. This code overrides that default to
-# set it to the CustomUser class.
+# The AUTH_USER_MODEL setting sets the model used to represent a User in the project. It defaults to 'auth.User'. This code overrides that default to set it to the CustomUser class.
 AUTH_USER_MODEL = 'users.CustomUser'
-#AUTH_USER_MODEL = 'auth.User'
-#LOGIN_URL = 'account_login'
 LOGIN_URL = reverse_lazy('account:login')
-# LOGIN_REDIRECT_URL = '/'
-# LOGIN_REDIRECT_URL = 'pages:homepage'
 LOGIN_REDIRECT_URL = 'games:homepage'
-
-#LOGOUT_REDIRECT_URL = reverse_lazy('account:logout')
-# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
-# LOGIN_REDIRECT_URL = 'account_login'
-# LOGIN_REDIRECT_URL = 'account_login'
-# --> 127.0.0.1 redirected you too many times.
-
-# https://stackoverflow.com/a/49656032/4806473
 
 # django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'

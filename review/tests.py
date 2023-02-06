@@ -82,10 +82,8 @@ class ReviewsTest(TestCase):
         self.assertEqual(response.status_code, 302)
         # Use posted form data to populate form
         form = ReviewForm(data=data)
-        # form.save()
         # Make sure that the form exists
         self.assertTrue(form.data)
-        #form.save()
         #self.assertTrue(form.is_valid())
 
     def test_user_can_view_reviews(self):
@@ -97,8 +95,6 @@ class ReviewsTest(TestCase):
         data={'username': username, 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
         response = self.client.post('/review/', data)
         form = ReviewForm(data=data)
-        #print(form)
-        #form.save()
         #self.assertTrue(form.is_valid())
         self.assertTrue(form.fields['game'])
         self.assertTrue(form.fields['votes'])
@@ -118,5 +114,4 @@ class ReviewsTest(TestCase):
     def test_user_can_fill_out_review_form(self):
         review = Review(game="MATH", votes=5, comment="This is a test comment.")
         review_form = ReviewForm(review)
-        #review_form.save()
         self.assertTrue(review_form)

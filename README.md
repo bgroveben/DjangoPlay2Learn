@@ -26,7 +26,6 @@ DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
 DONE (10%) Logged in users can edit their information in a My Account page.
 
-
 Game Tracking and Leaderboards: 30%
 * AnonymousUser(s) have scores added to the leaderboard
 DONE (5%) Game tracking page exists for both games.
@@ -35,9 +34,9 @@ DONE (10%) Game tracking shows just the user’s scores.
 DONE (10%) Leaderboards shows all the scores.
 
 Reviews: 10%
--- Have username recorded automagically when form is submitted
 DONE (5%) Logged-in users can successfully leave reviews.
 DONE (5%) User reviews rotate in the slideshow on the homepage.
+-- The assignment doesn't specify form validation. Let the browser do it.
 
 Contact Us: 10%
 DONE (10%) The contact us form sends an email to the admin email.

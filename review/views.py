@@ -4,41 +4,25 @@ from django.views.generic import TemplateView
 from django.shortcuts import HttpResponse, render, redirect
 from django.contrib.auth.decorators import login_required
 
-#from django.core import validators
 from django.contrib import messages
-#from django.core.exceptions import ValidationError
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Review
 from .forms import ReviewForm
 
-
 @login_required
 def index(request):
-    #instance = ReviewForm.objects.filter(user=request.username).first()
     if request.method == 'POST':
-        #form = ReviewForm(request.POST, instance=instance)
         form = ReviewForm(request.POST)
         if form.is_valid():
             sendreview = form.save(commit=False)
             # automagically get username for review
             sendreview.username = request.user
             sendreview.save()
-            #return HttpResponse("data submitted successfully")
-            #form.save()
-            #return render(request, 'review/reviews.html')
             messages.success(request, 'Your review has been submitted')
             return redirect('review')
         else:
-            #raise ValidationError('Please fill out all fields')
             return redirect('/')
-            #form = ReviewForm()
-            #context = {'form': form}
-            #return render(request, 'review/home.html', context)
-
-    #else:
-        #form = ReviewForm(instance=instance)
-        #return render(request, '?', {'form': form})
     form = ReviewForm()
     context = {'form': form}
     return render(request, 'review/home.html', context)
@@ -66,42 +50,3 @@ class ReviewView(SuccessMessageMixin, TemplateView):
         context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
         context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
         return context
-
-
-"""
-from django.shortcuts import render,redirect
-from . models import Game
-from . models import Review
-from . forms import ReviewForm
-
-
-def home(request):
-    items = Game.objects.all()
-    context = {
-        'items':items
-    }
-    return render(request, "review/home.html",context)
-
-
-def rate(request, id):
-    post = Game.objects.get(id=id)
-    form = ReviewForm(request.POST or None)
-    if form.is_valid():
-        author = request.POST.get('author')
-        stars = request.POST.get('stars')
-        comment = request.POST.get('comment')
-        review = Review(author=author, stars = stars,  comment=comment , movie=post)
-        review.save()
-        return redirect('review:success')
-
-    form = ReviewForm()
-    context = {
-        "form":form
-
-    }
-    return render(request, 'review/rate.html',context)
-
-
-def success(request):
-    return render(request, "review/success.html")
-"""
