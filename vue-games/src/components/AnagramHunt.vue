@@ -20,20 +20,6 @@
             <div class="display-2 text-warning">{{score}}</div>
             <strong class="h3 text-white">Questions Correctly</strong>
             <div class="h4 mt-3">Click a button below to record your score</div>
-            <!--
-            <div>
-              <label for="username">Username</label>
-              <input name="username" id="username" v-model="username" />
-            </div>
-            <div>
-              <label for="score">Score</label>
-              <input name="score" id="score" v-model="score" />
-            </div>
-            <div>
-            <button v-on:click="recordScore()">Record Score</button>
-            </div>
-          -->
-
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
               v-on:click="restart()">
                 Play Again

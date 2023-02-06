@@ -14,6 +14,8 @@ NEXT: TESTS
 $=> coverage run --omit='*/venv/*' manage.py test
 $=> coverage report
 $=> coverage html
+$=> open -a "Google Chrome" htmlcov/index.html
+
 
 
 ??? Semantic html for the folks with special needs ???

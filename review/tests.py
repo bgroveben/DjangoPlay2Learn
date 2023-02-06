@@ -77,11 +77,13 @@ class ReviewsTest(TestCase):
         data={'username': username, 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
         response = self.client.post('/review/', data)
         # Make sure the form data is posted
-        self.assertEqual(response.status_code, HTTPStatus.OK)
-        # 2. Use posted form data to populate form
+        self.assertTrue(response)
+        # Make sure user is redirected
+        self.assertEqual(response.status_code, 302)
+        # Use posted form data to populate form
         form = ReviewForm(data=data)
         # form.save()
-        # 3. Make sure that the form exists
+        # Make sure that the form exists
         self.assertTrue(form.data)
         #form.save()
         #self.assertTrue(form.is_valid())
