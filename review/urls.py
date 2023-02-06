@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.index, name='review-index'),# http://127.0.0.1:8000/review/
     path('review/', ReviewView.as_view(), name='review'),
     path('record-review/', record_review, name="record-review"),
+    #path('reviews/', ReviewView.as_view(), name='reviews'),
+    #path('reviewspage/', ReviewsPageView.as_view(), name='reviewspage'),
 ]

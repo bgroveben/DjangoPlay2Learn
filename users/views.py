@@ -9,8 +9,8 @@ from django.views.generic import FormView, TemplateView, UpdateView, ListView
 # from django.views.generic import (
 #    CreateView, DeleteView, DetailView, ListView, UpdateView
 #)
-from .forms import CustomUserChangeForm, ReviewForm
-from .models import CustomUser, ReviewModel
+from .forms import CustomUserChangeForm#, ReviewForm
+from .models import CustomUser#, ReviewModel
 
 
 # Each view is responsible for doing one of two things: Returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
@@ -29,7 +29,7 @@ class MyAccountPageView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         return self.request.user
-
+"""
 class ReviewView(FormView, SuccessMessageMixin, LoginRequiredMixin):
     # When I include UpdateView above:
     # => Generic detail view ReviewView must be called with either an object pk or a slug in the URLconf.
@@ -52,3 +52,4 @@ class ReviewsPageView(TemplateView):
         context = super(ReviewsPageView, self).get_context_data(**kwargs)
         context['reviews'] = ReviewModel.objects.all().order_by('-created')
         return context
+"""

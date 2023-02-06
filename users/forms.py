@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
 
-from users.models import ReviewModel
+#from users.models import ReviewModel
 
 
 BIRTH_YEAR_CHOICES = range(1900, datetime.now().year)
@@ -17,7 +17,7 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = (
-            'email', 'username', 'first_name', 'last_name', 'dob'#, 'avatar'
+            'email', 'username', 'first_name', 'last_name', 'dob'
         )
         widgets = {
             'dob': forms.SelectDateWidget(
@@ -28,7 +28,7 @@ class CustomUserChangeForm(UserChangeForm):
             )
         }
 
-
+"""
 class ReviewForm(forms.ModelForm):
 
     class Meta:
@@ -40,3 +40,4 @@ class ReviewForm(forms.ModelForm):
     customuser = ReviewModel.customuser
     created = ReviewModel.created
     updated = ReviewModel.updated
+"""

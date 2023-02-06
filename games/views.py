@@ -5,8 +5,8 @@ from django.shortcuts import redirect
 
 from .models import GameScores
 from review.models import Review
-from review.views import record_review
-from review.forms import ReviewForm
+#from review.views import record_review
+#from review.forms import ReviewForm
 
 
 def record_score(request):

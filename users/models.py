@@ -88,29 +88,15 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-
-
 class CustomUser(AbstractUser):
+
 
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
-    avatar = models.ImageField(upload_to='avatars/', blank=True,
-        # ?????? Where is your avatars/ directory ?????
-        verbose_name="Your Image",
-        help_text='Image must be 200px by 200px.',
-        validators=[validate_avatar]
-    )
 
     def get_absolute_url(self):
         return reverse('my_account')
-
-    #def get_username(self):
-        #return self.username
-    # def get_absolute_url(self):
-        # ???
-    #def __str__(self): # Do I need this?
-        #return f'{self.first_name} {self.last_name} ({self.username})'
 
     class Meta:
         #managed = False
@@ -140,15 +126,9 @@ class CustomUserPermissions(models.Model):
         #db_table = 'users_customuser_user_permissions'
         unique_together = (('customuser', 'permission'),)
 
-
-#@classmethod ?
-#@login_required ?
-# class ReviewUpdate(Review) ?
-# class ReviewDelete(Review) ?
-# Why do I have this in addition to the Review model above? Subclass?
-
+"""
 class ReviewModel(models.Model):
-    """
+    
     review = Review(
         vote=1,
         comment="comment",
@@ -156,7 +136,7 @@ class ReviewModel(models.Model):
         customuser=CustomUser.objects.first(),
         created=datetime.now(),
         updated=datetime.now())
-    """
+    
 
     game = models.TextField(max_length=200)
     comment = models.TextField(max_length=100, blank=True)
@@ -227,3 +207,4 @@ class ReviewModel(models.Model):
     class Meta:
         #managed = False
         db_table = 'users_reviewmodel'
+"""
