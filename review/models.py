@@ -118,4 +118,4 @@ class ReviewModel(models.Model):
 
     class Meta:
         #managed = False
-        db_table = 'users_reviewmodel'
+        db_table = 'review_reviewmodel'
