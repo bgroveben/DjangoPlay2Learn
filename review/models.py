@@ -37,7 +37,7 @@ class Review(models.Model):
     class Meta:
         ordering = ["created"]
         verbose_name = 'Review'
-        db_table = 'review_reviewmodel'
+        #db_table = 'review'
 
 """
 class ReviewModel(models.Model):

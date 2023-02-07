@@ -73,5 +73,5 @@ class ReviewsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ReviewsPageView, self).get_context_data(**kwargs)
-        context['reviews'] = ReviewModel.objects.all().order_by('-created')
+        context['reviews'] = Review.objects.all().order_by('-created')
         return context
