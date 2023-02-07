@@ -11,6 +11,11 @@ def append_fields(fieldsets, fieldset, fields):
 
     Returns:
         tuple: The modified fieldsets.
+
+    >>> fieldtest = admin.append_fields(('username',), None, ('email',))
+    >>> print(fieldtest)
+    ('username', (None, {'classes': ('wide',), 'fields': ('email',)}))
+
     """
     for _fieldset in fieldsets:
         if _fieldset[0] == fieldset:
@@ -40,6 +45,12 @@ def remove_fields(fieldsets, fieldset, fields):
 
     Returns:
         tuple: The modified fieldsets.
+
+    >>> fieldappend = admin.append_fields(('username',), 'review', ('email',))
+    >>> fieldremove = admin.remove_fields(fieldappend, 'review', ('email',))
+    >>> print(fieldremove)
+    ('username', ('review', {'classes': ('wide',), 'fields': ()})
+
     """
     for _fieldset in fieldsets:
         if _fieldset[0] == fieldset:
@@ -67,6 +78,12 @@ def move_fields(fieldsets, from_fieldset, to_fieldset, fields):
 
     Returns:
         [type]: [description]
+
+    >>> newfield = admin.append_fields(('username',), 'review', ('email',))
+    >>> fieldmove = admin.move_fields(('review', ), 'username', 'email', 'game')
+    >>> print(fieldmove)
+    ('username', ('review', {'classes': ('wide',), 'fields': ()}))
+
     """
     remove_fields(fieldsets, from_fieldset, fields)
     append_fields(fieldsets, to_fieldset, fields)

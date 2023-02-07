@@ -10,6 +10,7 @@ You can use the JavaScript games you've created in previous projects.
 
 
 NEXT: TESTS
+THEN: Comment and document your code
 
 $=> coverage run --omit='*/venv/*' manage.py test
 $=> coverage report
@@ -25,6 +26,7 @@ Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
 DONE (10%) Logged in users can edit their information in a My Account page.
+-- confirmation email is sent on registration, but user is logged in immediately. I like it this way.
 
 Game Tracking and Leaderboards: 30%
 * AnonymousUser(s) have scores added to the leaderboard
@@ -53,7 +55,6 @@ DONE (10%) Admin users can update and delete user data.
 
 vvvvvv  BUGS BELOW  vvvvvv
 
-confirmation email is sent on registration, but user is logged in immediately. I like it this way, so maybe it's not a bug
 
 time is not local -- a score recorded after 4pm locally is posted with tomorrow's date.
 
