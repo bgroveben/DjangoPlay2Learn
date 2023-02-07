@@ -35,6 +35,7 @@ class ContactsTest(TestCase):
         self.assertEqual(response.status_code, HTTPStatus.OK)
         # 2. Use posted form data to populate form
         form = ContactForm(data=data)
+        # form.save?
         # 3. Make sure that the form exists
         self.assertTrue(form.data)
 

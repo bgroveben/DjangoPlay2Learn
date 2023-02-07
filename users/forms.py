@@ -11,7 +11,7 @@ BIRTH_YEAR_CHOICES = range(1900, datetime.now().year)
 
 
 class CustomUserChangeForm(UserChangeForm):
-    # Do I need this just to add 'dob' and 'avatar'?
+    # Do I need this just to add 'dob'?
     password = None
 
     class Meta:
@@ -27,17 +27,3 @@ class CustomUserChangeForm(UserChangeForm):
                 years = BIRTH_YEAR_CHOICES
             )
         }
-
-"""
-class ReviewForm(forms.ModelForm):
-
-    class Meta:
-        model = ReviewModel
-        fields = ['game', 'comment']
-
-    game = forms.CharField()
-    comment = forms.CharField(max_length=200)
-    customuser = ReviewModel.customuser
-    created = ReviewModel.created
-    updated = ReviewModel.updated
-"""

@@ -65,10 +65,12 @@ class ReviewsTest(TestCase):
         self.assertTrue(sample.updated)
 
     def test_uses_review_template(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
         self.assertTemplateUsed(response, '_base.html')
+
+    def test_user_can_GET_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
 
     def test_user_can_submit_review_form(self):
         # Fill out review form
@@ -89,6 +91,10 @@ class ReviewsTest(TestCase):
     def test_user_can_view_reviews(self):
         response = self.client.get('/review/review')
         self.assertEqual(response.status_code, 301)
+
+    def test_reviews_page_uses_correct_templates(self):
+        self.assertTemplateUsed(response, 'review/reviews.html')
+        self.assertTemplateUsed(response, '_base.html')
 
     def test_review_form_field_labels(self):
         username = 'admin'

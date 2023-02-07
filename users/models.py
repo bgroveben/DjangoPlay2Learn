@@ -6,12 +6,12 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
-
+"""
 def validate_avatar(value):
     w, h = get_image_dimensions(value)
     if w > 200 or h > 200:
         raise ValidationError('Avatar must be no bigger than 200x200 pixels.')
-
+"""
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)

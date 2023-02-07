@@ -1,52 +1,14 @@
 from django.test import TestCase
-
+from django.db import models
+from django import forms
+from datetime import datetime
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
 from django.urls import reverse
+from http import HTTPStatus
 
 from users.models import CustomUser
-
-"""
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing
-
-This class demonstrates how to construct a test case class by deriving from TestCase.
-
-class YourTestClass(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        print("setUpTestData: Run once to set up non-modified data for all class methods.")
-        pass
-
-    def setUp(self):
-        print("setUp: Run once for every test method to setup clean data.")
-        pass
-
-    def test_false_is_false(self):
-        print("Method: test_false_is_false.")
-        self.assertFalse(False)
-
-    def test_false_is_true(self):
-        print("Method: test_false_is_true.")
-        self.assertTrue(False)
-
-    def test_one_plus_one_equals_two(self):
-        print("Method: test_one_plus_one_equals_two.")
-        self.assertEqual(1 + 1, 2)
-
-"""
-
-class TemplatesTest(TestCase):
-    # Make sure templates, views, and urls match up
-
-    def test_uses_reviews_template(self):
-        response = self.client.get('/users/reviews/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/reviews.html')
-        self.assertTemplateUsed(response, '_base.html')
-
-    def test_uses_reviewspage_template(self):
-        response = self.client.get('/users/reviewspage/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/reviewspage.html')
-        self.assertTemplateUsed(response, '_base.html')
+from users.forms import CustomUserChangeForm
 
 
 class CustomUserModelTest(TestCase):
@@ -55,14 +17,20 @@ class CustomUserModelTest(TestCase):
         # Create test user
         testuser1 = CustomUser.objects.create_user(
                             username='testuser1',
-                            password='1X<ISRUkw+tuK'
+                            password='1X<ISRUkw+tuK',
+                            email='test@email.com',
+                            first_name='test',
+                            last_name='user',
+                            dob='1980-01-01'
+                            #dob=str(models.DateField(1980,1,1))
                             )
         testuser1.save()
         login = self.client.login(username=testuser1,
                                 password='1X<ISRUkw+tuK'
                                 )
 
-    def test_field_labels(self):
+
+    def test_custom_user_field_labels(self):
         customuser = CustomUser.objects.get(id=1)
         username_label = customuser._meta.get_field('username').verbose_name
         self.assertEqual(username_label, 'username')
@@ -74,11 +42,19 @@ class CustomUserModelTest(TestCase):
         self.assertEqual(last_name_label, 'last name')
         dob_label = customuser._meta.get_field('dob').verbose_name
         self.assertEqual(dob_label, 'Date of Birth')
-        avatar_label = customuser._meta.get_field('avatar').verbose_name
-        self.assertEqual(avatar_label, 'Your Image')
 
-    def test_customuser_model(self):
+    def test_sample_custom_user_model(self):
         sample = CustomUser.objects.get(id=1)
-        #sample.save()
         self.assertTrue(sample)
         self.assertEqual(sample.username, 'testuser1')
+        self.assertIsInstance(sample, CustomUser)
+
+
+    def test_user_can_update_their_account_form(self):
+        data={'email': 'test@email.com', 'username': 'testuser1', 'first_name': 'test', 'last_name': 'user', 'dob': '1980'}
+        response = self.client.post('/users/my-account/', data)
+        response = self.client.post(reverse('users:my_account'), data)
+        # Make sure the form data is posted
+        self.assertTrue(response)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
