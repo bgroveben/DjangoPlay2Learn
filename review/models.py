@@ -37,10 +37,11 @@ class Review(models.Model):
     class Meta:
         ordering = ["created"]
         verbose_name = 'Review'
+        db_table = 'review_reviewmodel'
 
-
+"""
 class ReviewModel(models.Model):
-    """
+    
     review = Review(
         vote=1,
         comment="comment",
@@ -48,7 +49,7 @@ class ReviewModel(models.Model):
         customuser=CustomUser.objects.first(),
         created=datetime.now(),
         updated=datetime.now())
-    """
+    
 
     game = models.TextField(max_length=200)
     comment = models.TextField(max_length=100, blank=True)
@@ -119,3 +120,4 @@ class ReviewModel(models.Model):
     class Meta:
         #managed = False
         db_table = 'review_reviewmodel'
+"""

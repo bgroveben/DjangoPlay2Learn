@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .models import Review, ReviewModel
+from .models import Review#, ReviewModel
 from .forms import ReviewForm
 
 @login_required
@@ -67,7 +67,8 @@ class ReviewView(FormView, SuccessMessageMixin, LoginRequiredMixin):
 """
 
 class ReviewsPageView(TemplateView):
-    model = ReviewModel
+    #model = ReviewModel
+    model = Review
     template_name = "users/reviewspage.html"
 
     def get_context_data(self, **kwargs):

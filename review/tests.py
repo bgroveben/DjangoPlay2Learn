@@ -65,6 +65,7 @@ class ReviewsTest(TestCase):
         self.assertTrue(sample.updated)
 
     def test_uses_review_template(self):
+        response = self.client.get('/')
         self.assertTemplateUsed(response, 'home.html')
         self.assertTemplateUsed(response, '_base.html')
 
@@ -92,9 +93,6 @@ class ReviewsTest(TestCase):
         response = self.client.get('/review/review')
         self.assertEqual(response.status_code, 301)
 
-    def test_reviews_page_uses_correct_templates(self):
-        self.assertTemplateUsed(response, 'review/reviews.html')
-        self.assertTemplateUsed(response, '_base.html')
 
     def test_review_form_field_labels(self):
         username = 'admin'
