@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -11,7 +10,6 @@ from common.utils.admin import append_fields, move_fields, remove_fields
 
 from .models import CustomUser#, ReviewModel#, ReviewVote
 
-#CustomUser = get_user_model()
 
 @admin.register(CustomUser)
 class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
@@ -36,18 +34,6 @@ class CustomUserAdmin(DjangoPlay2LearnAdmin, UserAdmin):
         self.save_on_top = obj is not None
         return super().get_form(request, obj, **kwargs)
 
-"""
-@admin.register(ReviewModel)
-class ReviewModelAdmin(admin.ModelAdmin):
-    model = ReviewModel
-    #list_display = ['vote', 'comment', 'game', 'customuser', 'created', 'updated']
-    list_display = ['comment', 'game', 'customuser', 'created', 'updated']
-
-    def get_readonly_fields(self, request, obj=None):
-        if obj: # editing an existing object
-            return ('slug', 'created', 'updated')
-        return ()
-"""
 
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)
