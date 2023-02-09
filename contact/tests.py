@@ -54,9 +54,6 @@ class ContactsTest(TestCase):
         self.assertTrue(form.fields['message'])
 
     def test_subject_and_message_max_length(self):
-        #data={'email': 'test@email.net', 'subject': 'Test Subject', 'message': 'This is a test message.'}
-        #response = self.client.post('/contact/', data)
-        #form = ContactForm(data=data)
         contact = Contact(email="test@email.com", subject="Test Subject", message="This is a test message.")
         subject_max_length = contact._meta.get_field('subject').max_length
         self.assertEqual(subject_max_length, 100)

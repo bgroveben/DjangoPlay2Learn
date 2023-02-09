@@ -10,6 +10,8 @@ You can use the JavaScript games you've created in previous projects.
 
 
 NEXT: TESTS
+https://django-testing-docs.readthedocs.io/en/latest/views.html#getting-into-context
+-- Look at contact_view function to test record_review and record_score
 THEN: Comment and document your code
 
 $=> coverage run --omit='*/venv/*' manage.py test

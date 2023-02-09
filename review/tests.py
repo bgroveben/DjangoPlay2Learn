@@ -1,14 +1,11 @@
-from django.test import TestCase, Client
-from django.urls import reverse
-from django.conf import settings
+from django.test import TestCase
 
-#import http
-from http import HTTPStatus
 from datetime import datetime
 
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
+from .views import record_review, ReviewView, ReviewsPageView
 
 
 class ReviewsTest(TestCase):
@@ -22,12 +19,19 @@ class ReviewsTest(TestCase):
         login = self.client.force_login(testuser1)
 
     def test_uses_review_home_template(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'home.html')
+        response = self.client.get('/review/')
+        #print(response.context[-1])
+        self.assertIsInstance(response.context[-1]['form'], ReviewForm)
+        self.assertTemplateUsed(response, 'review/home.html')
         self.assertTemplateUsed(response, '_base.html')
+        self.assertEqual(response.status_code, 200)
 
-    def test_user_can_GET_review_home_page(self):
-        response = self.client.get('/')
+    def test_uses_review_review_template(self):
+        response = self.client.get('/review/review/')
+        print(response.context[-1])
+        self.assertIsInstance(response.context[-1]['view'], ReviewView)
+        self.assertTemplateUsed(response, 'review/reviews.html')
+        self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
 
     def test_user_can_fill_out_review_form(self):
@@ -40,16 +44,14 @@ class ReviewsTest(TestCase):
         data={'username': CustomUser.objects.get(username='testuser1').id, 'game': 'MATH FACTS', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
         game = data["game"]
         votes = data["votes"]
-        comment = data["comment"]
         response = self.client.get('/review/')
         self.assertContains(response, "game")
         self.assertContains(response, game)
         self.assertContains(response, "votes")
         self.assertContains(response, votes)
         self.assertContains(response, "comment")
-        #self.assertContains(response, comment)
         self.assertEqual(response.status_code, 200)
-
+        
     def test_user_can_submit_review_form(self):
         # Fill out review form
         username = 'admin'

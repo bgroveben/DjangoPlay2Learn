@@ -12,7 +12,6 @@ class AppendMoveRemoveFunctionsTest(TestCase):
         self.assertTrue(fieldtest)
         self.assertIsInstance(fieldtest, tuple)
         self.assertEqual(fieldtest, ('username', (None, {'classes': ('wide',), 'fields': ('email',)})))
-        #print(fieldtest)
 
     def test_remove_fields_from_fieldset_in_fieldsets(self):
         fieldappend = admin.append_fields(('username',), 'review', ('email',))
@@ -35,10 +34,7 @@ class AppendMoveRemoveFunctionsTest(TestCase):
         self.assertTrue(fieldremove)
         with self.assertRaises(Exception):
             fieldmove = admin.move_fields(('username', (None, {'classes': ('wide',), 'fields': ('email',)})), 'review', 'games', ('email',))
-            #print(fieldmove)
-        #self.assertTrue(fieldremove)
-        #print(fieldmove)                         
-
+                        
 
 class SwapValuesFunctionTest(TestCase):
 
