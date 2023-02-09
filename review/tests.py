@@ -5,11 +5,10 @@ from datetime import datetime
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
-from .views import record_review, ReviewView, ReviewsPageView
+from .views import record_review, ReviewView
 
 
 class ReviewsTest(TestCase):
-
 
     def setUp(self):
         # Create test user
@@ -28,7 +27,7 @@ class ReviewsTest(TestCase):
 
     def test_uses_review_review_template(self):
         response = self.client.get('/review/review/')
-        print(response.context[-1])
+        #print(response.context[-1])
         self.assertIsInstance(response.context[-1]['view'], ReviewView)
         self.assertTemplateUsed(response, 'review/reviews.html')
         self.assertTemplateUsed(response, '_base.html')

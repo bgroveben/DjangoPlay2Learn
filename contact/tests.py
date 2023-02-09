@@ -23,6 +23,8 @@ class ContactsTest(TestCase):
 
     def test_uses_contact_templates(self):
         response = self.client.get('/contact/')
+        #print(response.context[-1])
+        self.assertIsInstance(response.context[-1]['form'], ContactForm)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact/contact.html')
         self.assertTemplateUsed(response, '_base.html')
