@@ -18,8 +18,7 @@ NEXT: CRUD for Review
 -- my reviews view with update and delete buttons on each review
     -- like myscores template and views 
     -- buttons for edit and delete
--- update view with prefilled review form
-    -- HTML validate on submit
+-- update view with new ReviewForm instance
 
 
 -- Change votes widget on ReviewForm into something not hideous

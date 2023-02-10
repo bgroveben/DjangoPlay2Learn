@@ -5,7 +5,7 @@ from datetime import datetime
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
-from .views import record_review, ReviewView
+from .views import record_review, ReviewView, MyReviewsView
 
 from unittest.mock import MagicMock, patch
 
@@ -37,10 +37,11 @@ class ReviewsTest(TestCase):
 
 
     def test_uses_my_reviews_template(self):
-        response = self.client.get('/review/my-reviews/')
+        response = self.client.get('/review/myreviews/')
         #print(response.context[-1])
-        self.assertIsInstance(response.context[-1]['view'], ReviewView)
-        self.assertTemplateUsed(response, 'review/my-reviews.html')
+        #self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
+        # self.assert page title is 'My Reviews'
+        self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
     

@@ -51,3 +51,28 @@ class ReviewView(SuccessMessageMixin, TemplateView):
         context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
         return context
 
+class MyReviewsView(SuccessMessageMixin, TemplateView):
+    # template filters -> {{ value|filter:arg }}
+    template_name = "review/myreviews.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(MyReviewsView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.all()
+        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
+        context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
+        context['allreviews'] = Review.objects.all().order_by('-username')
+        context['myreviews'] = Review.objects.all().filter(username=self.request.user)
+        return context
+
+    """
+    template_name = "review/reviews.html"
+    form_class = ReviewForm
+    success_message = 'Your review has been submitted'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.all()
+        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
+        context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
+        return context
+    """
