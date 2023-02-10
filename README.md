@@ -10,13 +10,16 @@ You can use the JavaScript games you've created in previous projects.
 
 
 NEXT: CRUD for Review
--- UPDATE, DELETE
+-- UPDATE, DELETE 
+    -- try update_or_create in record_review function
 -- TDD
 -- test templates
 -- test views
--- test forms
+-- test form only if you need a different one
 -- my reviews view with update and delete buttons on each review
-    -- like myscores template and views 
+    -- like myscores template and views
+    -- update_review function using Queryset.update_or_create
+            -https://stackoverflow.com/questions/16329946/django-model-method-create-or-update 
     -- buttons for edit and delete
 -- update view with new ReviewForm instance
 
