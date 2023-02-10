@@ -5,14 +5,14 @@ from django.shortcuts import redirect
 
 from .models import GameScores
 from review.models import Review
-#from review.views import record_review
-#from review.forms import ReviewForm
 
 
 def record_score(request):
     """
     Get data from Vue via the recordScore function in the AH and MF components
     """
+    # request.body returns a raw HTTP request body as a bytestring.
+    # convert the request body into a dictionary using json.loads().
     data = json.loads(request.body)
     username = request.user
     score = data["score"]
@@ -23,8 +23,6 @@ def record_score(request):
     new_score = GameScores(username=username, game=game, score=score, maxnum=maxnum, gamelength=gamelength, operation=operation)
     new_score.save()
     response = {"success": True}
-    #redirect('')
-    #redirect(reverse(''))
     return JsonResponse(response)
 
 
@@ -36,8 +34,6 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.all()
-        #context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM').order_by('-votes')
-        #context['math_reviews'] = Review.objects.filter(game__exact='MATH').order_by('-votes')
         return context
 
 

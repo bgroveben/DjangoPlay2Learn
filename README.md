@@ -9,10 +9,20 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT: TESTS
-https://django-testing-docs.readthedocs.io/en/latest/views.html#getting-into-context
--- Look at contact_view function to test record_review and record_score
--- Then check functional and integration tests
+NEXT: CRUD for Review
+-- UPDATE, DELETE
+-- TDD
+-- test templates
+-- test views
+-- test forms
+-- my reviews view with update and delete buttons on each review
+    -- like myscores template and views 
+    -- buttons for edit and delete
+-- update view with prefilled review form
+    -- HTML validate on submit
+
+
+-- Change votes widget on ReviewForm into something not hideous
 THEN: Comment and document your code
 
 $=> coverage run --omit='*/venv/*' manage.py test

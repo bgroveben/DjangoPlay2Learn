@@ -1,11 +1,13 @@
 from django.test import TestCase
-
+import json
 from datetime import datetime
 
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
 from .views import record_review, ReviewView
+
+from unittest.mock import MagicMock, patch
 
 
 class ReviewsTest(TestCase):
@@ -19,7 +21,7 @@ class ReviewsTest(TestCase):
 
     def test_uses_review_home_template(self):
         response = self.client.get('/review/')
-        #print(response.context[-1])
+        #print(response.context[0])
         self.assertIsInstance(response.context[-1]['form'], ReviewForm)
         self.assertTemplateUsed(response, 'review/home.html')
         self.assertTemplateUsed(response, '_base.html')
@@ -32,6 +34,16 @@ class ReviewsTest(TestCase):
         self.assertTemplateUsed(response, 'review/reviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
+
+
+    def test_uses_my_reviews_template(self):
+        response = self.client.get('/review/my-reviews/')
+        #print(response.context[-1])
+        self.assertIsInstance(response.context[-1]['view'], ReviewView)
+        self.assertTemplateUsed(response, 'review/my-reviews.html')
+        self.assertTemplateUsed(response, '_base.html')
+        self.assertEqual(response.status_code, 200)
+    
 
     def test_user_can_fill_out_review_form(self):
         review = Review(game="MATH", votes=5, comment="This is a test comment.")
@@ -70,7 +82,6 @@ class ReviewsTest(TestCase):
     def test_review_form_field_labels(self):
         username = 'admin'
         data={'username': username, 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
-        response = self.client.post('/review/', data)
         form = ReviewForm(data=data)
         self.assertTrue(form.fields['game'])
         self.assertTrue(form.fields['votes'])
@@ -117,4 +128,4 @@ class ReviewsTest(TestCase):
         self.assertTrue(review_username)
         game_choices = review._meta.get_field('game').choices
         self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])
-
+        

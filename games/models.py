@@ -26,4 +26,4 @@ class GameScores(models.Model):
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
 
     def __str__(self):
-        return self.username
+        return str(self.username)

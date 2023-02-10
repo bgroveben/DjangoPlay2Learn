@@ -1,4 +1,7 @@
 import json
+import requests
+
+from django.test.client import Client
 #import unittest
 from django.test import TestCase# , RequestFactory
 #from django.test import Client
@@ -47,13 +50,14 @@ class TemplatesTest(TestCase):
         #self.assertTemplateUsed(response, '_base_vue.html') => fail
 
 
-class GameScoresModelsTest(TestCase):
+class GameScoresTest(TestCase):
 
     def setUp(self):
         # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()
         login = self.client.login(username=testuser1, password='1X<ISRUkw+tuK')
+
 
     def test_gamescores_model(self):
         sample = GameScores(created=datetime.now(), username=CustomUser.objects.get(username='testuser1'), score=50, operation='+', gamelength='30', maxnum='20', game='MATH FACTS')
@@ -66,5 +70,4 @@ class GameScoresModelsTest(TestCase):
         self.assertEqual(sample.maxnum, '20')
         self.assertEqual(sample.game, "MATH FACTS")
 
-    def test_record_score_function(self):
-        pass
+ 
