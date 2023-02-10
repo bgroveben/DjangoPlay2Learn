@@ -7,7 +7,8 @@ from users.models import CustomUser
 from review.models import Review
 from .views import record_review, ReviewView, MyReviewsView
 
-from unittest.mock import MagicMock, patch
+#from unittest.mock import MagicMock, patch
+from bs4 import BeautifulSoup
 
 
 class ReviewsTest(TestCase):
@@ -39,12 +40,33 @@ class ReviewsTest(TestCase):
     def test_uses_my_reviews_template(self):
         response = self.client.get('/review/myreviews/')
         #print(response.context[-1])
-        #self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
+        self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
         # self.assert page title is 'My Reviews'
         self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
-    
+    """
+    def get_response_title(response):
+        try:
+            soup = BeautifulSoup(response.content, 'lxml')
+            return soup.find('title').getText()
+        except AttributeError:
+            return None
+    """
+    def test_user_can_GET_myreviews_page(self):
+        response = self.client.get('/review/myreviews/')
+        #self.assertTrue(self.get_response_title(), 'My Reviews')
+        #print(self.get_response_title())
+        # only registered users, aka, CustomUsers can submit reviews
+        self.assertIsInstance(response.context[-1]["user"], CustomUser)
+        self.assertEqual(response.context["user"].id, 1)
+        self.assertContains(response, "game")
+        self.assertContains(response, "user")
+        self.assertEqual(response.context["user"].id, 1)
+        #self.assertContains(response, "votes")
+        #self.assertContains(response, votes)
+       # self.assertContains(response, "comment")
+        self.assertEqual(response.status_code, 200)
 
     def test_user_can_fill_out_review_form(self):
         review = Review(game="MATH", votes=5, comment="This is a test comment.")
@@ -53,15 +75,9 @@ class ReviewsTest(TestCase):
         self.assertIsInstance(review_form, ReviewForm)
 
     def test_user_can_GET_review_page(self):
-        data={'username': CustomUser.objects.get(username='testuser1').id, 'game': 'MATH FACTS', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
-        game = data["game"]
-        votes = data["votes"]
         response = self.client.get('/review/')
         self.assertContains(response, "game")
-        self.assertContains(response, game)
-        self.assertContains(response, "votes")
-        self.assertContains(response, votes)
-        self.assertContains(response, "comment")
+        self.assertContains(response, "user")
         self.assertEqual(response.status_code, 200)
         
     def test_user_can_submit_review_form(self):

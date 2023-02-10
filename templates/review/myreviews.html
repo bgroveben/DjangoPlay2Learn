@@ -17,6 +17,14 @@
               <li class="my-2 pb-2 h5" style="color: yellow;">
                 "{{ review.comment }}"
               </li>
+              <div>
+                <a href="{% url 'review-index' %}">
+                    <i class="fas fa-pencil-alt"></i>
+                  </a>
+                  <a href="{% url 'review' %}">
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+              </div>
             </ul>
           {% endfor %}
           </div>
