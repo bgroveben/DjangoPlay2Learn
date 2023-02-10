@@ -1,14 +1,10 @@
 from django.test import TestCase
-import json
 from datetime import datetime
 
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
-from .views import record_review, ReviewView, MyReviewsView
-
-#from unittest.mock import MagicMock, patch
-from bs4 import BeautifulSoup
+from .views import ReviewView, MyReviewsView
 
 
 class ReviewsTest(TestCase):
@@ -36,7 +32,6 @@ class ReviewsTest(TestCase):
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
 
-
     def test_uses_my_reviews_template(self):
         response = self.client.get('/review/myreviews/')
         #print(response.context[-1])
@@ -45,27 +40,15 @@ class ReviewsTest(TestCase):
         self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
-    """
-    def get_response_title(response):
-        try:
-            soup = BeautifulSoup(response.content, 'lxml')
-            return soup.find('title').getText()
-        except AttributeError:
-            return None
-    """
+
     def test_user_can_GET_myreviews_page(self):
         response = self.client.get('/review/myreviews/')
-        #self.assertTrue(self.get_response_title(), 'My Reviews')
-        #print(self.get_response_title())
         # only registered users, aka, CustomUsers can submit reviews
         self.assertIsInstance(response.context[-1]["user"], CustomUser)
         self.assertEqual(response.context["user"].id, 1)
         self.assertContains(response, "game")
         self.assertContains(response, "user")
         self.assertEqual(response.context["user"].id, 1)
-        #self.assertContains(response, "votes")
-        #self.assertContains(response, votes)
-       # self.assertContains(response, "comment")
         self.assertEqual(response.status_code, 200)
 
     def test_user_can_fill_out_review_form(self):
@@ -145,4 +128,3 @@ class ReviewsTest(TestCase):
         self.assertTrue(review_username)
         game_choices = review._meta.get_field('game').choices
         self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])
-        

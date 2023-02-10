@@ -4,52 +4,26 @@
 {% block main %}
   <h1 class="text-center text-warning">My Reviews</h1>
     {% if user.is_authenticated %}
-      <h2 class="text-center text-warning">Anagram Hunt</h2>
       <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
       <!--<div class="card m-auto mb-3 p-3" style="max-width: 50rem">-->
       <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, salmon);">
         <div class="list-group list-group-flush">
-          {% for review in anagram_reviews %}
-            <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
-              <li class="text-center h5" style="color: ivory">
-                On {{ review.created|date }} {{ review.username }} gave Anagram Hunt {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
-              </li>
-              <li class="my-2 pb-2 h5" style="color: yellow;">
-                "{{ review.comment }}"
-              </li>
-              <div>
-                <a href="{% url 'review-index' %}">
-                    <i class="fas fa-pencil-alt"></i>
-                  </a>
-                  <a href="{% url 'review' %}">
-                    <i class="far fa-trash-alt"></i>
-                  </a>
-              </div>
-            </ul>
-          {% endfor %}
-          </div>
-          </div>
-      </div>
-    <div>
-    <br />
-    <h2 class="text-center text-warning">Math Facts</h2>
-    <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
-    <!--<div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">-->
-      <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, salmon);">
-        <div class="list-group list-group-flush">
-          {% for review in math_reviews %}
-            <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
-              <li class="text-center h5" style="color: ivory">
-                On {{ review.created|date }} {{ review.username }} gave Math Facts {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
-              </li>
-              <li class="my-2 pb-2 h5" style="color: yellow;">
-                "{{ review.comment }}"
-              </li>
-            </ul>
-          {% endfor %}
-        </div>
-        </div>
-    </div>
-  </div>
-  {% endif %}
+
+        {% for review in myreviews %}
+        <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
+          <li class="text-center h5" style="color: ivory">
+            On {{ review.created|date }} {{ review.username }} gave {{ review.game }} {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
+          </li>
+          <li class="my-2 pb-2 h5" style="color: yellow;">
+            "{{ review.comment }}"
+          </li>
+          <div class="bg-danger">             
+            <a href="{% url 'delete' review.pk %}"
+                class="btn btn-dark btn-sm">Delete
+            </a>
+          </div>          
+        </ul>
+      {% endfor %}
+    {% endif %}
 {% endblock main %}
+      

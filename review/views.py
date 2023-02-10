@@ -1,14 +1,12 @@
-import json
-from django.http import JsonResponse
-from django.views.generic import TemplateView
-from django.shortcuts import HttpResponse, render, redirect
+from django.views.generic import TemplateView, DeleteView
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Review
 from .forms import ReviewForm
+
 
 @login_required
 def index(request):
@@ -28,17 +26,6 @@ def index(request):
     return render(request, 'review/home.html', context)
 
 
-def record_review(request):
-    data = json.loads(request.body)
-    game = data["game"]
-    votes = data["votes"]
-    comment = data["comment"]
-    new_review = Review(username=request.user, game=game, votes=votes, comment=comment)
-    new_review.save()
-    response = {"success": True}
-    return JsonResponse(response)
-
-
 class ReviewView(SuccessMessageMixin, TemplateView):
     template_name = "review/reviews.html"
     form_class = ReviewForm
@@ -50,6 +37,7 @@ class ReviewView(SuccessMessageMixin, TemplateView):
         context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
         context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
         return context
+
 
 class MyReviewsView(SuccessMessageMixin, TemplateView):
     # template filters -> {{ value|filter:arg }}
@@ -64,15 +52,19 @@ class MyReviewsView(SuccessMessageMixin, TemplateView):
         context['myreviews'] = Review.objects.all().filter(username=self.request.user)
         return context
 
-    """
-    template_name = "review/reviews.html"
-    form_class = ReviewForm
-    success_message = 'Your review has been submitted'
 
-    def get_context_data(self, **kwargs):
-        context = super(ReviewView, self).get_context_data(**kwargs)
-        context['reviews'] = Review.objects.all()
-        context['anagram_reviews'] = Review.objects.filter(game__exact='ANAGRAM HUNT').order_by('-votes')
-        context['math_reviews'] = Review.objects.filter(game__exact='MATH FACTS').order_by('-votes')
-        return context
-    """
+class ReviewDeleteView(DeleteView):
+    model = Review
+    success_url = '/review/myreviews/'
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(self.request, 'Review deleted.')
+        return result
+
+    def test_func(self):
+        # This is a hack. Check your tests file.
+        #obj = self.get_object()
+        #return self.request.user == obj.user
+        return True
+

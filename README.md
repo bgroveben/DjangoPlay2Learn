@@ -9,22 +9,15 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT: CRUD for Review
--- UPDATE, DELETE 
-    -- try update_or_create in record_review function
--- TDD
--- test templates
--- test views
--- test form only if you need a different one
--- my reviews view with update and delete buttons on each review
-    -- like myscores template and views
-    -- update_review function using Queryset.update_or_create
-            -https://stackoverflow.com/questions/16329946/django-model-method-create-or-update 
-    -- buttons for edit and delete
--- update view with new ReviewForm instance
-
-
+NEXT:
+-- UPDATE view with new ReviewForm instance
 -- Change votes widget on ReviewForm into something not hideous
+-- Validate html and css
+-- time is not local
+    - a score recorded after 4pm locally is posted with tomorrow's date.
+    -Should I care?
+??? Semantic html for the folks with special needs ???
+
 THEN: Comment and document your code
 
 $=> coverage run --omit='*/venv/*' manage.py test
@@ -33,9 +26,7 @@ $=> coverage html
 $=> open -a "Google Chrome" htmlcov/index.html
 
 
-
-??? Semantic html for the folks with special needs ???
-!!! HTML validator !!!
+!!!!!!!! GRADED !!!!!!!!!!
 
 Login and Registration: 25%
 DONE (10%) Users can register.
@@ -63,18 +54,4 @@ DONE (5%) Admin users can access the admin site.
 DONE (10%) Admin users can view user data.
 DONE (10%) Admin users can update and delete user data.
 
-
-{% startbugs %}
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!! Don't forget to remove unused code!!!!!!
-
-vvvvvv  BUGS BELOW  vvvvvv
-
-
-time is not local -- a score recorded after 4pm locally is posted with tomorrow's date.
-
-
-
-END BUGS
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-{% endbugs %}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
