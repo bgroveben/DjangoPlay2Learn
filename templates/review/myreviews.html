@@ -17,7 +17,9 @@
           <li class="my-2 pb-2 h5" style="color: yellow;">
             "{{ review.comment }}"
           </li>
-          <div class="bg-danger">             
+          <div class="bg-danger">
+            <a href="{% url 'update' review.pk %}"
+            class="btn btn-info btn-sm mr-2">Update</a>             
             <a href="{% url 'delete' review.pk %}"
                 class="btn btn-dark btn-sm">Delete
             </a>

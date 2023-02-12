@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, DeleteView
+from django.views.generic import TemplateView, DeleteView, UpdateView
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -68,3 +68,12 @@ class ReviewDeleteView(DeleteView):
         #return self.request.user == obj.user
         return True
 
+class ReviewUpdateView(SuccessMessageMixin, UpdateView):
+    model = Review
+    form_class = ReviewForm
+    success_message = 'Review updated.'
+
+    def test_func(self):
+        #obj = self.get_object()
+        #return self.request.user == obj.user
+        return True

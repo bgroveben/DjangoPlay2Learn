@@ -9,7 +9,8 @@ You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
 
-NEXT:
+TODO:
+-- Style Contact success page
 -- UPDATE view with new ReviewForm instance
 -- Change votes widget on ReviewForm into something not hideous
 -- Validate html and css

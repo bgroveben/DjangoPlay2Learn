@@ -2,6 +2,8 @@ from django.db import models
 import datetime
 from django.conf import settings
 from users.models import CustomUser
+from django.urls import path
+#from review.views import ReviewView
 
 
 class Review(models.Model):
@@ -29,6 +31,10 @@ class Review(models.Model):
     comment = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        # return path('/review/', ReviewView.as_view())
+        return '/review/myreviews/'
 
     def __str__(self):
         #return self.game.title

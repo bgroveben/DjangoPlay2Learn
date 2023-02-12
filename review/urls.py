@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 # ?? I didn't need to import index(request) ??
-from review.views import ReviewView, MyReviewsView, ReviewDeleteView
+from review.views import ReviewView, MyReviewsView, ReviewDeleteView, ReviewUpdateView
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('review/', ReviewView.as_view(), name='review'),
     path('myreviews/', MyReviewsView.as_view(), name='myreviews'),
     path('review/<int:pk>/delete/', ReviewDeleteView.as_view(), name='delete'),
+    path('review/<int:pk>/update/', ReviewUpdateView.as_view(), name='update'),
 ]
