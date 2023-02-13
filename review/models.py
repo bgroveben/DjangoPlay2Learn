@@ -32,9 +32,9 @@ class Review(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    def get_absolute_url(self):
-        # return path('/review/', ReviewView.as_view())
-        return '/review/myreviews/'
+    #def get_absolute_url(self):
+        #return path('/review/', ReviewView.as_view())
+        #return '/review/myreviews/'
 
     def __str__(self):
         #return self.game.title

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
 
 from .models import Review
 from .forms import ReviewForm
@@ -40,7 +41,6 @@ class ReviewView(SuccessMessageMixin, TemplateView):
 
 
 class MyReviewsView(SuccessMessageMixin, TemplateView):
-    # template filters -> {{ value|filter:arg }}
     template_name = "review/myreviews.html"
 
     def get_context_data(self, **kwargs):
@@ -72,8 +72,11 @@ class ReviewUpdateView(SuccessMessageMixin, UpdateView):
     model = Review
     form_class = ReviewForm
     success_message = 'Review updated.'
+    success_url = '/review/myreviews/'
+    #success_url = reverse_lazy('review:myreviews')
 
     def test_func(self):
+        # This is a hack. Fix it.
         #obj = self.get_object()
         #return self.request.user == obj.user
         return True
