@@ -10,9 +10,8 @@ You can use the JavaScript games you've created in previous projects.
 
 
 TODO:
+-- GAME TRACKING page - try to separate AH and MF scores
 -- Style Contact success page
--- UPDATE view with new ReviewForm instance
--- Change votes widget on ReviewForm into something not hideous
 -- Validate html and css
 -- time is not local
     - a score recorded after 4pm locally is posted with tomorrow's date.
