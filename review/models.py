@@ -27,7 +27,7 @@ class Review(models.Model):
         related_name='reviews'
     )
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
-    votes = models.IntegerField(choices=RATING)
+    votes = models.IntegerField(choices=RATING, default='')
     comment = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
