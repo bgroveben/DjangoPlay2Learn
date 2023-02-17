@@ -5,9 +5,10 @@
 {% block main %}
   <h1 class="text-center text-warning">My Scores</h1>
   {% if user.is_authenticated %}
+  <!--
   <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
     <div class="container col-md-8">
-      <h2 class="text-center text-warning">Math Facts</h2>
+      <h2 class="text-center text-warning">All Scores</h2>
       <ol class="ps-5 border border-info rounded">
       {% for score in myscores %}
         <li class="h4" style="color: ivory;">
@@ -31,7 +32,8 @@
     </div>
   </div>
 
-  <!--
+  <div><br /></div>
+  -->
   <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
     <div class="container col-md-8">
       <h2 class="text-center text-warning">Math Facts</h2>
@@ -39,17 +41,27 @@
       {% for score in math_scores %}
         <li class="h4" style="color: ivory;">
         <div class="row card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);">
+          <!--
           <p class="h3" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4" ></span>{{ score.username }}</p>
+          
           <p class="h4 ">
             {{ score.operation|swap }}
           </p>
+          -->
+          <!--
           <p class="h4">
+            <span class="me-5">{{ score.operation|swap }}</span>
             {{ score.created|date }}
           </p>
-          <p class="h4">
+          -->
+          <p class="h2" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4" ></span>{{ score.operation|swap }}</p>
+          <p class="h3">
+            {{ score.created|date }}
+          </p>
+          <p class="h3">
             Max Number: {{ score.maxnum }}
             <span class="ps-5"></span>
-            Game Length: {{ score.gamelength }}
+            Game Length: {{ score.gamelength }} sec
           </p>
           </div>
         </li>
@@ -57,7 +69,9 @@
       </ol>
     </div>
   </div>
+  
   <div><br /></div>
+
   <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
     <div class="container col-md-8">
       <h2 class="text-center text-warning">Anagram Hunt</h2>
@@ -65,14 +79,14 @@
       {% for score in anagram_scores %}
         <li class="h4" style="color: ivory;">
           <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
-            <p class="h3" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4"></span>{{ score.username }}</p>
-            <p class="h4">
+            <p class="h2">{{ score.score }}</p>
+            <p class="h3">
               {{ score.created|date }}
             </p>
-            <p class="h4">
+            <p class="h3">
               Word Length: {{ score.maxnum }}
               <span class="ps-5"></span>
-              Game Length: {{ score.gamelength }}
+              Game Length: {{ score.gamelength }} sec
             </p>
         </div>
         </li>
@@ -80,6 +94,5 @@
       </ol>
     </div>
   </div>
-  -->
   {% endif %}
 {% endblock main %}

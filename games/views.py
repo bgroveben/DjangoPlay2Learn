@@ -57,8 +57,11 @@ class MyScoresView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(MyScoresView, self).get_context_data(**kwargs)
-        context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
-        context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score')
-        context['allscores'] = GameScores.objects.all().order_by('-username')
+
+        #context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score')
         context['myscores'] = GameScores.objects.all().filter(username=self.request.user)
+        context['anagram_scores'] = GameScores.objects.filter(game__exact='ANAGRAM').order_by('-score').filter(username=self.request.user)
+        context['math_scores'] = GameScores.objects.filter(game__exact='MATH').order_by('-score').filter(username=self.request.user)
+        #context['allscores'] = GameScores.objects.all().order_by('-username')
+
         return context
