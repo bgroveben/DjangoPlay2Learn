@@ -4,8 +4,10 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
 {% block main %}
-<div class="card border-2 border-primary border-rounded m-auto p-3 text-center my-5" >
-    <h2 class="text-success my-5">Thank you for getting in touch</h2>
-    <h3 class="text-primary my-4">Your contact information and message were successfully submitted.</h3>
+<div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, darksalmon);">
+    <div class="card border-2 border-primary border-rounded m-auto p-3 text-center my-5"style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);" >
+        <h2 class="text-white">Thank you for getting in touch</h2>
+        <h3 class="my-4" style="color:ivory;">Your contact information and message were successfully submitted.</h3>
+    </div>
 </div>
 {% endblock main %}
