@@ -1,19 +1,13 @@
-import json
-import requests
-
-from django.test.client import Client
-#import unittest
-from django.test import TestCase# , RequestFactory
+from django.test import TestCase
 from htmlvalidator.client import ValidatingClient
 from django.db import models
-#from django.test import Client
 from django.urls import reverse_lazy
 
 from datetime import datetime
 
 from users.models import CustomUser
 from .models import GameScores
-from .views import record_score, HomeView, GamesView, GameScoresView, MyScoresView
+from .views import HomeView, GamesView, GameScoresView, MyScoresView
 
 
 class TemplatesTest(TestCase):
@@ -41,12 +35,10 @@ class TemplatesTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.context[-1]['view'], GamesView)
         self.assertTemplateUsed(response, 'games/games.html')
-        #self.assertTemplateUsed(response, '_base.html')
         self.assertTemplateUsed(response, '_base_vue.html')
 
     def test_uses_game_scores_templates(self):
         response = self.client.get('/game-scores/')
-        #print(response.context[-1]['view'])
         self.assertIsInstance(response.context[-1]['view'], GameScoresView)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'games/game-scores.html')
@@ -59,7 +51,6 @@ class TemplatesTest(TestCase):
         self.assertIsInstance(response.context[-1]['view'], MyScoresView)
         self.assertTemplateUsed(response, 'games/myscores.html')
         self.assertTemplateUsed(response, '_base.html')
-        #self.assertTemplateUsed(response, '_base_vue.html') => fail
 
 
 class GameScoresTest(TestCase):
@@ -87,7 +78,6 @@ class GameScoresTest(TestCase):
         createds = sample._meta.get_field('created')
         self.assertTrue(createds)
         self.assertIsInstance(createds, models.DateTimeField)
-        print(type(createds))
         usernames = sample._meta.get_field('username')
         self.assertTrue(usernames)
         self.assertIsInstance(usernames, models.TextField)
@@ -106,10 +96,4 @@ class GameScoresTest(TestCase):
         games = sample._meta.get_field('game')
         self.assertTrue(games)
         self.assertIsInstance(games, models.TextField)
-        #print(type(games))
 
-        #self.assertEqual(comment_max_length, 1000)
-        #review_username = review._meta.get_field('username').related_name='reviews'
-        #self.assertTrue(review_username)
-        #game_choices = review._meta.get_field('game').choices
-        #self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])

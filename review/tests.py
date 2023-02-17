@@ -1,11 +1,12 @@
 from django.test import TestCase
 from htmlvalidator.client import ValidatingClient
 from datetime import datetime
+from django.http.response import HttpResponsePermanentRedirect
 
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
-from .views import ReviewView, MyReviewsView, ReviewDeleteView, ReviewUpdateView
+from .views import ReviewView, MyReviewsView
 
 
 class ReviewsTest(TestCase):
@@ -21,7 +22,6 @@ class ReviewsTest(TestCase):
 
     def test_uses_review_home_template(self):
         response = self.client.get('/review/')
-        #print(response.context[0])
         self.assertIsInstance(response.context[-1]['form'], ReviewForm)
         self.assertTemplateUsed(response, 'review/home.html')
         self.assertTemplateUsed(response, '_base.html')
@@ -39,20 +39,32 @@ class ReviewsTest(TestCase):
         response = self.client.get('/review/myreviews/')
         #print(response.context[-1])
         self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
+        # print(response.context[1])
         # self.assert page title is 'My Reviews'
         self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
 
-    def test_uses_delete_review_template(self):
-        response = self.client.post('/review/review/98/delete/')
-        #print(response.context[-1])
-        #self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
-        # self.assert page title is 'My Reviews'
-        #self.assertTemplateUsed(response, 'review/myreviews.html')
-        #self.assertTemplateUsed(response, '_base.html')
-        self.assertEqual(response.status_code, 200)
+    def test_uses_delete_review(self):
+        username = 'admin'
+        data={'username': username, 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
+        response = self.client.post('/review/', data)
+        removed = self.client.delete('/review/review/1/delete')
+        self.assertTrue(removed)
+        self.assertEqual(removed.status_code, 301)
+        self.assertIsNone(removed.context)
+        self.assertIsInstance(removed, HttpResponsePermanentRedirect)
 
+    def test_uses_update_review(self):
+        username = 'admin'
+        data={'username': username, 'game': 'MATH', 'votes': 5, 'comment': 'This is a test comment.', 'created': datetime.now(), 'updated': datetime.now()}
+        response = self.client.post('/review/', data)
+        updated = self.client.post('/review/review/1/update')
+        self.assertTrue(updated)
+        self.assertEqual(updated.status_code, 301)
+        self.assertIsNone(updated.context)
+        self.assertIsInstance(updated, HttpResponsePermanentRedirect)
+        
     def test_user_can_GET_myreviews_page(self):
         response = self.client.get('/review/myreviews/')
         # only registered users, aka, CustomUsers can submit reviews
@@ -141,6 +153,3 @@ class ReviewsTest(TestCase):
         game_choices = review._meta.get_field('game').choices
         self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])
 
-def test_user_can_update_review(self):
-        sample = Review(username=CustomUser.objects.get(username='testuser1'), game='MATH FACTS', votes=3, comment="This is a test comment", created=datetime.now, updated=datetime.now)
-        sample.save()
