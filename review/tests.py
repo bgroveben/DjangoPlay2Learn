@@ -1,4 +1,5 @@
 from django.test import TestCase
+from htmlvalidator.client import ValidatingClient
 from datetime import datetime
 
 from .forms import ReviewForm
@@ -10,6 +11,8 @@ from .views import ReviewView, MyReviewsView
 class ReviewsTest(TestCase):
 
     def setUp(self):
+        super(ReviewsTest, self).setUp()
+        self.client = ValidatingClient()
         # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()

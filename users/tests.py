@@ -1,5 +1,5 @@
 from django.test import TestCase
-
+from htmlvalidator.client import ValidatingClient
 from django.urls import reverse
 from http import HTTPStatus
 
@@ -9,6 +9,8 @@ from users.models import CustomUser
 class CustomUserModelTest(TestCase):
 
     def setUp(self):
+        super(CustomUserModelTest, self).setUp()
+        self.client = ValidatingClient()
         # Create test user
         testuser1 = CustomUser.objects.create_user(
                             username='testuser1',

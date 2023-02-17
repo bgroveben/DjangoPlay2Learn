@@ -8,6 +8,16 @@ Any visitor to the site should also be able to fill out a contact us form.
 You should be using Python and Django to add the backend.
 You can use the JavaScript games you've created in previous projects.
 
+## Instructions
+
+1. Open a terminal in root project directory.
+2. => source .venv/bin/activate
+3. => python3 manage.py runserver 
+4. Open a new terminal in vue-games app directory.
+5. => npm run serve
+
+You should have the Django application running at http://127.0.0.1:8000/#/ and the Vue application running at http://127.0.0.1:8080/#/
+
 
 TODO:
 -- Validate html and css

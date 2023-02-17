@@ -4,6 +4,7 @@ import requests
 from django.test.client import Client
 #import unittest
 from django.test import TestCase# , RequestFactory
+from htmlvalidator.client import ValidatingClient
 #from django.test import Client
 from django.urls import reverse_lazy
 
@@ -15,6 +16,16 @@ from .views import record_score, HomeView, GamesView, GameScoresView, MyScoresVi
 
 
 class TemplatesTest(TestCase):
+
+    def setUp(self):
+        super(TemplatesTest, self).setUp()
+        self.client = ValidatingClient()
+        # Create test user
+        testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
+        testuser1.save()
+        # https://docs.djangoproject.com/en/4.1/topics/testing/tools/#django.test.Client.force_login
+        login = self.client.force_login(testuser1)
+        
     # Make sure templates, views, and urls match up
     def test_uses_home_templates(self):
         response = self.client.get('/')

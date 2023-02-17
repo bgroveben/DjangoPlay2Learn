@@ -1,7 +1,9 @@
 from django.test import TestCase
+from htmlvalidator.client import ValidatingClient
 from http import HTTPStatus
 from .forms import ContactForm
 from .models import Contact
+from users.models import CustomUser
 
 # Functional test for submitting contact form?
 class ContactsTest(TestCase):
@@ -10,6 +12,14 @@ class ContactsTest(TestCase):
     User should be able to fill out and submit contact form
     POST request should be valid
     """
+    def setUp(self):
+        super(ContactsTest, self).setUp()
+        self.client = ValidatingClient()
+        # Create test user
+        testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
+        testuser1.save()
+        # https://docs.djangoproject.com/en/4.1/topics/testing/tools/#django.test.Client.force_login
+        login = self.client.force_login(testuser1)
 
     def test_contact_model(self):
         sample = Contact(email='emailtest@email.com', subject='Test Subject', message='This is a test')
