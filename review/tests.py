@@ -5,7 +5,7 @@ from datetime import datetime
 from .forms import ReviewForm
 from users.models import CustomUser
 from review.models import Review
-from .views import ReviewView, MyReviewsView
+from .views import ReviewView, MyReviewsView, ReviewDeleteView, ReviewUpdateView
 
 
 class ReviewsTest(TestCase):
@@ -42,6 +42,15 @@ class ReviewsTest(TestCase):
         # self.assert page title is 'My Reviews'
         self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_uses_delete_review_template(self):
+        response = self.client.post('/review/review/98/delete/')
+        #print(response.context[-1])
+        #self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
+        # self.assert page title is 'My Reviews'
+        #self.assertTemplateUsed(response, 'review/myreviews.html')
+        #self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
 
     def test_user_can_GET_myreviews_page(self):
@@ -131,3 +140,7 @@ class ReviewsTest(TestCase):
         self.assertTrue(review_username)
         game_choices = review._meta.get_field('game').choices
         self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])
+
+def test_user_can_update_review(self):
+        sample = Review(username=CustomUser.objects.get(username='testuser1'), game='MATH FACTS', votes=3, comment="This is a test comment", created=datetime.now, updated=datetime.now)
+        sample.save()

@@ -5,6 +5,7 @@ from django.test.client import Client
 #import unittest
 from django.test import TestCase# , RequestFactory
 from htmlvalidator.client import ValidatingClient
+from django.db import models
 #from django.test import Client
 from django.urls import reverse_lazy
 
@@ -81,4 +82,34 @@ class GameScoresTest(TestCase):
         self.assertEqual(sample.maxnum, '20')
         self.assertEqual(sample.game, "MATH FACTS")
 
- 
+    def test_game_scores_meta_fields(self):
+        sample = GameScores(created=datetime.now(), username=CustomUser.objects.get(username='testuser1'), score=50, operation='+', gamelength='30', maxnum='20', game='MATH FACTS')
+        createds = sample._meta.get_field('created')
+        self.assertTrue(createds)
+        self.assertIsInstance(createds, models.DateTimeField)
+        print(type(createds))
+        usernames = sample._meta.get_field('username')
+        self.assertTrue(usernames)
+        self.assertIsInstance(usernames, models.TextField)
+        scores = sample._meta.get_field('score')
+        self.assertTrue(scores)
+        self.assertIsInstance(scores, models.IntegerField)
+        gamelengths = sample._meta.get_field('gamelength')
+        self.assertTrue(gamelengths)
+        self.assertIsInstance(gamelengths, models.TextField)
+        maxnums = sample._meta.get_field('maxnum')
+        self.assertTrue(maxnums)
+        self.assertIsInstance(maxnums, models.TextField)
+        operations = sample._meta.get_field('operation')
+        self.assertTrue(operations)
+        self.assertIsInstance(operations, models.TextField)
+        games = sample._meta.get_field('game')
+        self.assertTrue(games)
+        self.assertIsInstance(games, models.TextField)
+        #print(type(games))
+
+        #self.assertEqual(comment_max_length, 1000)
+        #review_username = review._meta.get_field('username').related_name='reviews'
+        #self.assertTrue(review_username)
+        #game_choices = review._meta.get_field('game').choices
+        #self.assertEqual(game_choices, [('MATH FACTS', 'Math Facts'), ('ANAGRAM HUNT', 'Anagram Hunt')])

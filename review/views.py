@@ -54,14 +54,26 @@ class MyReviewsView(SuccessMessageMixin, TemplateView):
 
 
 class ReviewDeleteView(DeleteView):
+    template_name = "review/review_confirm_delete.html"
+    #form_class = ReviewForm
     model = Review
     success_url = '/review/myreviews/'
 
+def delete(self, request, *args, **kwargs):
+    """
+    Call the delete() method on the fetched object and then redirect to the success URL.
+    """
+    self.object = self.get_object()
+    success_url = self.get_success_url()
+    self.object.delete()
+    return HttpResponseRedirect(success_url)
+
+    """
     def delete(self, request, *args, **kwargs):
         result = super().delete(request, *args, **kwargs)
         messages.success(self.request, 'Review deleted.')
         return result
-
+    """
     def test_func(self):
         # This is a hack. Check your tests file.
         #obj = self.get_object()
