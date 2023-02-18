@@ -1,7 +1,6 @@
 <template>
-  <div id="equation" class="row text-white display-4">
-    <div class="col-6 text-end">{{question}}</div>
-    <div class="col-1">=</div>
+  <div id="equation" class="row text-white display-3">
+    <div class="col-8">{{question}}</div>
     <div class="col-4 text-start">{{answer}}</div>
   </div>
 </template>
