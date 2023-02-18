@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-# ?? I didn't need to import index(request) ??
 from review.views import ReviewView, MyReviewsView, ReviewDeleteView, ReviewUpdateView
 
 

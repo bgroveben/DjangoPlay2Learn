@@ -8,6 +8,5 @@ class ContactForm(ModelForm):
         model = Contact
         fields = '__all__'
         widgets = {
-            #'username': TextInput(attrs={'readonly': 'readonly'})
             'message': forms.Textarea(attrs={'rows': '3'})
         }

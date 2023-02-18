@@ -1,6 +1,5 @@
 from django.urls import path
-#from . import views
-from .views import MyAccountPageView#, ReviewsPageView, ReviewView
+from .views import MyAccountPageView
 
 
 app_name = 'users'

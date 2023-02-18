@@ -1,9 +1,8 @@
 from django.test import TestCase
-from htmlvalidator.client import ValidatingClient
 from django.db import models
-from django.urls import reverse_lazy
 
 from datetime import datetime
+from htmlvalidator.client import ValidatingClient
 
 from users.models import CustomUser
 from .models import GameScores
@@ -15,20 +14,16 @@ class TemplatesTest(TestCase):
     def setUp(self):
         super(TemplatesTest, self).setUp()
         self.client = ValidatingClient()
-        # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()
-        # https://docs.djangoproject.com/en/4.1/topics/testing/tools/#django.test.Client.force_login
         login = self.client.force_login(testuser1)
         
-    # Make sure templates, views, and urls match up
     def test_uses_home_templates(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.context[-1]['view'], HomeView)
         self.assertTemplateUsed(response, 'home.html')
         self.assertTemplateUsed(response, '_base.html')
-        # self.assertTemplateUsed(response, '_base_vue.html') => fail
 
     def test_uses_games_templates(self):
         response = self.client.get('/games/')
@@ -43,7 +38,6 @@ class TemplatesTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'games/game-scores.html')
         self.assertTemplateUsed(response, '_base.html')
-        #self.assertTemplateUsed(response, '_base_vue.html') => fail
 
     def test_uses_myscores_templates(self):
         response = self.client.get('/myscores/')
@@ -56,7 +50,6 @@ class TemplatesTest(TestCase):
 class GameScoresTest(TestCase):
 
     def setUp(self):
-        # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()
         login = self.client.login(username=testuser1, password='1X<ISRUkw+tuK')

@@ -19,7 +19,6 @@ class CustomUserModelTest(TestCase):
                             first_name='test',
                             last_name='user',
                             dob='1980-01-01'
-                            #dob=str(models.DateField(1980,1,1))
                             )
         testuser1.save()
         login = self.client.login(username=testuser1,
@@ -45,7 +44,6 @@ class CustomUserModelTest(TestCase):
         self.assertTrue(sample)
         self.assertEqual(sample.username, 'testuser1')
         self.assertIsInstance(sample, CustomUser)
-
 
     def test_user_can_update_their_account_form(self):
         data={'email': 'test@email.com', 'username': 'testuser1', 'first_name': 'test', 'last_name': 'user', 'dob': '1980'}

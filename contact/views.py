@@ -1,7 +1,7 @@
-#from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
+
 from .forms import ContactForm
 
 
@@ -14,7 +14,6 @@ def contact_view(request):
             email_message = form.cleaned_data['message']
             send_mail(email_subject, email_message, settings.CONTACT_EMAIL, settings.ADMIN_EMAILS)
             return render(request, 'contact/success.html')
-            # return redirect('success')
     form = ContactForm()
     context = {'form': form}
     return render(request, 'contact/contact.html', context)

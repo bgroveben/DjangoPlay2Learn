@@ -13,14 +13,14 @@
         {% for review in myreviews %}
         <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
           <li class="text-center h5" style="color: ivory">
-            On {{ review.created|date }} {{ review.username }} gave {{ review.game }} {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
+            On {{ review.created|date }} you gave {{ review.game }} {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
           </li>
           <li class="my-2 pb-2 h5" style="color: yellow;">
             "{{ review.comment }}"
           </li>
           <div class="bg-light ms-5 me-5">
             <a href="{% url 'update' review.pk %}"
-            class="btn btn-success btn-sm me-5">Update</a>             
+            class="btn btn-primary btn-sm me-5">Update</a>             
             <a href="{% url 'delete' review.pk %}"
                 class="btn btn-danger btn-sm ms-5">Delete
             </a>

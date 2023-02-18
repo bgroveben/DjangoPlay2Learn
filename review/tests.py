@@ -29,7 +29,6 @@ class ReviewsTest(TestCase):
 
     def test_uses_review_review_template(self):
         response = self.client.get('/review/review/')
-        #print(response.context[-1])
         self.assertIsInstance(response.context[-1]['view'], ReviewView)
         self.assertTemplateUsed(response, 'review/reviews.html')
         self.assertTemplateUsed(response, '_base.html')
@@ -37,10 +36,7 @@ class ReviewsTest(TestCase):
 
     def test_uses_my_reviews_template(self):
         response = self.client.get('/review/myreviews/')
-        #print(response.context[-1])
         self.assertIsInstance(response.context[-1]['view'], MyReviewsView)
-        # print(response.context[1])
-        # self.assert page title is 'My Reviews'
         self.assertTemplateUsed(response, 'review/myreviews.html')
         self.assertTemplateUsed(response, '_base.html')
         self.assertEqual(response.status_code, 200)
@@ -132,7 +128,6 @@ class ReviewsTest(TestCase):
     def test_review_model(self):
         sample = Review(username=CustomUser.objects.get(username='testuser1'), game='MATH FACTS', votes=3, comment="This is a test comment", created=datetime.now, updated=datetime.now)
         sample.save()
-        #print(sample)
         self.assertTrue(sample)
         self.assertEqual(str(sample), "MATH FACTS")
         self.assertEqual(sample.username, CustomUser.objects.get(username='testuser1'))

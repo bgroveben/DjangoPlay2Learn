@@ -83,17 +83,12 @@ class DjangoSession(models.Model):
 
 
 class CustomUser(AbstractUser):
-
-
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
-    #avatar = models.IntegerField(null=True, blank=True)
-    ###!!!!!! Removing avatar field breaks registration. Why?
+    # Do I need avatar?
     avatar = models.ImageField(upload_to='avatars/',
         null=True, blank=True,
-        #help_text='Image must be 200px by 200px.',
-        #validators=[validate_avatar]
     )
 
     class Meta:

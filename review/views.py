@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
 
 from .models import Review
 from .forms import ReviewForm
@@ -55,7 +54,6 @@ class MyReviewsView(SuccessMessageMixin, TemplateView):
 
 class ReviewDeleteView(DeleteView):
     template_name = "review/review_confirm_delete.html"
-    #form_class = ReviewForm
     model = Review
     success_url = '/review/myreviews/'
 
@@ -68,27 +66,12 @@ def delete(self, request, *args, **kwargs):
     self.object.delete()
     return HttpResponseRedirect(success_url)
 
-    """
-    def delete(self, request, *args, **kwargs):
-        result = super().delete(request, *args, **kwargs)
-        messages.success(self.request, 'Review deleted.')
-        return result
-    """
-    def test_func(self):
-        # This is a hack. Check your tests file.
-        #obj = self.get_object()
-        #return self.request.user == obj.user
-        return True
 
 class ReviewUpdateView(SuccessMessageMixin, UpdateView):
     model = Review
     form_class = ReviewForm
     success_message = 'Review updated.'
     success_url = '/review/myreviews/'
-    #success_url = reverse_lazy('review:myreviews')
 
     def test_func(self):
-        # This is a hack. Fix it.
-        #obj = self.get_object()
-        #return self.request.user == obj.user
-        return True
+        return self.request.user

@@ -1,11 +1,13 @@
 from django.test import TestCase
+
 from htmlvalidator.client import ValidatingClient
 from http import HTTPStatus
+
 from .forms import ContactForm
 from .models import Contact
 from users.models import CustomUser
 
-# Functional test for submitting contact form?
+
 class ContactsTest(TestCase):
     """
     Templates, views, and urls should match up
@@ -15,10 +17,8 @@ class ContactsTest(TestCase):
     def setUp(self):
         super(ContactsTest, self).setUp()
         self.client = ValidatingClient()
-        # Create test user
         testuser1 = CustomUser.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
         testuser1.save()
-        # https://docs.djangoproject.com/en/4.1/topics/testing/tools/#django.test.Client.force_login
         login = self.client.force_login(testuser1)
 
     def test_contact_model(self):
@@ -33,22 +33,16 @@ class ContactsTest(TestCase):
 
     def test_uses_contact_templates(self):
         response = self.client.get('/contact/')
-        #print(response.context[-1])
         self.assertIsInstance(response.context[-1]['form'], ContactForm)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact/contact.html')
         self.assertTemplateUsed(response, '_base.html')
 
     def test_user_can_submit_contact_form(self):
-        # Fill out contact form
         data={'email': 'test@email.net', 'subject': 'Test Subject', 'message': 'This is a test message.'}
         response = self.client.post('/contact/', data)
-        # Make sure the form data is posted
         self.assertEqual(response.status_code, HTTPStatus.OK)
-        # 2. Use posted form data to populate form
         form = ContactForm(data=data)
-        # form.save?
-        # 3. Make sure that the form exists
         self.assertTrue(form.data)
 
     def test_contact_form_is_valid(self):

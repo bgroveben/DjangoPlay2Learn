@@ -1,7 +1,5 @@
 from django.urls import path
 
-#from . import views
-
 from games.views import HomeView, GamesView, GameScoresView, record_score, MyScoresView
 
 app_name = 'games'
@@ -13,6 +11,4 @@ urlpatterns = [
     # unauthenticated users who visit /myscores/ will only see
     # My Scores heading followed by blank screen
     path('record-score/', record_score, name="record-score"),
-    #path('index/', index, name="index")
-    #path('myscores/', record_score, name="myscores"),
 ]

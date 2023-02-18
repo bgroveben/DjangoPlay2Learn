@@ -19,13 +19,6 @@ You can use the JavaScript games you've created in previous projects.
 You should have the Django application running at http://127.0.0.1:8000/#/ and the Vue application running at http://127.0.0.1:8080/#/
 
 
-TODO:
--- Validate html and css
--- time is not local
-    - a score recorded after 4pm locally is posted with tomorrow's date.
-    -Should I care?
-??? Semantic html for the folks with special needs ???
-
 THEN: Comment and document your code
 
 $=> coverage run --omit='*/venv/*' manage.py test
