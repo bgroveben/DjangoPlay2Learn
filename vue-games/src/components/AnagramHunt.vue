@@ -17,7 +17,7 @@
           <div>
             <h2 class="fs-1 text-white">Time's Up!</h2>
             <strong class="h3 text-white">You Answered</strong>
-            <div class="display-2 text-warning">{{score}}</div>
+            <div class="display-2 text-light">{{score}}</div>
             <strong class="h3 text-white">Questions Correctly</strong>
             <div class="h4 mt-3">Click a button below to record your score</div>
             <button class="btn btn-success col-3 mx-auto d-grid gap-2 my-3 p-2 fs-5 rounded-circle"
@@ -43,17 +43,13 @@
               </div>
             </div>
             <div class="row border-bottom">
-              <div class="col text-center mt-2">
-                <h2 class="fw-bold text-white fs-1" id="anagram">{{anagram}}</h2>
-                <h2 class="fw-bold text-warning fs-1" id="answer">{{answer}}</h2>
-                <div>
-                  <div class="my-3">
-                    <input type="text" class="col-6 fs-4 form-control-lg" v-model="answer" ref="answer" placeholder="Answer" aria-label="Answer" id="answer" aria-describedby="Answer" />
-                  </div>
+              <div class="col text-white h1" id="anagram">{{ anagram }}</div>
+              <div class="col text-light h1" id="answer">{{ answer }}</div>
+                <div class="my-3">
+                  <input type="text" class="col-6 fs-4 form-control-lg" v-model="answer" ref="answer" placeholder="Answer" aria-label="Answer" id="answer" aria-describedby="Answer" />
                 </div>
                 <InputButton @is-anagram="isAnagram" />
                 <Anagrams :anagramsGuessed="anagramsGuessed" :anagramsLeft="anagramsLeft" />
-              </div>
             </div>
           </div>
         </template>

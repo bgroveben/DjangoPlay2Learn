@@ -39,22 +39,29 @@ Login and Registration: 25%
 DONE (10%) Users can register.
 DONE (5%) Registered users can log in and log out.
 DONE (10%) Logged in users can edit their information in a My Account page.
--- A confirmation email is sent on registration, but the user is logged in immediately anyway. I like it this way.
+* A confirmation email is sent on registration, but the user is logged in immediately anyway. I like it this way.
+* Any confirmation or password reset emails go through Sendgrid and will probably end up in your spam filter because they are from example.com.
 
 Game Tracking and Leaderboards: 30%
-* AnonymousUser(s) have scores added to the leaderboard
+* AnonymousUser(s) have their scores added to the leaderboard.
 DONE (5%) Game tracking page exists for both games.
 DONE (5%) Leaderboards exist for both games.
 DONE (10%) Game tracking shows just the user’s scores.
 DONE (10%) Leaderboards shows all the scores.
+* If you want to see how the scores are displayed, you're just gonna have to play the games and add them yourself.
+* If you want to cheat at the anagrams game, open the dev tools console.
+* If you want to cheat at the math game, use a calculator.
+* Scores aren't recorded using local time, so if the date is wrong, so be it.
 
 Reviews: 10%
 DONE (5%) Logged-in users can successfully leave reviews.
 DONE (5%) User reviews rotate in the slideshow on the homepage.
--- The assignment doesn't specify form validation. Let the browser do it.
+* No reviews means no slideshow. Same idea as the scores thing.
 
 Contact Us: 10%
 DONE (10%) The contact us form sends an email to the admin email.
+* The assignment doesn't specify form validation, so I chose client-side and let the browser do the work.
+* Not using server-side validation in the real world is a bad idea, but I was more worried about improving my poor test coverage as well as my poor UX/UI skills.
 
 DONE Admin Site: 25%
 DONE (5%) Admin users can access the admin site.
