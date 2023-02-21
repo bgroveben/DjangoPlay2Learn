@@ -37,7 +37,7 @@
         <ol class="ps-5 border border-info rounded"">
         {% for score in anagram_scores %}
           <li class="h3" style="color: ivory;">
-            <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
+            <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);">
               <p class="h2" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4"></span>{{ score.username }}</p>
               <p class="h3">
                 {{ score.created|date }}

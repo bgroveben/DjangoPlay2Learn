@@ -170,10 +170,8 @@
           //num2 = Math.min(num1, num2);
         }
         if(operator === '/') {
-          while (num2 === 0) { // No division by zero -- do I need this?
-            num1 = numHigh;
-            num2 = numLow;
-            num2 = randInt(2, high);
+          if (num2 === 0) { // No division by zero
+            num2 = randInt(1, high);
           }
           num1 = (num1 * num2);
         }

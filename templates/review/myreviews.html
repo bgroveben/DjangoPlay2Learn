@@ -6,12 +6,10 @@
   <h1 class="text-center text-warning">My Reviews</h1>
     {% if user.is_authenticated %}
       <div class="jumbotron jumbotron-fluid" style="background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
-      <!--<div class="card m-auto mb-3 p-3" style="max-width: 50rem">-->
       <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(to bottom right, darkslateblue, salmon);">
         <div class="list-group list-group-flush">
-
         {% for review in myreviews %}
-        <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(to bottom right, darkslateblue, indianred);">
+        <ul class="list-group-item border border-danger rounded" style="list-style: none; background-image: linear-gradient(darkslateblue, indianred);">
           <li class="text-center h5" style="color: ivory">
             On {{ review.created|date }} you gave {{ review.game }} {{ review.votes }} vote{{ review.votes|pluralize:'s'}} and said:
           </li>

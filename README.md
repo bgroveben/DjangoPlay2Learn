@@ -16,10 +16,11 @@ You can use the JavaScript games you've created in previous projects.
 
 1. Open a prompt, shell, terminal, or whatever you use in the root project directory.
 2. Activate your virtualenv
-3. `$=> python3 manage.py runserver`
-4. Open a new terminal in vue-games app directory.
-5. `$=> npm install`
-6. `$=> npm run serve	`
+3. `$=> pip install -r requirements.txt`
+4. `$=> python3 manage.py runserver`
+5. Open a new terminal in vue-games app directory.
+6. `$=> npm install`
+7. `$=> npm run serve	`
 
 You should have the Django application running at:
 http://127.0.0.1:8000/#/
@@ -74,4 +75,4 @@ htmlcov/index.html`
 (10%) Admin users can view user data.
 (10%) Admin users can update and delete user data.
 
-[^1]: `AnagramHunt.vue` line 141
+[^1]: `AnagramHunt.vue` lines 140, 154

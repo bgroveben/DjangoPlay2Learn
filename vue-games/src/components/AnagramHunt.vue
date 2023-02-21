@@ -116,7 +116,6 @@
         const response = (await this.axios.post("/record-score/", data)).data;
         console.log(response);
         console.log(data);
-        // window.location.replace("/game-scores/"); redirect to scores page
       },
       chooseAnagram() {
         if (this.outerArray.length === 0 && this.randomOuter.length === 0) {
