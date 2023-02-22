@@ -44,7 +44,7 @@ htmlcov/index.html`
 **LOGIN AND REGISTRATION: 25%**
 (10%) Users can register.
 (5%) Registered users can log in and log out.
- (10%) Logged in users can edit their information in a My Account page.
+(10%) Logged in users can edit their information in a My Account page.
  
 - A confirmation email is sent on registration, but the user is logged in immediately anyway. I like it this way.  
 - Any confirmation or password reset emails go through Sendgrid and will probably end up in your spam filter because they are from example.com.
@@ -58,7 +58,9 @@ htmlcov/index.html`
 - AnonymousUser(s) have their scores added to the leaderboard.
 - If you want to cheat at the anagrams game, open the dev tools console.[^1]
 - If you want to cheat at the math game, use a calculator.
-- Scores aren't recorded using local time, so if the date is wrong, that's life.
+- Scores aren't recorded using local time.
+    -- https://docs.djangoproject.com/en/4.1/topics/i18n/timezones/#template-tags
+    -- https://docs.djangoproject.com/en/4.1/topics/i18n/timezones/#get-current-timezone
 
 **REVIEWS: 10%**
 (5%) Logged-in users can successfully leave reviews.
@@ -75,4 +77,4 @@ htmlcov/index.html`
 (10%) Admin users can view user data.
 (10%) Admin users can update and delete user data.
 
-[^1]: `AnagramHunt.vue` lines 140, 154
+[^1]: `vue-games/src/components/AnagramHunt.vue` lines 140, 154

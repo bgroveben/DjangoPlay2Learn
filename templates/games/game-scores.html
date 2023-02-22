@@ -17,7 +17,7 @@
               {{ score.operation|swap }}
             </p>
             <p class="h3">
-              {{ score.created|date }}
+              {{ score.created|date }} @ {{ score.created|time }}
             </p>
             <p class="h3">
               Max Number: {{ score.maxnum }}
@@ -40,7 +40,7 @@
             <div class="card border-2 border-primary border-rounded m-auto p-3 text-center" style="max-width: 50rem; background-image: linear-gradient(darkslateblue, indianred);">
               <p class="h2" style="word-spacing: 1rem;">{{ score.score }} <i class="fa fa-solid fa-arrow-right"></i><span class="ps-4"></span>{{ score.username }}</p>
               <p class="h3">
-                {{ score.created|date }}
+                {{ score.created|date }} @ {{ score.created|time }}
               </p>
               <p class="h3">
                 Word Length: {{ score.maxnum }}
