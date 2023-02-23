@@ -2,9 +2,9 @@
   <div id="body">
     <div>
         <div class="row">
-            <h4 class="text-danger">Remaining: {{anagramsLeft}}</h4>
+            <h4 class="text-dark">Remaining: {{anagramsLeft}}</h4>
           <div class="row mt-1">
-            <h2 class="text-white">Guessed: {{anagramsGuessed.toString()}}</h2>
+            <h2 class="text-dark">Guessed: {{anagramsGuessed.toString()}}</h2>
           </div>
         </div>
     </div>

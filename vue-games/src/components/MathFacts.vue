@@ -48,10 +48,10 @@
             </div>
             <div class="row" id="buttons">
               <div class="col-3 mx-auto w-auto mt-2">
-                <button class="btn btn-primary bg-gradient col-4 p-1 border border-dark border-4 rounded-circle fs-2"
+                <button class="btn btn-dark bg-gradient col-4 p-1 border border-dark border-4 rounded-circle fs-2"
                   v-for="button in buttons" :key="button"
                   @click="setInput(button)">{{button}}</button>
-                <button class="btn btn-primary bg-gradient col-8 p-1 border border-dark border-4 rounded-circle fs-2" id="clear-button"
+                <button class="btn btn-dark bg-gradient col-8 p-1 border border-dark border-4 rounded-circle fs-2" id="clear-button"
                   @click="clear">CLEAR</button>
               </div>
             </div>
@@ -166,8 +166,6 @@
         if(operator === '-') { // Make sure higher num comes first
           num1 = numHigh;
           num2 = numLow;
-          //num1 = Math.max(num1, num2);
-          //num2 = Math.min(num1, num2);
         }
         if(operator === '/') {
           if (num2 === 0) { // No division by zero

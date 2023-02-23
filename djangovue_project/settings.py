@@ -25,14 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# I'm submitting this project in dev mode! So there.
 SECRET_KEY = 'django-insecure-vtp&i1q!0^3tiq#b4nfhfb)rb1alfr4kdi@s(0w)!$==ju*-*g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Okay already. Again, dev mode.
 DEBUG = True
 
-# ALLOWED_HOSTS = ['localhost:8000']
-# Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
-# ALLOWED_HOSTS = ['localhost'] # still doesn't work
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -63,12 +63,10 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1 # django-allauth
-# SITE_ID = 2 https://www.youtube.com/watch?v=56w8p0goIfs  ~11:00
 
 #ACCOUNT_EMAIL_REQUIRED = True  See AUTHENTICATION SETTINGS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # django-crispy-forms
-#CRISPY_TEMPLATE_PACK = 'bootstrap5' # django-crispy-forms
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -87,7 +85,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
-        #'DIRS': [os.path.join(BASE_DIR, "templates")],  Windows os?
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,10 +95,6 @@ TEMPLATES = [
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
             ],
-            # template filters
-            #'libraries':{
-                #'filters': 'templates.filters',
-                #}
             # template filters
             'libraries':{
                 'common_filters': 'common.templatetags.common_filters',
@@ -124,19 +117,6 @@ DATABASES = {
     }
 }
 
-"""
-# also in local_settings.py
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'play2learn',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
-}
-"""
 
 # EMAIL
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
@@ -205,13 +185,11 @@ ACCOUNT_FORMS = {
     # Used to override forms, for example: {'login': 'myapp.forms.LoginForm'}
     'login': 'allauth.account.forms.LoginForm',
     'signup': 'allauth.account.forms.SignupForm',
-    #'signup': 'allauth.account.forms.CustomSignupForm',
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
     'set_password': 'allauth.account.forms.SetPasswordForm',
     'reset_password': 'allauth.account.forms.ResetPasswordForm',
     'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-    #'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 }
 #############################################################################
 
@@ -245,4 +223,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # BOTTOM OF settings.py
 if os.environ.get('ENVIRONMENT') != 'production':
     from .local_settings import *
-# DON'T PUT ANYTHING BELOW THIS
+
+# DON'T PUT ANYTHING BELOW THIS #
