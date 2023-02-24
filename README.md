@@ -12,14 +12,15 @@ In this project, I'm creating the backend for the Play2Learn website. The websit
 
 ## Instructions
 
-1. Open a prompt, shell, terminal, or whatever you use in the root project directory.
-2. `$=> pip install -r requirements.txt`
+1. Unzip the file
+2. Open a prompt, shell, terminal, or whatever you use in the root project directory.
 3. `$=> python3 -m venv .venv`
 4. Activate your virtualenv
-5. `$=> python3 manage.py runserver`
-6. Open a new terminal in vue-games app directory.
-7. `$=> npm install`
-8. `$=> npm run serve	`
+5. `$=> pip install -r requirements.txt`
+6. `$=> python3 manage.py runserver`
+7. Open a new terminal in vue-games app directory.
+8. `$=> npm install`
+9. `$=> npm run serve	`
 
 You should have the Django application running at:
 
