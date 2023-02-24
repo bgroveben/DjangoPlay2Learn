@@ -50,17 +50,24 @@ If you want to run this app on your localhost, update `settings.py` accordingly.
 - No reviews means no slideshow. Same idea as the scores thing.
 
 **LOGIN AND REGISTRATION: 25%**
+
 (10%) Users can register.
+
 (5%) Registered users can log in and log out.
+
 (10%) Logged in users can edit their information in a My Account page.
  
 - A confirmation email is sent on registration, but the user is logged in immediately anyway. I really need to work on the patience thing.
 - Any confirmation or password reset emails go through Sendgrid and will probably end up in your spam filter because they are from example.com.
 
 **GAME TRACKING AND LEADERBOARDS: 30%**
+
 (5%) Game tracking page exists for both games.
+
 (5%) Leaderboards exist for both games.
+
 (10%) Game tracking shows just the user's scores.
+
 (10%) Leaderboards show all the scores.
 
 - AnonymousUser(s) have their scores added to the leaderboard.
@@ -69,20 +76,26 @@ If you want to run this app on your localhost, update `settings.py` accordingly.
 - Scores are recorded and displayed in UTC. If you want to change the time zone, you can choose from a list of options found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 **REVIEWS: 10%**
+
 (5%) Logged-in users can successfully leave reviews.
+
 (5%) User reviews rotate in the slideshow on the homepage.
 
 - The slideshow displays all reviews. If there are none, add them. 
 
 **CONTACT US: 10%**
+
 (10%) The contact us form sends an email to the admin email.
 
 - The assignment doesn't specify form validation, so I chose client-side and let the browser do the work.
 - Not using server-side validation in the real world is a bad idea, but I was more worried about improving my poor test coverage as well as my poor UX/UI skills.
 
 **ADMIN SITE: 25%**
+
 (5%) Admin users can access the admin site.
+
 (10%) Admin users can view user data.
+
 (10%) Admin users can update and delete user data.
 
 - I really like Django's admin. This was the most straightforward (and least worrisome) part of the assignment for me.
