@@ -12,6 +12,17 @@ In this project, I'm creating the backend for the Play2Learn website. The websit
 
 ## Instructions
 
+You'll need a [SendGrid](https://sendgrid.com/) account. Email settings in `settings.py` begin on line 122 with your SENDGRID_API_KEY.
+
+I put my SENDGRID_API_KEY in a `local_settings.py` file that was kept out of version control.
+
+I also left a populated database that you can use, but I'm not giving you the admin password :)
+
+**Note to instructor(s):**
+
+I set up my SendGrid account just like I was taught in Lesson 7 of the Django course.
+Hopefully that makes it easier to get this app up and running so you can grade the thing.
+
 1. Unzip the file
 2. Open a prompt, shell, terminal, or whatever you use in the root project directory.
 3. `$=> python3 -m venv .venv`
