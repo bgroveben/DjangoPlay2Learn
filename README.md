@@ -44,7 +44,7 @@ If you want to run this app on your localhost, update `settings.py` accordingly.
 
 `$=> open -a "browser name here" htmlcov/index.html`
 
-## ==GRADING==
+## GRADING
 
 - If you want to see how the scores are displayed, you're just gonna have to play the games and add them yourself. 
 - No reviews means no slideshow. Same idea as the scores thing.
