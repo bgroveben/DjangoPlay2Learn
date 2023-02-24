@@ -27,9 +27,11 @@ http://127.0.0.1:8080/#/
 If you want to run this app on your localhost, update `settings.py` accordingly.
 
 **TESTS:**
+
 `$=> python3 manage.py test`
 
 **To view test coverage:**
+
 `$=> coverage run --omit='*/venv/*' manage.py test`
 
 `$=> coverage report` # PRINT TO TERMINAL
