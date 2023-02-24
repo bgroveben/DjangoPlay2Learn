@@ -28,12 +28,15 @@ If you want to run this app on your localhost, update `settings.py` accordingly.
 
 **TESTS:**
 `$=> python3 manage.py test`
+
 **To view test coverage:**
 `$=> coverage run --omit='*/venv/*' manage.py test`
+
 `$=> coverage report` # PRINT TO TERMINAL
+
 `$=> coverage html ` # PRINT TO FILE
-`$=> open -a "browser name here"
-htmlcov/index.html`
+
+`$=> open -a "browser name here" htmlcov/index.html`
 
 ## ==GRADING==
 
