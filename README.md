@@ -2,7 +2,7 @@
 
 ## Play2Learn Complete Website Project
 
-**This project was built using HTML, CSS, Javascript, Python, Django, Vue, and Bootstrap. I was taught Postgres, but I used a SQLite database instead because it was easier and the assignment didn't forbid it.**
+**This project was built using HTML, CSS, Javascript, Python, Django, Vue, and Bootstrap. I was taught Postgres, but I used a SQLite database instead because it was easier and the assignment didn't forbid it. I also kept everything in development/debug mode.**
 
 For more information about Django and setting up a development environment to run this app, see the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django).
 
@@ -15,8 +15,6 @@ In this project, I'm creating the backend for the Play2Learn website. The websit
 You'll need a [SendGrid](https://sendgrid.com/) account. Email settings in `settings.py` begin on line 122 with your SENDGRID_API_KEY.
 
 I put my SENDGRID_API_KEY in a `local_settings.py` file that was kept out of version control.
-
-I also left a populated database that you can use, but I'm not giving you the admin password :)
 
 **Note to instructor(s):**
 
@@ -42,6 +40,8 @@ and the Vue application running at:
 http://127.0.0.1:8080/#/
 
 If you want to run this app on your localhost, update `settings.py` accordingly.
+
+Don't forget to create a superuser for Django's admin.
 
 **TESTS:**
 
