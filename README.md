@@ -21,9 +21,13 @@ In this project, I'm creating the backend for the Play2Learn website. The websit
 7. `$=> npm run serve	`
 
 You should have the Django application running at:
+
 http://127.0.0.1:8000/#/
+
 and the Vue application running at:
+
 http://127.0.0.1:8080/#/
+
 If you want to run this app on your localhost, update `settings.py` accordingly.
 
 **TESTS:**
