@@ -41,7 +41,7 @@ http://127.0.0.1:8080/#/
 
 If you want to run this app on your localhost, update `settings.py` accordingly.
 
-Don't forget to create a superuser for Django's admin.
+Don't forget to create a superuser for Django's admin and run migrations ;)
 
 **TESTS:**
 
@@ -83,6 +83,7 @@ Don't forget to create a superuser for Django's admin.
 
 (10%) Leaderboards show all the scores.
 
+- Scores are logged when the user clicks 'Play Again' or 'Change Settings'.
 - AnonymousUser(s) have their scores added to the leaderboard.
 - If you want to cheat at the anagrams game, open the dev tools console.[^1]
 - If you want to cheat at the math game, use a calculator.

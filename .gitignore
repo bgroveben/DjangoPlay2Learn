@@ -1,3 +1,6 @@
+# database
+db.sqlite3
+
 # Vue stuff
 node_modules
 
