@@ -27,6 +27,9 @@ Hopefully that makes it easier to get this app up and running so you can grade t
 4. Activate your virtualenv
 5. `$=> pip install -r requirements.txt`
 6. `$=> python3 manage.py runserver`
+
+Don't forget to create a superuser for Django's admin and run migrations ;)
+
 7. Open a new terminal in vue-games app directory.
 8. `$=> npm install`
 9. `$=> npm run serve	`
@@ -40,8 +43,6 @@ and the Vue application running at:
 http://127.0.0.1:8080/#/
 
 If you want to run this app on your localhost, update `settings.py` accordingly.
-
-Don't forget to create a superuser for Django's admin and run migrations ;)
 
 **TESTS:**
 
