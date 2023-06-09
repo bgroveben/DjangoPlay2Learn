@@ -7,6 +7,9 @@ node_modules
 djangovue_project/local_settings.py
 .env
 
+# AWS
+DjangoPlay2Learn.pem
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
